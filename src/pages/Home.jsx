@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import WelcomeText from "./other/WelcomeText";
 
 class Home extends Component {
-    render () {
+    render() {
         return (
-            <div>Home</div>
+            <div>
+                <WelcomeText/>
+            </div>
         )
     }
 }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class UserRole extends Component {
 
@@ -9,8 +8,8 @@ class UserRole extends Component {
         this.state = {
             userRole: 'unauthorized',
             navLinks: [
-                {text: 'START', path: '/', icon: 'ion-ios-home'},
-                {text: 'KONTAKT', path: '/contact', icon: <FontAwesomeIcon icon="coffee" />}
+                {text: 'START', path: '/', icon: 'ion-ios-home'}
+
             ]
         }
     }

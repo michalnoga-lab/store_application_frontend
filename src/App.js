@@ -8,33 +8,24 @@ import Home from './pages/Home.jsx'
 import ResponsiveNavigation from './components/ResponsiveNavigation'
 import logo from './logo.svg';
 import './App.css';
+import Login from "./pages/Login";
 
 function App() {
     const navLinks = [
         {
-            text: 'Home',
+            text: 'START',
             path: '/',
             icon: 'fa fa-home'
         },
         {
-            text: 'Contact',
-            path: '/contact',
-            icon: 'fa fa-envelope'
-        },
-        {
-            text: 'About',
-            path: '/about',
+            text: 'LOGOWANIE',
+            path: '/login',
             icon: 'fa fa-sign-in'
         },
         {
-            text: 'Blog',
-            path: '/blog',
-            icon: 'ion-ios-bonfire'
-        },
-        {
-            text: 'Portfolio',
-            path: '/portfolio',
-            icon: 'ion-ios-briefcase'
+            text: 'KONTAKT',
+            path: '/contact',
+            icon: 'fa fa-envelope'
         }
     ];
 
@@ -49,11 +40,11 @@ function App() {
                 linkColor="#777"
             />
             <Router>
-                <Contact path="/contact"/>
                 <Home path="/"/>
-                <Portfolio path="/portfolio"/>
-                <Blog path="/blog"/>
-                <About path="/about"/>
+                <Login path='/login'/>
+                <Contact path="/contact"/>
+
+
             </Router>
         </div>
     );

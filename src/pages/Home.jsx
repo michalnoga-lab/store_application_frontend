@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import WelcomeText from "./other/WelcomeText";
 
 class Home extends Component {
     render() {
         return (
-            <div>
+            <div className='home-page'>
                 <section className="container">
                     <h5 className="top-page-text">O PLATFORMIE</h5>
                     <div className="top-page-text-details">

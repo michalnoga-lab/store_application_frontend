@@ -1,14 +1,12 @@
 @import './toolbar.scss';
-@import './home';
-
-//@import url('https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css');
-// reomove
+@import './home.scss';
+@import './login.scss';
 
 figure {
-	margin-block-start: 0;
-	margin-block-end: 0;
-	margin-inline-start: 10px;
-	margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 10px;
+  margin-inline-end: 0;
 }
 
 body {

@@ -1,7 +1,13 @@
 .login-page {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+}
 
-  margin-block-start: 0;
-  margin-block-end: 0;
-  align-items: center;
-  padding: 10% 0 30% 30%;
+@media screen and (max-width: 639px) {
+  .login-page {
+    margin-left: 60px;
+    max-width: 300px;
+    align-content: center;
+  }
 }

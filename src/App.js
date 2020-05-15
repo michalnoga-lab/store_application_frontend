@@ -1,9 +1,6 @@
 import React from 'react';
 import {Router} from '@reach/router'
-import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
-import Portfolio from './pages/Portfolio.jsx'
-import Blog from './pages/Blog.jsx'
 import Home from './pages/Home.jsx'
 import ResponsiveNavigation from './components/ResponsiveNavigation'
 import logo from './logo.svg';
@@ -43,8 +40,6 @@ function App() {
                 <Home path="/"/>
                 <Login path='/login'/>
                 <Contact path="/contact"/>
-
-
             </Router>
         </div>
     );

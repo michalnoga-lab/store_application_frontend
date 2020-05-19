@@ -5,15 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/contact.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/contact/contact.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/home/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/login/login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/navigation/toolbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResponsiveNavigation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/navigation/Navigation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Contact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/contact/Contact.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/LoginService.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/contact/Contact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/contact/Contact.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/login/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/login/login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/navigation/Navigation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/navigation/Navigation.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +70,7 @@
       <workItem from="1589656767290" duration="3102000" />
       <workItem from="1589722684030" duration="934000" />
       <workItem from="1589743011313" duration="502000" />
-      <workItem from="1589914581747" duration="1472000" />
+      <workItem from="1589914581747" duration="7000000" />
     </task>
     <servers />
   </component>

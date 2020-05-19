@@ -1,48 +1,71 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Router} from '@reach/router'
-import Contact from './components/main/contact/Contact.jsx'
-import Home from './components/main/home/Home.jsx'
-import Navigation from './components/main/navigation/Navigation'
-import logo from './logo.svg';
+
 import './App.css';
-import Login from "./components/main/login/Login";
+import logo from './logo.svg'; //todo necessary ???
 
-function App() {
-    const navLinks = [
-        {
-            text: 'START',
-            path: '/',
-            icon: 'fa fa-home'
-        },
-        {
-            text: 'LOGOWANIE',
-            path: '/login',
-            icon: 'fa fa-sign-in'
-        },
-        {
-            text: 'KONTAKT',
-            path: '/contact',
-            icon: 'fa fa-envelope'
+import {Contact} from './components/main/contact/Contact.jsx'
+import {Home} from './components/main/home/Home.jsx'
+import {Login} from "./components/main/login/Login";
+
+import {Navigation} from './components/main/navigation/Navigation'
+
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoginActive: false,
+            navLinks: [
+                {
+                    text: 'START',
+                    path: '/',
+                    icon: 'fa fa-home'
+                },
+                {
+                    text: 'LOGOWANIE',
+                    path: '/login',
+                    icon: 'fa fa-sign-in'
+                },
+                {
+                    text: 'KONTAKT',
+                    path: '/contact',
+                    icon: 'fa fa-envelope'
+                }
+            ],
         }
-    ];
+    }
+
+    render() {
+        const {isLoginActive} = this.state;
+        const {navLinks} = this.state;
+
+        return (
+            <div className="App">
+                <div className="login">
+
+                    <Navigation
+                        navLinks={navLinks}
+                        logo={logo}
+                        background="#fff"
+                        hoverBackground="#ddd"
+                        linkColor="#777"
+                    />
 
 
-    return (
-        <div className="App">
-            <Navigation
-                navLinks={navLinks}
-                logo={logo}
-                background="#fff"
-                hoverBackground="#ddd"
-                linkColor="#777"
-            />
-            <Router>
-                <Home path="/"/>
-                <Login path='/login'/>
-                <Contact path="/contact"/>
-            </Router>
-        </div>
-    );
+                    <Router>
+                        <Home path="/"/>
+                        {isLoginActive && <Login path='/login' containerRef={(ref) => this.current = ref}/>}
+                        {!isLoginActive && <Contact path='/contact'/>}
+                        {/*<Login path='/login'/>*/}
+                        <Contact path="/contact"/>
+                    </Router>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;

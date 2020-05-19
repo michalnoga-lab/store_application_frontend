@@ -3,8 +3,8 @@ import {Link} from "@reach/router";
 
 
 function Navigation({background, hoverBackground, linkColor, navLinks, logo}) {
-    const [navOpen, setNavOpen] = useState(0)
-    const [hoverIndex, setHoverIndex] = useState(-1)
+    const [navOpen, setNavOpen] = useState(0);
+    const [hoverIndex, setHoverIndex] = useState(-1);
     return (
         <nav
             className="responsive-toolbar"
@@ -42,4 +42,4 @@ function Navigation({background, hoverBackground, linkColor, navLinks, logo}) {
     )
 }
 
-export default Navigation
+export {Navigation}

@@ -8,7 +8,7 @@ class Login extends Component {
         return (
             <div className="login-page">
                 <section className="container">
-                    <div className="">
+                    <div>
                         <Form>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Control type="email" placeholder="EMAIL"/>

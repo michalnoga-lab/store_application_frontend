@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from "@reach/router";
 
 
-function ResponsiveNavigation({background, hoverBackground, linkColor, navLinks, logo}) {
+function Navigation({background, hoverBackground, linkColor, navLinks, logo}) {
     const [navOpen, setNavOpen] = useState(0)
     const [hoverIndex, setHoverIndex] = useState(-1)
     return (
@@ -42,4 +42,4 @@ function ResponsiveNavigation({background, hoverBackground, linkColor, navLinks,
     )
 }
 
-export default ResponsiveNavigation
+export default Navigation

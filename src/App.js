@@ -1,11 +1,11 @@
 import React from 'react';
 import {Router} from '@reach/router'
-import Contact from './pages/Contact.jsx'
-import Home from './pages/Home.jsx'
-import ResponsiveNavigation from './components/ResponsiveNavigation'
+import Contact from './components/main/contact/Contact.jsx'
+import Home from './components/main/home/Home.jsx'
+import Navigation from './components/main/navigation/Navigation'
 import logo from './logo.svg';
 import './App.css';
-import Login from "./pages/Login";
+import Login from "./components/main/login/Login";
 
 function App() {
     const navLinks = [
@@ -29,7 +29,7 @@ function App() {
 
     return (
         <div className="App">
-            <ResponsiveNavigation
+            <Navigation
                 navLinks={navLinks}
                 logo={logo}
                 background="#fff"

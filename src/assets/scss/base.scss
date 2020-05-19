@@ -1,8 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
-@import './toolbar.scss';
-@import './home.scss';
-@import './login.scss';
-@import "/contact.scss";
+@import '../../components/main/navigation/toolbar';
+@import '../../components/main/home/home';
+@import '../../components/main/login/login';
+@import "../../components/main/contact/contact";
 
 figure {
   margin-block-start: 0;

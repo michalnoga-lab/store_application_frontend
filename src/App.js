@@ -57,9 +57,9 @@ class App extends Component {
 
                     <Router>
                         <Home path="/"/>
-                        {isLoginActive && <Login path='/login' containerRef={(ref) => this.current = ref}/>}
-                        {!isLoginActive && <Contact path='/contact'/>}
-                        {/*<Login path='/login'/>*/}
+                        {/*{isLoginActive && <Login path='/login' containerRef={(ref) => this.current = ref}/>}*/}
+                        {/*{!isLoginActive && <Contact path='/contact'/>}*/}
+                        <Login path='/login'/>
                         <Contact path="/contact"/>
                     </Router>
                 </div>

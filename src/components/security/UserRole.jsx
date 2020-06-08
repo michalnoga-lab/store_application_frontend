@@ -9,8 +9,14 @@ class UserRole extends Component {
             userRole: 'unauthorized',
             navLinks: [
                 {text: 'START', path: '/', icon: 'ion-ios-home'}
-
             ]
+        }
+
+        if (sessionStorage.getItem('role') !== undefined) {
+            if (sessionStorage.getItem('role') === 'ROLE_ROOT') {
+                this.state.userRole = 'ROLE_ROOT'
+                this.state.navLinks = [{text: 'AAAAa', path: '/', icon: 'ion-ios-home'}]
+            }
         }
     }
 

@@ -70,18 +70,8 @@ class Login extends Component {
                     </div>
                 </section>
             </div>
-
         )
     }
-
 }
-
-// Form.Control.propTypes = {
-//     text(props, propName, component) {
-//         if (!(propName in props)) {
-//             return new Error(`POLE NIE MOŻE BYĆ PUSTE`);
-//         }
-//     }
-// }; todo enable
 
 export {Login}

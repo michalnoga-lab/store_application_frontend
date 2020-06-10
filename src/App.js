@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Router} from '@reach/router'
 
 import './App.css';
-import logo from './logo.svg'; //todo necessary ???
 
 import *  as  MenuTypes from "./components/main/navigation/NavBar";
 

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from "@reach/router";
 
 
-function Navigation({background, hoverBackground, linkColor, navLinks, logo}) {
+function Navigation({background, hoverBackground, linkColor, navLinks}) {
     const [navOpen, setNavOpen] = useState(0);
     const [hoverIndex, setHoverIndex] = useState(-1);
     return (
@@ -16,7 +16,6 @@ function Navigation({background, hoverBackground, linkColor, navLinks, logo}) {
                 <figure className="image-logo" onClick={() => {
                     setNavOpen(!navOpen)
                 }}>
-                    <img src={logo} height="40px" width="40px" alt="toolbar-logo"/>
                 </figure>
                 {navLinks.map((link, index) =>
                     <li

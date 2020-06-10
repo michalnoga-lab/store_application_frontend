@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {Router} from "@reach/router";
 
-import logo from "../../../logo.svg";
-
 import {Navigation} from "./Navigation";
 import {Home} from "../home/Home";
 import {Login} from "../login/Login";
@@ -15,7 +13,7 @@ class NavBarItems extends Component {
 
         this.state = {
             //role: sessionStorage.getItem('role'),
-            role:'user',
+            role: 'user',
             unauthorized: [
                 {text: 'START', path: '/', icon: 'fa fa-home'},
                 {text: 'LOGOWANIE', path: '/login', icon: 'fa fa-sign-in'},
@@ -23,6 +21,14 @@ class NavBarItems extends Component {
             ],
             user: [
                 {text: 'START', path: "/", icon: 'fa fa-home'},
+                {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
+                {text: 'MOJE KOSZYKI', path: 'carts/all', icon: 'fa fa-cart-arrow-down'},
+                {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
+                {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
+                {text:'WYSZUKA PRODUKT', path:'/search/products', icon:'fa fa-search-plus'},
+                {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
+                {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
+                {text:'WYLOGUJ', path:'/logout', icon:'fa fa-sign-out'}
             ],
             admin: [],
             super: [],
@@ -37,7 +43,6 @@ class NavBarItems extends Component {
                 <div className='NavBarItems'>
                     <Navigation
                         navLinks={this.state.unauthorized}
-                        logo={logo}
                         background="#fff"
                         hoverBackground="#ddd"
                         linkColor="#777"
@@ -53,7 +58,6 @@ class NavBarItems extends Component {
                 <div className='NavBarItems'>
                     <Navigation
                         navLinks={this.state.user}
-                        logo={logo}
                         background='#fff'
                         hoverBackground='#ddd'
                         linkColor='#777'

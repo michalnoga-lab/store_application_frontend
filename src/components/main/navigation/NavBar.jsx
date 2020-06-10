@@ -5,6 +5,7 @@ import {Navigation} from "./Navigation";
 import {Home} from "../home/Home";
 import {Login} from "../login/Login";
 import {Contact} from "../contact/Contact";
+import {Logout} from "../logout/Logout";
 
 class NavBarItems extends Component {
 
@@ -13,7 +14,10 @@ class NavBarItems extends Component {
 
         this.state = {
             //role: sessionStorage.getItem('role'),
-            role: 'user',
+            role:undefined,
+            //role: 'user', // todo get role from backend!
+
+
             unauthorized: [
                 {text: 'START', path: '/', icon: 'fa fa-home'},
                 {text: 'LOGOWANIE', path: '/login', icon: 'fa fa-sign-in'},
@@ -25,10 +29,10 @@ class NavBarItems extends Component {
                 {text: 'MOJE KOSZYKI', path: 'carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
-                {text:'WYSZUKA PRODUKT', path:'/search/products', icon:'fa fa-search-plus'},
+                {text: 'WYSZUKA PRODUKT', path: '/search/products', icon: 'fa fa-search-plus'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
-                {text:'WYLOGUJ', path:'/logout', icon:'fa fa-sign-out'}
+                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],
             admin: [],
             super: [],
@@ -65,6 +69,7 @@ class NavBarItems extends Component {
                     <Router>
                         <Home path='/'/>
                         <Contact path='/contact'/>
+                        <Logout path='/logout'/>
                     </Router>
                 </div>
             )

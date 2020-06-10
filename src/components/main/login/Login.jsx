@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Form from "react-bootstrap/Form";
 import User from "./model/User";
-import {backend} from "../../URLs";
+import * as URLs from "../../URLs"
 import Button from "react-bootstrap/Button";
 
 class Login extends Component {
@@ -19,8 +19,6 @@ class Login extends Component {
         this.setState({
             login: e.target.value
         });
-
-        console.log(this.state.login)
     };
 
     updatePassword = (e) => {
@@ -31,7 +29,7 @@ class Login extends Component {
 
     async loginClick(login, password) {
 
-        const url = backend + 'login';
+        const url = URLs.backend + 'login';
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
 
@@ -44,6 +42,11 @@ class Login extends Component {
         const body = await response.json();
         sessionStorage.setItem('token', await body.token)
         sessionStorage.setItem('role', await body.role)
+
+
+        console.log('++++++++++++++++++++++++++++==') //todo
+        console.log(await sessionStorage.getItem('token'))
+        console.log(await sessionStorage.getItem('role'))
     }
 
     render() {

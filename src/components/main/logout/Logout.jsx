@@ -17,12 +17,20 @@ class Logout extends Component {
             headers: headers
         })
         await sessionStorage.clear();
+
+        await console.log('hahahaha' + sessionStorage.getItem('role')); //todo
     }
 
     render() {
         return (
-            <div>
-                {this.logout()}
+            <div className='logout-page'>
+                <div onClick={this.logout()}>
+                    <h3>Zostałeś poprawnie wylogowany z serwisu</h3>
+                </div>
+                <div>
+
+                </div>
+
             </div>
         );
     }

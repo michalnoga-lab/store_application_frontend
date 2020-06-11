@@ -14,8 +14,8 @@ class NavBarItems extends Component {
 
         this.state = {
             //role: sessionStorage.getItem('role'),
-            role:undefined,
-            //role: 'user', // todo get role from backend!
+            //role:undefined,
+            role: 'admin', // todo get role from backend!
 
 
             unauthorized: [
@@ -34,8 +34,27 @@ class NavBarItems extends Component {
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],
-            admin: [],
-            super: [],
+            admin: [
+                {text: 'START', path: '/', icon: 'fa fa-home'},
+                {text: 'DODAJ FIRMĘ', path: '/admin/companies/add', icon: 'fa fa-plus-square'},
+                {text: 'DODAJ UŻYTKOWNIKA', path: '/admin/users/add', icon: 'fa fa-address-card'},
+                {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
+                {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
+                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/products/all', icon: 'fa fa-tasks'},
+                {text: 'WCZYTAJ PRODUKTY', path: '/admin/products/add', icon: 'fa fa-plus-square'},
+                {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
+                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
+            ],
+            super: [{text: 'START', path: '/', icon: 'fa fa-home'},
+                {text: 'DODAJ FIRMĘ', path: '/admin/companies/add', icon: 'fa fa-plus-square'},
+                {text: 'DODAJ UŻYTKOWNIKA', path: '/admin/users/add', icon: 'fa fa-address-card'},
+                {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
+                {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
+                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/products/all', icon: 'fa fa-tasks'},
+                {text: 'WCZYTAJ PRODUKTY', path: '/admin/products/add', icon: 'fa fa-plus-square'},
+                {text: 'DODAJ ADMINISTRATORA', path: '/super/admins/add', icon: '/fa fa-plus-square'},
+                {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
+                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
             root: []
         }
     }
@@ -68,6 +87,26 @@ class NavBarItems extends Component {
                     />
                     <Router>
                         <Home path='/'/>
+
+
+                        <Contact path='/contact'/>
+                        <Logout path='/logout'/>
+                    </Router>
+                </div>
+            )
+        } else if (this.state.role === 'admin') {
+            return (
+                <div className='NavBarItems'>
+                    <Navigation
+                        navLinks={this.state.admin}
+                        background='#fff'
+                        hoverBackground='#ddd'
+                        linkColor='#777'
+                    />
+                    <Router>
+                        <Home path='/'/>
+
+
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
                     </Router>

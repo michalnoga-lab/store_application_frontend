@@ -1,9 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
-// main components
 @import "../../components/main/contact/contact";
 @import '../../components/main/home/home';
 @import '../../components/main/login/login';
+@import "../../components/main/logout/logout";
+@import "../../components/main/navigation/navbar";
 @import '../../components/main/navigation/toolbar';
 
 

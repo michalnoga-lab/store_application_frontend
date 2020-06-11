@@ -25,7 +25,14 @@ class Logout extends Component {
         return (
             <div className='logout-page'>
                 <div onClick={this.logout()}>
-                    <h3>Zostałeś poprawnie wylogowany z serwisu</h3>
+
+                    <section className="container">
+                        <h5 className="top-page-text">OPCJE</h5>
+                        <div className="top-page-text-details">
+                            <p className="top-page-text-details-at">@ wyloguj</p>
+                            <p className="top-page-text-details-text">zostałeś poprawnie wylogowany z serwisu</p>
+                        </div>
+                    </section>
                 </div>
                 <div>
 

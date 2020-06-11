@@ -6,7 +6,8 @@ class UserToken extends Component {
         super(props);
 
         this.state = {
-            token: ''
+            token: '',
+            role: '',
         }
     }
 

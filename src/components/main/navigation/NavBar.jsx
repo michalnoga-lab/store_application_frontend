@@ -14,7 +14,7 @@ class NavBarItems extends Component {
 
         this.state = {
             //role: sessionStorage.getItem('role'),
-            //role:undefined,
+            //role: null,
             role: 'admin', // todo get role from backend!
 
 
@@ -55,15 +55,14 @@ class NavBarItems extends Component {
                 {text: 'DODAJ ADMINISTRATORA', path: '/super/admins/add', icon: '/fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
-            root: []
+            // root: [] todo root menu
         }
     }
 
     render() {
-
         if (this.state.role === null || this.state.role === undefined) {
             return (
-                <div className='NavBarItems'>
+                <div className='nav-bar-items'>
                     <Navigation
                         navLinks={this.state.unauthorized}
                         background="#fff"
@@ -78,7 +77,7 @@ class NavBarItems extends Component {
                 </div>)
         } else if (this.state.role === 'user') {
             return (
-                <div className='NavBarItems'>
+                <div className='nav-bar-items'>
                     <Navigation
                         navLinks={this.state.user}
                         background='#fff'
@@ -96,7 +95,7 @@ class NavBarItems extends Component {
             )
         } else if (this.state.role === 'admin') {
             return (
-                <div className='NavBarItems'>
+                <div className='nav-bar-items'>
                     <Navigation
                         navLinks={this.state.admin}
                         background='#fff'

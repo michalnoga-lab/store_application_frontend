@@ -6,6 +6,7 @@ import {Home} from "../home/Home";
 import {Login} from "../login/Login";
 import {Contact} from "../contact/Contact";
 import {Logout} from "../logout/Logout";
+import UserToken from "../../security/UserToken";
 
 class NavBarItems extends Component {
 
@@ -13,9 +14,10 @@ class NavBarItems extends Component {
         super(props);
 
         this.state = {
+
             //role: sessionStorage.getItem('role'),
-            //role: null,
-            role: 'admin', // todo get role from backend!
+            role: null,
+            //role: 'admin', // todo get role from backend!
 
 
             unauthorized: [
@@ -55,27 +57,14 @@ class NavBarItems extends Component {
                 {text: 'DODAJ ADMINISTRATORA', path: '/super/admins/add', icon: '/fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
-            // root: [] todo root menu
+            root: []
+            // todo root menu
         }
     }
 
     render() {
-        if (this.state.role === null || this.state.role === undefined) {
-            return (
-                <div className='nav-bar-items'>
-                    <Navigation
-                        navLinks={this.state.unauthorized}
-                        background="#fff"
-                        hoverBackground="#ddd"
-                        linkColor="#777"
-                    />
-                    <Router>
-                        <Home path='/'/>
-                        <Login path='/login'/>
-                        <Contact path='/contact'/>
-                    </Router>
-                </div>)
-        } else if (this.state.role === 'user') {
+        //if (this.state.role === 'user') {
+        if (sessionStorage.getItem('role') === 'user') {
             return (
                 <div className='nav-bar-items'>
                     <Navigation
@@ -84,6 +73,7 @@ class NavBarItems extends Component {
                         hoverBackground='#ddd'
                         linkColor='#777'
                     />
+                    <p>  USER ROLE INSIDE </p> //todo
                     <Router>
                         <Home path='/'/>
 
@@ -108,6 +98,24 @@ class NavBarItems extends Component {
 
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
+                    </Router>
+                </div>
+            )
+        } else if (this.state.role === 'super') {
+            // todo super menu
+        } else {
+            return (
+                <div className='nav-bar-items'>
+                    <Navigation
+                        navLinks={this.state.unauthorized}
+                        background="#fff"
+                        hoverBackground="#ddd"
+                        linkColor="#777"
+                    />
+                    <Router>
+                        <Home path='/'/>
+                        <Login path='/login'/>
+                        <Contact path='/contact'/>
                     </Router>
                 </div>
             )

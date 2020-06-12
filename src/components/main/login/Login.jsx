@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Form from "react-bootstrap/Form";
 import User from "./model/User";
+import UserToken from "../../security/UserToken";
 import * as URLs from "../../URLs"
 import Button from "react-bootstrap/Button";
 
@@ -43,10 +44,17 @@ class Login extends Component {
         sessionStorage.setItem('token', await body.token)
         sessionStorage.setItem('role', await body.role)
 
+        //const userToken = new UserToken();
+
+
+        // UserToken.state.role = await body.role;
+        // UserToken.state.token = await body.token;
+
 
         console.log('++++++++++++++++++++++++++++==') //todo
         console.log(await sessionStorage.getItem('token'))
         console.log(await sessionStorage.getItem('role'))
+        // console.log(UserToken.state.role)
     }
 
     render() {

@@ -17,28 +17,28 @@ function Navigation({background, hoverBackground, linkColor, navLinks}) {
                 }}>
                 </figure>
 
-                    {navLinks.map((link, index) =>
-                        <li
-                            key={index}
-                            onMouseEnter={() => {
-                                setHoverIndex(index)
-                            }}
-                            onMouseLeave={() => {
-                                setHoverIndex(-1)
-                            }}
-                            style={{background: hoverIndex === index ? (hoverBackground || '#999') : ''}}
-                        >
-                            <Link
-                                to={link.path}
-                                style={{color: linkColor}}
-                            >   {link.text}
-                                <i className={link.icon}/>
-                            </Link>
-                        </li>
-                    )}
+                {navLinks.map((link, index) =>
+                    <li
+                        key={index}
+                        onMouseEnter={() => {
+                            setHoverIndex(index)
+                        }}
+                        onMouseLeave={() => {
+                            setHoverIndex(-1)
+                        }}
+                        style={{background: hoverIndex === index ? (hoverBackground || '#999') : ''}}
+                    >
+                        <Link
+                            to={link.path}
+                            style={{color: linkColor}}
+                        >   {link.text}
+                            <i className={link.icon}/>
+                        </Link>
+                    </li>
+                )}
             </ul>
         </nav>
-)
+    )
 }
 
 export {Navigation}

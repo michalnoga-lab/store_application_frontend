@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Form from "react-bootstrap/Form";
 import User from "./model/User";
-import * as URLs from "../../URLs"
+import * as URLs from "../URLs"
 import Button from "react-bootstrap/Button";
 
 class Login extends Component {

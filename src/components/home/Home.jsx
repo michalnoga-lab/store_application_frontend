@@ -4,7 +4,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className='home-page'>
+            <div className='main-page'>
                 <section className="container">
                     <h5 className="top-page-text">O PLATFORMIE</h5>
                     <div className="top-page-text-details">

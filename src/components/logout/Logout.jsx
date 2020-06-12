@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import * as URLs from "../../URLs"
+import * as URLs from "../URLs"
 
 class Logout extends Component {
 
@@ -23,7 +23,7 @@ class Logout extends Component {
 
     render() {
         return (
-            <div className='logout-page'>
+            <div className='main-page'>
                 <div onClick={this.logout()}>
 
                     <section className="container">

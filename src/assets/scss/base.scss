@@ -1,10 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
-@import "../../components/main/contact/contact";
-@import '../../components/main/home/home';
-@import '../../components/main/login/login';
-@import "../../components/main/logout/logout";
-@import '../../components/main/navigation/navigation';
+@import "mainPage";
+
+@import '../../components/login/login';
+@import '../../components/navigation/navigation';
 
 
 figure {

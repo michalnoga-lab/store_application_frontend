@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Router} from '@reach/router'
 
 import './App.css';
-import {Navigation} from "./components/main/navigation/Navigation";
-import {Home} from "./components/main/home/Home";
-import {Contact} from "./components/main/contact/Contact";
-import {Logout} from "./components/main/logout/Logout";
-import {Login} from "./components/main/login/Login";
+import {Navigation} from "./components/navigation/Navigation";
+import {Home} from "./components/home/Home";
+import {Contact} from "./components/contact/Contact";
+import {Logout} from "./components/logout/Logout";
+import {Login} from "./components/login/Login";
 import {Products} from "./components/_user/products/Products";
 
 

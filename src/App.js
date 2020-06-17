@@ -30,7 +30,8 @@ class App extends Component {
                 {text: 'WYSZUKA PRODUKT', path: '/search/products', icon: 'fa fa-search-plus'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
-                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
+                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'},
+                {text: 'LOGOWANIE-KASUJ!!!', path: '/login', icon: 'fa fa-sign-in'}
             ],
             admin: [
                 {text: 'START', path: '/', icon: 'fa fa-home'},
@@ -74,6 +75,7 @@ class App extends Component {
 
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
+                        <Login path='/login'/>
                     </Router>
                 </div>
             )

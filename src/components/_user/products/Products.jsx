@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import * as URLs from "../../URLs"
+import Table from "react-bootstrap/Table";
 
 class Products extends Component {
 
@@ -24,25 +25,33 @@ class Products extends Component {
             method: 'GET',
             headers: headers
         })
-            .then(response => this.setState({products: response}))
-            .catch(err => console.log('errors: ' + err))
+            .then(response => response.json())
+            .then(data => this.setState({products: data}))
+            .catch(err => console.log('errors: ' + err));
     }
 
     render() {
-        const {products} = this.state.products;
-
-        console.log('products response') //todo
-        console.log(products);
-
         return (
-            <div className='main-page'>
-                <ul>
+            <div className='products-page'>
+                <Table bordered hover>
+                    <thead>
+                    <tr>
+                        <th>Numer</th>
+                        <th>Nazwa</th>
+                        <th>Cena</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {this.state.products.map(el => (
-                        <li>
-                            {el.toString()}
-                        </li>
+                        <tr key={el.id}>
+                            <td>{el.numberInAuction}</td>
+                            <td>{el.name}</td>
+                            <td>{el.nettPrice} PLN</td>
+                            {/*todo formatowanie z zerami po przecinku*/}
+                        </tr>
                     ))}
-                </ul>
+                    </tbody>
+                </Table>
             </div>
         )
     }

@@ -26,8 +26,7 @@ class Products extends Component {
             headers: headers
         })
             .then(response => response.json())
-            .then(data => this.setState({products: data}))
-            .catch(err => console.log('errors: ' + err));
+            .then(data => this.setState({products: data}));
     }
 
     render() {
@@ -39,6 +38,7 @@ class Products extends Component {
                         <th>Numer</th>
                         <th>Nazwa</th>
                         <th>Cena</th>
+                        <th>Akcja</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +47,7 @@ class Products extends Component {
                             <td>{el.numberInAuction}</td>
                             <td>{el.name}</td>
                             <td>{el.nettPrice} PLN</td>
+                            <td>DO KOSZYKA</td>
                             {/*todo formatowanie z zerami po przecinku*/}
                         </tr>
                     ))}

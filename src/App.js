@@ -8,6 +8,7 @@ import {Contact} from "./components/contact/Contact";
 import {Logout} from "./components/logout/Logout";
 import {Login} from "./components/login/Login";
 import {Products} from "./components/_user/products/Products";
+import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
 
 
 class App extends Component {
@@ -73,8 +74,11 @@ class App extends Component {
                         <Home path='/'/>
                         <Products path='/products/all'/>
 
+                        <DeliveryAddress path='/deliveryAddress/all'/>
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
+
+
                         <Login path='/login'/>
                     </Router>
                 </div>

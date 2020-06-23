@@ -55,7 +55,8 @@ class Cart extends Component {
                             <tr key={el.id}>
                                 <td>##</td>
                                 <td>{el.deliveryAddressDTO.street}</td>
-                                <td> wartość netto / brutto</td>
+                                <td> {el.totalNetValue} PLN</td>
+                                {/*todo formatowanie wartośći poprzecinku + netto/brutto */}
                                 <td>{el.purchaseTime}</td>
                                 {/*todo formatowanie czasu */}
                             </tr>

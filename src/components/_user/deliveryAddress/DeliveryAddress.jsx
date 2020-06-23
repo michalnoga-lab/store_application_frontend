@@ -27,7 +27,7 @@ class DeliveryAddress extends Component {
 
     render() {
         return (
-            <div className='deliveryAddress-page'>
+            <div className='table-page'>
                 <Table bordered hover>
                     <thead>
                     <tr>

@@ -1,12 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
-@import "mainPage";
+@import "main";
+@import "table";
 
 @import '../../components/login/login';
 @import '../../components/navigation/navigation';
-@import '../../components/_user/products/products';
-@import '../../components/_user/deliveryAddress/deliveryAddress';
-
 
 figure {
   margin-block-start: 0;

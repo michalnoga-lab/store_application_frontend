@@ -7,7 +7,7 @@ import {Home} from "./components/home/Home";
 import {Contact} from "./components/contact/Contact";
 import {Logout} from "./components/logout/Logout";
 import {Login} from "./components/login/Login";
-import {Products} from "./components/_user/products/Products";
+import {Products} from "./components/_user/product/Products";
 import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
 
 
@@ -28,11 +28,10 @@ class App extends Component {
                 {text: 'MOJE KOSZYKI', path: 'carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
-                {text: 'WYSZUKA PRODUKT', path: '/search/products', icon: 'fa fa-search-plus'},
+                {text: 'WYSZUKA PRODUKT', path: '/search/product', icon: 'fa fa-search-plus'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
-                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'},
-                {text: 'LOGOWANIE-KASUJ!!!', path: '/login', icon: 'fa fa-sign-in'}
+                {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],
             admin: [
                 {text: 'START', path: '/', icon: 'fa fa-home'},
@@ -40,8 +39,8 @@ class App extends Component {
                 {text: 'DODAJ UŻYTKOWNIKA', path: '/admin/users/add', icon: 'fa fa-address-card'},
                 {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
                 {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
-                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/products/all', icon: 'fa fa-tasks'},
-                {text: 'WCZYTAJ PRODUKTY', path: '/admin/products/add', icon: 'fa fa-plus-square'},
+                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/product/all', icon: 'fa fa-tasks'},
+                {text: 'WCZYTAJ PRODUKTY', path: '/admin/product/add', icon: 'fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],
@@ -50,8 +49,8 @@ class App extends Component {
                 {text: 'DODAJ UŻYTKOWNIKA', path: '/admin/users/add', icon: 'fa fa-address-card'},
                 {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
                 {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
-                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/products/all', icon: 'fa fa-tasks'},
-                {text: 'WCZYTAJ PRODUKTY', path: '/admin/products/add', icon: 'fa fa-plus-square'},
+                {text: 'WSZYSTKIE PRODUKTY', path: '/admin/product/all', icon: 'fa fa-tasks'},
+                {text: 'WCZYTAJ PRODUKTY', path: '/admin/product/add', icon: 'fa fa-plus-square'},
                 {text: 'DODAJ ADMINISTRATORA', path: '/super/admins/add', icon: '/fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
@@ -61,7 +60,7 @@ class App extends Component {
     }
 
     render() {
-        if (true) { //sessionStorage.getItem('role') === 'user'
+        if (sessionStorage.getItem('role') === 'ROLE_USER')
             return (
                 <div className='nav-bar-items'>
                     <Navigation
@@ -83,8 +82,9 @@ class App extends Component {
                     </Router>
                 </div>
             )
-        } else if (sessionStorage.getItem('role') === 'admin') {
+        else if (sessionStorage.getItem('role') === 'ROLE_ADMIN') {
             return (
+
                 <div className='nav-bar-items'>
                     <Navigation
                         navLinks={this.state.admin}
@@ -101,7 +101,7 @@ class App extends Component {
                     </Router>
                 </div>
             )
-        } else if (sessionStorage.getItem('role') === 'super') {
+        } else if (sessionStorage.getItem('role') === 'ROLE_SUPER') {
             // todo super menu
         } else {
             return (
@@ -123,4 +123,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export {App};

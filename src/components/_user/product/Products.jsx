@@ -26,12 +26,12 @@ class Products extends Component {
             headers: headers
         })
             .then(response => response.json())
-            .then(data => this.setState({products: data}));
+            .then(product => this.setState({products: product}));
     }
 
     render() {
         return (
-            <div className='products-page'>
+            <div className='table-page'>
                 <Table bordered hover>
                     <thead>
                     <tr>

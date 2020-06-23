@@ -30,31 +30,46 @@ class Product extends Component {
     }
 
     render() {
-        return (
-            <div className='table-page'>
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <th>Numer</th>
-                        <th>Nazwa</th>
-                        <th>Cena</th>
-                        <th>Akcja</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.products.map(el => (
-                        <tr key={el.id}>
-                            <td>{el.numberInAuction}</td>
-                            <td>{el.name}</td>
-                            <td>{el.nettPrice} PLN</td>
-                            <td>DO KOSZYKA</td>
-                            {/*todo formatowanie z zerami po przecinku*/}
+        if (this.state.products.length === 0) {
+            return (
+                <div className='main-page'>
+                    <section className="container">
+                        <h5 className="top-page-text">MOJE PRODUKTY</h5>
+                        <div className="top-page-text-details">
+                            <p className="top-page-text-details-at">@ status</p>
+                            <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów -
+                                zostaną one wkrótce dodane przez administratora systemu</p>
+                        </div>
+                    </section>
+                </div>
+            )
+        } else {
+            return (
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <th>Numer</th>
+                            <th>Nazwa</th>
+                            <th>Cena</th>
+                            <th>Akcja</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </Table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                        {this.state.products.map(el => (
+                            <tr key={el.id}>
+                                <td>{el.numberInAuction}</td>
+                                <td>{el.name}</td>
+                                <td>{el.nettPrice} PLN</td>
+                                <td>DO KOSZYKA</td>
+                                {/*todo formatowanie z zerami po przecinku*/}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                </div>
+            )
+        }
     }
 }
 

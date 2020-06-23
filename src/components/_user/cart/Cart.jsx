@@ -26,31 +26,45 @@ class Cart extends Component {
     }
 
     render() {
-        return (
-            <div className='table-page'>
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <td>Lp</td>
-                        <td>Dostawa</td>
-                        <td>Wartość</td>
-                        <td>Data zamówienia</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.carts.map(el => (
-                        <tr key={el.id}>
-                            <td>##</td>
-                            <td>{el.deliveryAddressDTO.street}</td>
-                            <td> wartość netto / brutto </td>
-                            <td>{el.purchaseTime}</td>
-                            {/*todo formatowanie czasu */}
+        if (this.state.carts.length === 0) {
+            return (
+                <div className='main-page'>
+                    <section className="container">
+                        <h5 className="top-page-text">MOJE KOSZYKI</h5>
+                        <div className="top-page-text-details">
+                            <p className="top-page-text-details-at">@ status</p>
+                            <p className="top-page-text-details-text">nie masz jeszcze żadnych koszyków</p>
+                        </div>
+                    </section>
+                </div>
+            )
+        } else {
+            return (
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <td>Lp</td>
+                            <td>Dostawa</td>
+                            <td>Wartość</td>
+                            <td>Data zamówienia</td>
                         </tr>
-                    ))}
-                    </tbody>
-                </Table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                        {this.state.carts.map(el => (
+                            <tr key={el.id}>
+                                <td>##</td>
+                                <td>{el.deliveryAddressDTO.street}</td>
+                                <td> wartość netto / brutto</td>
+                                <td>{el.purchaseTime}</td>
+                                {/*todo formatowanie czasu */}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                </div>
+            )
+        }
     }
 }
 

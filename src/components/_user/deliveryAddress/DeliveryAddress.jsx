@@ -26,26 +26,40 @@ class DeliveryAddress extends Component {
     }
 
     render() {
-        return (
-            <div className='table-page'>
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <th>Adres</th>
-                        <th>Telefon</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.deliveryAddresses.map(el => (
-                        <tr key={el.id}>
-                            <td>{el.street}</td>
-                            <td>{el.phone}</td>
+        if (this.state.deliveryAddresses.length === 0) {
+            return (
+                <div className='main-page'>
+                    <section className="container">
+                        <h5 className="top-page-text">MOJE ADRESY</h5>
+                        <div className="top-page-text-details">
+                            <p className="top-page-text-details-at">@ status</p>
+                            <p className="top-page-text-details-text">nie masz jeszcze zapisanych żadnych adresów</p>
+                        </div>
+                    </section>
+                </div>
+            )
+        } else {
+            return (
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <th>Adres</th>
+                            <th>Telefon</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </Table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                        {this.state.deliveryAddresses.map(el => (
+                            <tr key={el.id}>
+                                <td>{el.street}</td>
+                                <td>{el.phone}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                </div>
+            )
+        }
     }
 }
 

@@ -22,7 +22,7 @@ class DeliveryAddress extends Component {
             method: 'GET',
             headers: headers
         }).then(response => response.json())
-            .then(deliveryAddress => this.setState({deliveryAddresses: deliveryAddress}));
+            .then(deliveryAddresses => this.setState({deliveryAddresses: deliveryAddresses}));
     }
 
     render() {

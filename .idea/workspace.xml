@@ -11,18 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="709ca4e2-038a-462e-82df-7a246661b6e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/table.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_user/cart/Cart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/mainPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/cart/Cart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_user/deliveryAddress/deliveryAddress.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_user/products/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/product/Products.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_user/products/products.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/logout/Logout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/logout/Logout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/product/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/product/Product.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +137,7 @@
       <workItem from="1592039425375" duration="1475000" />
       <workItem from="1592413434953" duration="5622000" />
       <workItem from="1592817459931" duration="3955000" />
-      <workItem from="1592904295881" duration="4822000" />
+      <workItem from="1592904295881" duration="6209000" />
     </task>
     <servers />
   </component>

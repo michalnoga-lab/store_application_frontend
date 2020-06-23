@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import * as URLs from "../../URLs"
 import Table from "react-bootstrap/Table";
 
-class Products extends Component {
+class Product extends Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ class Products extends Component {
             headers: headers
         })
             .then(response => response.json())
-            .then(product => this.setState({products: product}));
+            .then(products => this.setState({products: products}));
     }
 
     render() {
@@ -58,4 +58,4 @@ class Products extends Component {
     }
 }
 
-export {Products}
+export {Product}

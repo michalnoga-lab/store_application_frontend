@@ -7,8 +7,9 @@ import {Home} from "./components/home/Home";
 import {Contact} from "./components/contact/Contact";
 import {Logout} from "./components/logout/Logout";
 import {Login} from "./components/login/Login";
-import {Products} from "./components/_user/product/Products";
+import {Product} from "./components/_user/product/Product";
 import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
+import {Cart} from "./components/_user/cart/Cart";
 
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
             user: [
                 {text: 'START', path: "/", icon: 'fa fa-home'},
                 {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
-                {text: 'MOJE KOSZYKI', path: 'carts/all', icon: 'fa fa-cart-arrow-down'},
+                {text: 'MOJE KOSZYKI', path: '/carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
                 {text: 'WYSZUKA PRODUKT', path: '/search/product', icon: 'fa fa-search-plus'},
@@ -71,8 +72,8 @@ class App extends Component {
                     />
                     <Router>
                         <Home path='/'/>
-                        <Products path='/products/all'/>
-
+                        <Product path='/products/all'/>
+                        <Cart path='/carts/all'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>

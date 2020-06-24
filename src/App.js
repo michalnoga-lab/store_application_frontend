@@ -10,6 +10,7 @@ import {Login} from "./components/login/Login";
 import {Product} from "./components/_user/product/Product";
 import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
 import {Cart} from "./components/_user/cart/Cart";
+import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
 
 
 class App extends Component {
@@ -75,6 +76,9 @@ class App extends Component {
                         <Product path='/products/all'/>
                         <Cart path='/carts/all'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
+                        <AddDeliveryAddress path='/deliveryAddress/add'/>
+                        {/*wyszukaj produkt*/}
+                        {/*mój koszyk*/}
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
 
@@ -125,3 +129,5 @@ class App extends Component {
 }
 
 export {App};
+
+//  todo fetch jako jedna metdoa z paramterami ???

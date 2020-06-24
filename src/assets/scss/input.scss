@@ -1,0 +1,14 @@
+.input-page {
+  width: 100%;
+  padding: 80px 100px;
+  align-items: center;
+
+}
+
+@media screen and (max-width: 639px) {
+  .login-page {
+    margin-left: 60px;
+    max-width: 250px;
+    align-content: center;
+  }
+}

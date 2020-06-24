@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import * as URLs from '../../URLs'
 import Table from "react-bootstrap/Table";
+import * as URLs from '../../URLs'
 
 class DeliveryAddress extends Component {
 

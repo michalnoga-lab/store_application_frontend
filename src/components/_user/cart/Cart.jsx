@@ -48,6 +48,7 @@ class Cart extends Component {
                             <td>Dostawa</td>
                             <td>Wartość</td>
                             <td>Data zamówienia</td>
+                            <td>Status</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,6 +59,7 @@ class Cart extends Component {
                                 <td> {el.totalNetValue} PLN</td>
                                 {/*todo formatowanie wartośći poprzecinku + netto/brutto */}
                                 <td>{el.purchaseTime}</td>
+                                <td>{el.cartClosed === true ? 'ZAMKNIĘTY' : 'OTWARTY'}</td>
                                 {/*todo formatowanie czasu */}
                             </tr>
                         ))}

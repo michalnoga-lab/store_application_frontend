@@ -44,10 +44,9 @@ class Login extends Component {
     }
 
     render() {
-
         return (
-            <div className="login-page">
-                <section className="container">
+            <div className="input-page">
+
                     <div>
                         <Form>
                             <Form.Group controlId="formBasicEmail">
@@ -60,12 +59,12 @@ class Login extends Component {
                             {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
                             {/*</Form.Group>*/}
                             <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
-                                    variant="outline-secondary" type="button">
+                                    variant="outline-secondary btn-block" type="button">
                                 ZALOGUJ
                             </Button>
                         </Form>
                     </div>
-                </section>
+
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import * as URLs from '../../URLs'
+import * as URLs from '../../URLs';
 import {Table} from "react-bootstrap";
 
 class Cart extends Component {

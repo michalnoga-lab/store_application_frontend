@@ -11,6 +11,7 @@ import {Product} from "./components/_user/product/Product";
 import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
 import {Cart} from "./components/_user/cart/Cart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
+import {ProductSearch} from "./components/_user/search/ProductSearch";
 
 
 class App extends Component {
@@ -77,7 +78,7 @@ class App extends Component {
                         <Cart path='/carts/all'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <AddDeliveryAddress path='/deliveryAddress/add'/>
-                        {/*wyszukaj produkt*/}
+                        <ProductSearch path='/search/product'/>
                         {/*mój koszyk*/}
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>

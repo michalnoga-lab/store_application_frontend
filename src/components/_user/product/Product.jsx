@@ -52,7 +52,6 @@ class Product extends Component {
                             <th>Numer</th>
                             <th>Nazwa</th>
                             <th>Cena</th>
-                            <th>Akcja</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,7 +60,6 @@ class Product extends Component {
                                 <td>{el.numberInAuction}</td>
                                 <td>{el.name}</td>
                                 <td>{el.nettPrice} PLN</td>
-                                <td>DO KOSZYKA</td>
                                 {/*todo formatowanie z zerami po przecinku*/}
                             </tr>
                         ))}

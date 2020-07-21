@@ -130,4 +130,5 @@ export {App};
 
 // todo routing
 // todo wersja mobilna
+// dodanie produktu do koszyka po naciśnięciu
 // todo wyświetlanie błedów jeżeli backend nie działa

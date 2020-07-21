@@ -27,20 +27,12 @@ class Product extends Component {
     }
 
     render() {
+        const products = this.state.products;
         let rowNumber = 0;
 
-        if (this.state.products.length === 0) {
+        if (Object.entries(products).length === 0) {
             return (
-                <div className='main-page'>
-                    <section className="container">
-                        <h5 className="top-page-text">MOJE PRODUKTY</h5>
-                        <div className="top-page-text-details">
-                            <p className="top-page-text-details-at">@ status</p>
-                            <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów -
-                                zostaną one wkrótce dodane przez administratora systemu</p>
-                        </div>
-                    </section>
-                </div>
+                <EmptyList/>
             )
         } else {
             return (
@@ -54,14 +46,8 @@ class Product extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.products.map(el => (
-                            <tr key={el.id}>
-                                <td>{rowNumber += 1}</td>
-                                <td>{el.name}</td>
-                                <td>{el.nettPrice} PLN</td>
-                                {/*todo formatowanie z zerami po przecinku*/}
-                            </tr>
-                        ))}
+                        {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
+                                                              product={product}/>)}
                         </tbody>
                     </Table>
                 </div>
@@ -69,5 +55,25 @@ class Product extends Component {
         }
     }
 }
+
+const EmptyList = () =>
+    <div className='main-page'>
+        <section className="container">
+            <h5 className="top-page-text">MOJE PRODUKTY</h5>
+            <div className="top-page-text-details">
+                <p className="top-page-text-details-at">@ status</p>
+                <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów -
+                    zostaną one wkrótce dodane przez administratora systemu</p>
+            </div>
+        </section>
+    </div>
+
+const ProductItem = props =>
+    <tr>
+        <td>{props.rowNumber}</td>
+        <td>{props.product.name}</td>
+        <td>{props.product.nettPrice} PLN</td>
+        {/*todo formatowanie z zerami po przecinku*/}
+    </tr>
 
 export {Product}

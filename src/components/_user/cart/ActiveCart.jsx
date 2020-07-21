@@ -27,16 +27,31 @@ class ActiveCart extends Component {
     }
 
     render() {
-        const activeCart = this.state.productsInActiveCart;
-        const cartToDisplay = activeCart[0];
-
-        if (Object.entries(activeCart).length === 0) {
+        const productsInActiveCart = this.state.productsInActiveCart;
+        let rowNumber = 0;
+        
+        if (Object.entries(productsInActiveCart).length === 0) {
             return (
                 <EmptyList/>
             )
         } else {
             return (
-                <CartItem cart={cartToDisplay}/>
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <td>Lp</td>
+                            <td>Dostawa</td>
+                            <td>Wartość</td>
+                            <td>Data zamówienia</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {productsInActiveCart.map(product => <CartItem key={product.id} product={product}
+                                                                       rowNumber={rowNumber += 1}/>)}
+                        </tbody>
+                    </Table>
+                </div>
             )
         }
     }
@@ -54,30 +69,17 @@ const EmptyList = () =>
     </div>
 
 const CartItem = props =>
-    <div className='table-page'>
-        <Table bordered hover>
-            <thead>
-            <tr>
-                <td>Lp</td>
-                <td>Dostawa</td>
-                <td>Wartość</td>
-                <td>Data zamówienia</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr key={props.cart.id}>
-                <td>##</td>
-                <td>{props.cart.name}</td>
+    <tr>
+        <td>{props.rowNumber}</td>
+        <td>{props.product.name}</td>
+        <td></td>
+        <td></td>
+        {/*// todo enable*/}
 
-                {/*// todo enable*/}
-
-                {/*<td>{cartToDisplay.deliveryAddressDTO.street} </td>*/}
-                {/*<td>{cartToDisplay.totalNetValue} PLN</td>*/}
-                {/*<td>{cartToDisplay.purchaseTime}</td>*/}
-                {/*/!*todo formatowanie wartości po przecinku + netto/brutto *!/*/}
-            </tr>
-            </tbody>
-        </Table>
-    </div>
+        {/*<td>{cartToDisplay.deliveryAddressDTO.street} </td>*/}
+        {/*<td>{cartToDisplay.totalNetValue} PLN</td>*/}
+        {/*<td>{cartToDisplay.purchaseTime}</td>*/}
+        {/*/!*todo formatowanie wartości po przecinku + netto/brutto *!/*/}
+    </tr>
 
 export {ActiveCart}

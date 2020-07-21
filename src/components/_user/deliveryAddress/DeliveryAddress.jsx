@@ -26,19 +26,12 @@ class DeliveryAddress extends Component {
     }
 
     render() {
+        const deliveryAddresses = this.state.deliveryAddresses;
         let rowNumber = 0;
 
-        if (this.state.deliveryAddresses.length === 0) {
+        if (Object.entries(deliveryAddresses).length === 0) {
             return (
-                <div className='main-page'>
-                    <section className="container">
-                        <h5 className="top-page-text">MOJE ADRESY</h5>
-                        <div className="top-page-text-details">
-                            <p className="top-page-text-details-at">@ status</p>
-                            <p className="top-page-text-details-text">nie masz jeszcze zapisanych żadnych adresów</p>
-                        </div>
-                    </section>
-                </div>
+                <EmptyList/>
             )
         } else {
             return (
@@ -52,13 +45,9 @@ class DeliveryAddress extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.deliveryAddresses.map(el => (
-                            <tr key={el.id}>
-                                <td>{rowNumber += 1}</td>
-                                <td>{el.street}</td>
-                                <td>{el.phone}</td>
-                            </tr>
-                        ))}
+                        {deliveryAddresses.map(deliveryAddress => <AddressItem key={deliveryAddress.id}
+                                                                               address={deliveryAddress}
+                                                                               rowNumber={rowNumber += 1}/>)}
                         </tbody>
                     </Table>
                 </div>
@@ -66,5 +55,24 @@ class DeliveryAddress extends Component {
         }
     }
 }
+
+const EmptyList = () => (
+    <div className='main-page'>
+        <section className="container">
+            <h5 className="top-page-text">MOJE ADRESY</h5>
+            <div className="top-page-text-details">
+                <p className="top-page-text-details-at">@ status</p>
+                <p className="top-page-text-details-text">nie masz jeszcze zapisanych żadnych adresów</p>
+            </div>
+        </section>
+    </div>
+)
+
+const AddressItem = props =>
+    <tr>
+        <td>{props.rowNumber}</td>
+        <td>{props.address.street}</td>
+        <td>{props.address.phone}</td>
+    </tr>
 
 export {DeliveryAddress}

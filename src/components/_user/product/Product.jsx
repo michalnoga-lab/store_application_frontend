@@ -18,9 +18,6 @@ class Product extends Component {
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
-        console.log('component mount token') // todo
-        console.log(sessionStorage.getItem('token'))
-
         fetch(url, {
             method: 'GET',
             headers: headers

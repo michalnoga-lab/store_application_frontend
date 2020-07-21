@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import * as URLs from '../../URLs';
 import {Table} from "react-bootstrap";
 
-class Cart extends Component {
+class AllCarts extends Component {
 
     constructor(props) {
         super(props);
@@ -71,4 +71,4 @@ class Cart extends Component {
     }
 }
 
-export {Cart}
+export {AllCarts}

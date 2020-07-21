@@ -9,10 +9,10 @@ import {Logout} from "./components/logout/Logout";
 import {Login} from "./components/login/Login";
 import {Product} from "./components/_user/product/Product";
 import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddress";
-import {Cart} from "./components/_user/cart/Cart";
+import {AllCarts} from "./components/_user/cart/AllCarts";
+import {ActiveCart} from "./components/_user/cart/ActiveCart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
 import {ProductSearch} from "./components/_user/search/ProductSearch";
-
 
 class App extends Component {
 
@@ -31,7 +31,7 @@ class App extends Component {
                 {text: 'MOJE KOSZYKI', path: '/carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
-                {text: 'WYSZUKA PRODUKT', path: '/search/product', icon: 'fa fa-search-plus'},
+                {text: 'WYSZUKAJ PRODUKT', path: '/search/product', icon: 'fa fa-search-plus'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
@@ -75,16 +75,13 @@ class App extends Component {
                     <Router>
                         <Home path='/'/>
                         <Product path='/products/all'/>
-                        <Cart path='/carts/all'/>
+                        <AllCarts path='/carts/all'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <AddDeliveryAddress path='/deliveryAddress/add'/>
                         <ProductSearch path='/search/product'/>
-                        {/*mój koszyk*/}
+                        <ActiveCart path='/carts/one'/>
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
-
-
-                        <Login path='/login'/>
                     </Router>
                 </div>
             )

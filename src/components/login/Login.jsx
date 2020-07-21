@@ -47,24 +47,23 @@ class Login extends Component {
         return (
             <div className="input-page">
 
-                    <div>
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Control type="email" placeholder="EMAIL" onChange={this.updateLogin}/>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control type="password" placeholder="HASŁO" onChange={this.updatePassword}/>
-                            </Form.Group>
-                            {/*<Form.Group controlId="formBasicCheckbox">*/}
-                            {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
-                            {/*</Form.Group>*/}
-                            <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
-                                    variant="outline-secondary btn-block" type="button">
-                                ZALOGUJ
-                            </Button>
-                        </Form>
-                    </div>
-
+                <div>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control type="email" placeholder="EMAIL" onChange={this.updateLogin}/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control type="password" placeholder="HASŁO" onChange={this.updatePassword}/>
+                        </Form.Group>
+                        {/*<Form.Group controlId="formBasicCheckbox">*/}
+                        {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
+                        {/*</Form.Group>*/}
+                        <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
+                                variant="outline-secondary btn-block" type="button">
+                            ZALOGUJ
+                        </Button>
+                    </Form>
+                </div>
             </div>
         )
     }

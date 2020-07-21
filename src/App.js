@@ -128,4 +128,6 @@ class App extends Component {
 
 export {App};
 
-//  todo fetch jako jedna metdoa z paramterami ???
+// todo routing
+// todo wersja mobilna
+// todo wyświetlanie błedów jeżeli backend nie działa

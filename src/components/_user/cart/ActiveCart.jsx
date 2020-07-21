@@ -29,7 +29,7 @@ class ActiveCart extends Component {
     render() {
         const productsInActiveCart = this.state.productsInActiveCart;
         let rowNumber = 0;
-        
+
         if (Object.entries(productsInActiveCart).length === 0) {
             return (
                 <EmptyList/>

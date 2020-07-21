@@ -7,20 +7,6 @@ class Logout extends Component {
         super(props);
     }
 
-    // logout = async () => {
-    //     const url = URLs.backend + 'logout';
-    //     const headers = new Headers();
-    //     headers.set('Content-Type', 'application/json;charset=UTF-8');
-    //
-    //     await fetch(url, {
-    //         method: 'POST',
-    //         headers: headers
-    //     })
-    //     await sessionStorage.clear();
-    //
-    //     await console.log('hahahaha' + sessionStorage.getItem('role')); //todo
-    // }
-
     componentDidMount() {
         const url = URLs.backend + 'logout';
         const headers = new Headers();
@@ -30,8 +16,6 @@ class Logout extends Component {
             method: 'POST',
             headers: headers
         }).then(action => sessionStorage.clear());
-
-        //App.forceUpdate();
     }
 
     render() {

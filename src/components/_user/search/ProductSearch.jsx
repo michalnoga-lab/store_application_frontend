@@ -42,6 +42,8 @@ class ProductSearch extends Component {
     }
 
     render() {
+        let rowNumber = 0;
+
         if (this.state.foundedProducts.length === 0) {
             return (
                 <div className="input-page">
@@ -61,7 +63,7 @@ class ProductSearch extends Component {
                     <Table bordered hover>
                         <thead>
                         <tr>
-                            <th>Numer</th>
+                            <th>Lp</th>
                             <th>Nazwa</th>
                             <th>Cena</th>
                         </tr>
@@ -69,7 +71,7 @@ class ProductSearch extends Component {
                         <tbody>
                         {this.state.foundedProducts.map(el => (
                             <tr key={el.id}>
-                                <td>{el.numberInAuction}</td>
+                                <td>{rowNumber+=1}</td>
                                 <td>{el.name}</td>
                                 <td>{el.nettPrice} PLN</td>
                                 {/*todo formatowanie z zerami po przecinku*/}

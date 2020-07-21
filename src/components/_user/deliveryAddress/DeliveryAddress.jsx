@@ -26,6 +26,8 @@ class DeliveryAddress extends Component {
     }
 
     render() {
+        let rowNumber = 0;
+
         if (this.state.deliveryAddresses.length === 0) {
             return (
                 <div className='main-page'>
@@ -44,6 +46,7 @@ class DeliveryAddress extends Component {
                     <Table bordered hover>
                         <thead>
                         <tr>
+                            <td>Lp</td>
                             <th>Adres</th>
                             <th>Telefon</th>
                         </tr>
@@ -51,6 +54,7 @@ class DeliveryAddress extends Component {
                         <tbody>
                         {this.state.deliveryAddresses.map(el => (
                             <tr key={el.id}>
+                                <td>{rowNumber += 1}</td>
                                 <td>{el.street}</td>
                                 <td>{el.phone}</td>
                             </tr>

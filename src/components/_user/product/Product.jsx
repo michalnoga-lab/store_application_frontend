@@ -27,6 +27,8 @@ class Product extends Component {
     }
 
     render() {
+        let rowNumber = 0;
+
         if (this.state.products.length === 0) {
             return (
                 <div className='main-page'>
@@ -46,7 +48,7 @@ class Product extends Component {
                     <Table bordered hover>
                         <thead>
                         <tr>
-                            <th>Numer</th>
+                            <th>Lp</th>
                             <th>Nazwa</th>
                             <th>Cena</th>
                         </tr>
@@ -54,7 +56,7 @@ class Product extends Component {
                         <tbody>
                         {this.state.products.map(el => (
                             <tr key={el.id}>
-                                <td>{el.numberInAuction}</td>
+                                <td>{rowNumber += 1}</td>
                                 <td>{el.name}</td>
                                 <td>{el.nettPrice} PLN</td>
                                 {/*todo formatowanie z zerami po przecinku*/}

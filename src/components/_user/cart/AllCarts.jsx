@@ -26,6 +26,8 @@ class AllCarts extends Component {
     }
 
     render() {
+        let rowNumber = 0;
+
         if (this.state.carts.length === 0) {
             return (
                 <div className='main-page'>
@@ -54,7 +56,7 @@ class AllCarts extends Component {
                         <tbody>
                         {this.state.carts.map(el => (
                             <tr key={el.id}>
-                                <td>##</td>
+                                <td>{rowNumber += 1}</td>
                                 <td>{el.deliveryAddressDTO.street}</td>
                                 <td> {el.totalNetValue} PLN</td>
                                 {/*todo formatowanie wartośći poprzecinku + netto/brutto */}

@@ -26,19 +26,12 @@ class AllCarts extends Component {
     }
 
     render() {
+        const carts = this.state.carts;
         let rowNumber = 0;
 
         if (this.state.carts.length === 0) {
             return (
-                <div className='main-page'>
-                    <section className="container">
-                        <h5 className="top-page-text">MOJE KOSZYKI</h5>
-                        <div className="top-page-text-details">
-                            <p className="top-page-text-details-at">@ status</p>
-                            <p className="top-page-text-details-text">nie masz jeszcze żadnych koszyków</p>
-                        </div>
-                    </section>
-                </div>
+                <EmptyList/>
             )
         } else {
             return (
@@ -54,17 +47,7 @@ class AllCarts extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {this.state.carts.map(el => (
-                            <tr key={el.id}>
-                                <td>{rowNumber += 1}</td>
-                                <td>{el.deliveryAddressDTO.street}</td>
-                                <td> {el.totalNetValue} PLN</td>
-                                {/*todo formatowanie wartośći poprzecinku + netto/brutto */}
-                                <td>{el.purchaseTime}</td>
-                                <td>{el.cartClosed === true ? 'ZAMKNIĘTY' : 'OTWARTY'}</td>
-                                {/*todo formatowanie czasu */}
-                            </tr>
-                        ))}
+                        {carts.map(cart => <CartItem key={cart.id} cart={cart} rowNumer={rowNumber += 1}/>)}
                         </tbody>
                     </Table>
                 </div>
@@ -72,5 +55,28 @@ class AllCarts extends Component {
         }
     }
 }
+
+const EmptyList = () => (
+    <div className='main-page'>
+        <section className="container">
+            <h5 className="top-page-text">MOJE KOSZYKI</h5>
+            <div className="top-page-text-details">
+                <p className="top-page-text-details-at">@ status</p>
+                <p className="top-page-text-details-text">nie masz jeszcze żadnych koszyków</p>
+            </div>
+        </section>
+    </div>
+)
+
+const CartItem = props =>
+    <tr>
+        <td>{props.rowNumer}</td>
+        <td>{props.cart.deliveryAddressDTO.street}</td>
+        <td> {props.cart.totalNetValue} PLN</td>
+        {/*todo formatowanie wartośći poprzecinku + netto/brutto */}
+        <td>{props.cart.purchaseTime}</td>
+        <td>{props.cart.cartClosed === true ? 'ZAMKNIĘTY' : 'OTWARTY'}</td>
+        {/*todo formatowanie czasu */}
+    </tr>
 
 export {AllCarts}

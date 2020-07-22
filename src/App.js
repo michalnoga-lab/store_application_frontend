@@ -31,7 +31,6 @@ class App extends Component {
                 {text: 'MOJE KOSZYKI', path: '/carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
-                {text: 'WYSZUKAJ PRODUKT', path: '/search/product', icon: 'fa fa-search-plus'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
@@ -43,7 +42,6 @@ class App extends Component {
                 {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
                 {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
                 {text: 'WSZYSTKIE PRODUKTY', path: '/admin/product/all', icon: 'fa fa-tasks'},
-                {text: 'WCZYTAJ PRODUKTY', path: '/admin/product/add', icon: 'fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],
@@ -53,7 +51,6 @@ class App extends Component {
                 {text: 'WSZYSTKIE FIRMY', path: '/admin/companies/all', icon: 'fa fa-building'},
                 {text: 'WSZYSCY UŻYTKOWNICY', path: '/admin/users/all', icon: 'fa fa-users'},
                 {text: 'WSZYSTKIE PRODUKTY', path: '/admin/product/all', icon: 'fa fa-tasks'},
-                {text: 'WCZYTAJ PRODUKTY', path: '/admin/product/add', icon: 'fa fa-plus-square'},
                 {text: 'DODAJ ADMINISTRATORA', path: '/super/admins/add', icon: '/fa fa-plus-square'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
@@ -78,7 +75,6 @@ class App extends Component {
                         <AllCarts path='/carts/all'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <AddDeliveryAddress path='/deliveryAddress/add'/>
-                        <ProductSearch path='/search/product'/>
                         <ActiveCart path='/carts/one'/>
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
@@ -133,4 +129,3 @@ export {App};
 // todo wyświetlanie błedów jeżeli backend nie działa
 // todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource.
 // todo wersja mobilna
-// todo połączyć produkty z wyszukiwaniem

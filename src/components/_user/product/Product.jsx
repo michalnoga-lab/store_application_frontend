@@ -13,7 +13,6 @@ class Product extends Component {
     }
 
     filterProducts = e => this.setState({filterProducts: e.target.value});
-    filterPrice = e => this.setState({filterPrice: e.target.value});
 
     componentDidMount() {
         const url = URLs.backend + 'api/products/all';
@@ -38,10 +37,6 @@ class Product extends Component {
             products = allProducts.filter(product => product.name.toString().toLowerCase().includes(this.state.filterProducts.toLowerCase()));
         }
 
-        if (this.state.filterPrice) {
-            products = allProducts.filter(product => product.nettPrice.toString().toLowerCase().includes(this.state.filterPrice.toLowerCase()));
-        }
-
         return (<div className="input-page">
                 <div className="table-page">
                     <Table bordered hover>
@@ -49,7 +44,7 @@ class Product extends Component {
                         <tr>
                             <td>Lp</td>
                             <td><input type='text' onChange={this.filterProducts} className='btn-block'
-                                       placeholder='WYSZUKAJ PO NAZWIE' readOnly={this.filterPrice.size > 0}/></td>
+                                       placeholder='WYSZUKAJ PO NAZWIE'/></td>
                             <td>Cena</td>
                         </tr>
                         </thead>

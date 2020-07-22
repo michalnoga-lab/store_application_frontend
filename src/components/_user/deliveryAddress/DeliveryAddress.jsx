@@ -12,6 +12,8 @@ class DeliveryAddress extends Component {
         }
     }
 
+    filterStreet = e => this.setState({filterStreet: e.target.value});
+
     componentDidMount() {
         const url = URLs.backend + 'api/deliveryAddress/all';
         const headers = new Headers();
@@ -26,10 +28,16 @@ class DeliveryAddress extends Component {
     }
 
     render() {
-        const deliveryAddresses = this.state.deliveryAddresses;
+        const allDeliveryAddresses = this.state.deliveryAddresses;
         let rowNumber = 0;
+        let deliveryAddresses = allDeliveryAddresses;
 
-        if (Object.entries(deliveryAddresses).length === 0) {
+        if (this.state.filterStreet) {
+            deliveryAddresses = allDeliveryAddresses.filter(address =>
+                address.street.toString().toLowerCase().includes(this.state.filterStreet.toString().toLowerCase()));
+        }
+
+        if (Object.entries(allDeliveryAddresses).length === 0) {
             return (
                 <EmptyList/>
             )
@@ -38,7 +46,12 @@ class DeliveryAddress extends Component {
                 <div className='table-page'>
                     <Table bordered hover>
                         <thead>
-                        <TableHeadItem/>
+                        <tr>
+                            <td>Lp</td>
+                            <td><input type='text' onChange={this.filterStreet} className='btn-block'
+                                       placeholder='WYSZUKAJ PO ULICY'/></td>
+                            <td>Telefon</td>
+                        </tr>
                         </thead>
                         <tbody>
                         {deliveryAddresses.map(deliveryAddress => <AddressItem key={deliveryAddress.id}
@@ -63,13 +76,6 @@ const EmptyList = () => (
         </section>
     </div>
 )
-
-const TableHeadItem = () =>
-    <tr>
-        <td>Lp</td>
-        <th>Adres</th>
-        <th>Telefon</th>
-    </tr>
 
 const AddressItem = props =>
     <tr>

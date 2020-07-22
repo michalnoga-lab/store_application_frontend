@@ -12,7 +12,6 @@ import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddres
 import {AllCarts} from "./components/_user/cart/AllCarts";
 import {ActiveCart} from "./components/_user/cart/ActiveCart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
-import {ProductSearch} from "./components/_user/search/ProductSearch";
 
 class App extends Component {
 

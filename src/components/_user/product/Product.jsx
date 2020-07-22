@@ -39,11 +39,7 @@ class Product extends Component {
                 <div className='table-page'>
                     <Table bordered hover>
                         <thead>
-                        <tr>
-                            <th>Lp</th>
-                            <th>Nazwa</th>
-                            <th>Cena</th>
-                        </tr>
+                        <TableHeadItem/>
                         </thead>
                         <tbody>
                         {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
@@ -67,6 +63,13 @@ const EmptyList = () =>
             </div>
         </section>
     </div>
+
+const TableHeadItem = () =>
+    <tr>
+        <th>Lp</th>
+        <th>Nazwa</th>
+        <th>Cena</th>
+    </tr>
 
 const ProductItem = props =>
     <tr>

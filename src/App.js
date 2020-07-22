@@ -128,7 +128,8 @@ class App extends Component {
 
 export {App};
 
-// todo routing
+// todo przekierowanie po logowaniu, logout, po dodaj adres na wszystkie adresy
 // todo wersja mobilna
 // dodanie produktu do koszyka po naciśnięciu
 // todo wyświetlanie błedów jeżeli backend nie działa
+// todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource.

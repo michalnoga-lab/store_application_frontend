@@ -38,11 +38,7 @@ class DeliveryAddress extends Component {
                 <div className='table-page'>
                     <Table bordered hover>
                         <thead>
-                        <tr>
-                            <td>Lp</td>
-                            <th>Adres</th>
-                            <th>Telefon</th>
-                        </tr>
+                        <TableHeadItem/>
                         </thead>
                         <tbody>
                         {deliveryAddresses.map(deliveryAddress => <AddressItem key={deliveryAddress.id}
@@ -67,6 +63,13 @@ const EmptyList = () => (
         </section>
     </div>
 )
+
+const TableHeadItem = () =>
+    <tr>
+        <td>Lp</td>
+        <th>Adres</th>
+        <th>Telefon</th>
+    </tr>
 
 const AddressItem = props =>
     <tr>

@@ -39,12 +39,7 @@ class ActiveCart extends Component {
                 <div className='table-page'>
                     <Table bordered hover>
                         <thead>
-                        <tr>
-                            <td>Lp</td>
-                            <td>Dostawa</td>
-                            <td>Wartość</td>
-                            <td>Data zamówienia</td>
-                        </tr>
+                        <TableHeadItem/>
                         </thead>
                         <tbody>
                         {productsInActiveCart.map(product => <CartItem key={product.id} product={product}
@@ -67,6 +62,14 @@ const EmptyList = () =>
             </div>
         </section>
     </div>
+
+const TableHeadItem = () =>
+    <tr>
+        <td>Lp</td>
+        <td>Dostawa</td>
+        <td>Wartość</td>
+        <td>Data zamówienia</td>
+    </tr>
 
 const CartItem = props =>
     <tr>

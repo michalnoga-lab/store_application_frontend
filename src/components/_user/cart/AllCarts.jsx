@@ -38,13 +38,7 @@ class AllCarts extends Component {
                 <div className='table-page'>
                     <Table bordered hover>
                         <thead>
-                        <tr>
-                            <td>Lp</td>
-                            <td>Dostawa</td>
-                            <td>Wartość</td>
-                            <td>Data zamówienia</td>
-                            <td>Status</td>
-                        </tr>
+                        <TableHeadItem/>
                         </thead>
                         <tbody>
                         {carts.map(cart => <CartItem key={cart.id} cart={cart} rowNumer={rowNumber += 1}/>)}
@@ -67,6 +61,15 @@ const EmptyList = () => (
         </section>
     </div>
 )
+
+const TableHeadItem = () =>
+    <tr>
+        <td>Lp</td>
+        <td>Dostawa</td>
+        <td>Wartość</td>
+        <td>Data zamówienia</td>
+        <td>Status</td>
+    </tr>
 
 const CartItem = props =>
     <tr>

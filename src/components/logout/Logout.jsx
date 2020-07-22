@@ -33,4 +33,6 @@ class Logout extends Component {
     }
 }
 
+// todo redirect -> login page
+
 export {Logout}

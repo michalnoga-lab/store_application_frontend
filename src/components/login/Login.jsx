@@ -38,7 +38,7 @@ class Login extends Component {
         sessionStorage.setItem('token', await body.token)
         sessionStorage.setItem('role', await body.role)
 
-        console.log('++++++++++++++++++++++++++++==') //todo
+        console.log('++++++++++++++++++++++++++++==') //todo remove in production
         console.log(await sessionStorage.getItem('token'))
         console.log(await sessionStorage.getItem('role'))
     }
@@ -55,9 +55,6 @@ class Login extends Component {
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="password" placeholder="HASŁO" onChange={this.updatePassword}/>
                         </Form.Group>
-                        {/*<Form.Group controlId="formBasicCheckbox">*/}
-                        {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
-                        {/*</Form.Group>*/}
                         <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
                                 variant="outline-secondary btn-block" type="button">
                             ZALOGUJ

@@ -76,10 +76,8 @@ const CartItem = props =>
         <td>{props.rowNumer}</td>
         <td>{props.cart.deliveryAddressDTO.street}</td>
         <td> {props.cart.totalNetValue} PLN</td>
-        {/*todo formatowanie wartośći poprzecinku + netto/brutto */}
-        <td>{props.cart.purchaseTime}</td>
+        <td>{props.cart.purchaseTime.toString().replace('T', " ")}</td>
         <td>{props.cart.cartClosed === true ? 'ZAMKNIĘTY' : 'OTWARTY'}</td>
-        {/*todo formatowanie czasu */}
     </tr>
 
 export {AllCarts}

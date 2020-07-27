@@ -14,6 +14,7 @@ class Product extends Component {
 
     filterProducts = e => this.setState({filterProducts: e.target.value});
 
+    // todo zapisywanie produktów w LS i sprawdzanie co określony czas ???
     componentDidMount() {
         const url = URLs.backend + 'api/products/all';
         const headers = new Headers();
@@ -48,7 +49,7 @@ class Product extends Component {
                             <td>Cena</td>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id='productItemRow'>
                         {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
                                                               product={product}/>)}
                         </tbody>
@@ -60,10 +61,16 @@ class Product extends Component {
 }
 
 const ProductItem = props =>
-    <tr>
+    <tr onClick={() => selectProductRow(props.product.id)}>
         <td>{props.rowNumber}</td>
         <td>{props.product.name}</td>
         <td>{props.product.nettPrice} PLN</td>
     </tr>
 
+const selectProductRow = (productId) => {
+    console.log(`inside click: ${productId}`);
+}
+
 export {Product}
+
+// todo - remove product search

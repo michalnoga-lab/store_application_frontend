@@ -64,11 +64,8 @@ class AddDeliveryAddress extends Component {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(new Address(this.state.street, this.state.phone))
-            }).then(response => console.log(response));
-
-            console.log(`${this.state.street}`);
-            console.log(`${this.state.phone}`);
-            this.clearFields();
+            })
+                .then(this.clearFields);
         }
         event.preventDefault();
     }

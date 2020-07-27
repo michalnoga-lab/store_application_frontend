@@ -12,6 +12,7 @@ import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddres
 import {AllCarts} from "./components/_user/cart/AllCarts";
 import {ActiveCart} from "./components/_user/cart/ActiveCart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
+import {AddProductToCart} from "./components/_user/product/AddProductToCart";
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
             user: [
                 {text: 'START', path: "/", icon: 'fa fa-home'},
                 {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
+                {text: "PRODUKT DELLL !!!", path: '/products/one'}, //todo
                 {text: 'MOJE KOSZYKI', path: '/carts/all', icon: 'fa fa-cart-arrow-down'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
@@ -72,6 +74,7 @@ class App extends Component {
                         <Home path='/'/>
                         <Product path='/products/all'/>
                         <AllCarts path='/carts/all'/>
+                        <AddProductToCart path='/products/one' />
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <AddDeliveryAddress path='/deliveryAddress/add'/>
                         <ActiveCart path='/carts/one'/>

@@ -14,7 +14,7 @@ class Product extends Component {
 
     filterProducts = e => this.setState({filterProducts: e.target.value});
 
-    // todo zapisywanie produktów w LS i sprawdzanie co określony czas ???
+    // todo zapisywanie produktów w LS i sprawdzanie co określony czas ??? przycisk REFRESH ???
     componentDidMount() {
         const url = URLs.backend + 'api/products/all';
         const headers = new Headers();
@@ -26,7 +26,10 @@ class Product extends Component {
             headers: headers
         })
             .then(response => response.json())
-            .then(products => this.setState({products: products}));
+            .then(products => this.setState({products: products}))
+            .then(() => localStorage.setItem('allProducts', JSON.stringify(this.state.products)))
+            .then(() => console.log('fetch')) //todo
+            .then(() => console.log(localStorage.getItem('allProducts'))); //todo
     }
 
     render() {
@@ -38,23 +41,21 @@ class Product extends Component {
             products = allProducts.filter(product => product.name.toString().toLowerCase().includes(this.state.filterProducts.toLowerCase()));
         }
 
-        return (<div className="input-page">
-                <div className="table-page">
-                    <Table bordered hover>
-                        <thead>
-                        <tr>
-                            <td>Lp</td>
-                            <td><input type='text' onChange={this.filterProducts} className='btn-block'
-                                       placeholder='WYSZUKAJ PO NAZWIE'/></td>
-                            <td>Cena</td>
-                        </tr>
-                        </thead>
-                        <tbody id='productItemRow'>
-                        {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
-                                                              product={product}/>)}
-                        </tbody>
-                    </Table>
-                </div>
+        return (<div className="table-page">
+                <Table bordered hover>
+                    <thead>
+                    <tr>
+                        <td>Lp</td>
+                        <td><input type='text' onChange={this.filterProducts} className='btn-block'
+                                   placeholder='WYSZUKAJ PO NAZWIE'/></td>
+                        <td>Cena</td>
+                    </tr>
+                    </thead>
+                    <tbody id='productItemRow'>
+                    {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
+                                                          product={product}/>)}
+                    </tbody>
+                </Table>
             </div>
         )
     }
@@ -68,7 +69,7 @@ const ProductItem = props =>
     </tr>
 
 const selectProductRow = (productId) => {
-    console.log(`inside click: ${productId}`);
+    localStorage.setItem('productId', productId); //todo redirect => add product to cart
 }
 
 export {Product}

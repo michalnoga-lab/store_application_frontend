@@ -15,7 +15,8 @@ class Logout extends Component {
         fetch(url, {
             method: 'POST',
             headers: headers
-        }).then(action => sessionStorage.clear());
+        })
+            .then(() => sessionStorage.clear());
     }
 
     render() {

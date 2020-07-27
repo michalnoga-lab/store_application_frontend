@@ -5,10 +5,39 @@ class AddProductToCart extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            isQuantityValid: true,
+            quantityErrorMessage: ''
+        }
+    }
+
+    handleChange = event => {
+        let target = event.target;
+        let value = target.value;
+        let name = target.name;
+
+        const regex = /^[0-9]{0,5}$/g;
+
+        if (regex.test(value)) {
+            this.setState({isQuantityValid: true, quantityErrorMessage: ''})
+        } else {
+            this.setState({isQuantityValid: false, quantityErrorMessage: 'Dozwolone są tylko cyfry'})
+        }
+
+        this.setState({[name]: value});
+    }
+
+    clearFields = () => {
+        this.setState({isQuantityValid: true, quantityErrorMessage: ''})
     }
 
     handleSubmit = event => {
-        console.log('submit');
+
+        console.log(`SUBMIT ${this.state.isQuantityValid}`); //todo
+
+        this.clearFields();
+        event.preventDefault();
     }
 
     render() {
@@ -37,27 +66,22 @@ class AddProductToCart extends Component {
                     <td>{productToBuy.nettPrice} PLN</td>
                 </tr>
                 </tbody>
-                <tbody>
-
-
-                {/*<tr>*/}
-                {/*    <form onSubmit={this.handleSubmit}>*/}
-
-                {/*        <div>*/}
-                {/*            <input type='text' className='btn-block' placeholder='PODAJ ILOŚĆ'/>*/}
-
-                {/*            <button type='submit' className='btn btn-success'>DO KOSZYKA</button>*/}
-                {/*        </div>*/}
-
-
-                {/*    </form>*/}
-
-                {/*</tr>*/}
-
-                </tbody>
-
-
             </Table>
+
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <input type='text' className='btn-block' placeholder='PODAJ ILOŚĆ'
+                               onChange={this.handleChange}/>
+                        <div className='alert alert-danger' hidden={this.state.isQuantityValid}>
+                            {this.state.quantityErrorMessage}
+                        </div>
+                        <div>
+                            <button type='submit' className='btn btn-block btn-outline-dark'>DO KOSZYKA</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>)
     }
 }

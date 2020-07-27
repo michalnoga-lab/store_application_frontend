@@ -5,36 +5,63 @@ class AddProductToCart extends Component {
 
     constructor(props) {
         super(props);
+    }
 
-        this.state = {
-            productId: localStorage.getItem('productId'),
-            allProducts: localStorage.getItem('allProducts')
-        }
+    handleSubmit = event => {
+        console.log('submit');
     }
 
     render() {
-        console.log(`storage: ${localStorage.getItem('allProducts')}`); //todo
-        console.log(`state: ${this.state.allProducts}`); //todo
+        const allProducts = JSON.parse(localStorage.getItem('allProducts'));
+        const productToBuy = {};
+
+        for (let product of allProducts) {
+            if (product.id == localStorage.getItem('productId')) {
+                Object.assign(productToBuy, product);
+            }
+        }
+
+        console.log(productToBuy); //todo
 
         return (<div className='table-page'>
             <Table bordered hover>
                 <thead>
                 <tr>
-                    <td>Lp</td>
                     <td>Nazwa</td>
                     <td>Cena</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>a</td>
-                    <td>{this.state.allProducts}</td>
-                    <td>c</td>
+                    <td>{productToBuy.name}</td>
+                    <td>{productToBuy.nettPrice} PLN</td>
                 </tr>
                 </tbody>
+                <tbody>
+
+
+                {/*<tr>*/}
+                {/*    <form onSubmit={this.handleSubmit}>*/}
+
+                {/*        <div>*/}
+                {/*            <input type='text' className='btn-block' placeholder='PODAJ ILOŚĆ'/>*/}
+
+                {/*            <button type='submit' className='btn btn-success'>DO KOSZYKA</button>*/}
+                {/*        </div>*/}
+
+
+                {/*    </form>*/}
+
+                {/*</tr>*/}
+
+                </tbody>
+
+
             </Table>
         </div>)
     }
 }
+
+// todo dalej cała reszta w tablelce
 
 export {AddProductToCart}

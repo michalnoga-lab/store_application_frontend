@@ -27,9 +27,7 @@ class Product extends Component {
         })
             .then(response => response.json())
             .then(products => this.setState({products: products}))
-            .then(() => localStorage.setItem('allProducts', JSON.stringify(this.state.products)))
-            .then(() => console.log('fetch')) //todo
-            .then(() => console.log(localStorage.getItem('allProducts'))); //todo
+            .then(() => localStorage.setItem('allProducts', JSON.stringify(this.state.products)));
     }
 
     render() {
@@ -51,7 +49,7 @@ class Product extends Component {
                         <td>Cena</td>
                     </tr>
                     </thead>
-                    <tbody id='productItemRow'>
+                    <tbody>
                     {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
                                                           product={product}/>)}
                     </tbody>
@@ -70,6 +68,7 @@ const ProductItem = props =>
 
 const selectProductRow = (productId) => {
     localStorage.setItem('productId', productId); //todo redirect => add product to cart
+    console.log(productId); //todo
 }
 
 export {Product}

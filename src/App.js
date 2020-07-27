@@ -74,7 +74,7 @@ class App extends Component {
                         <Home path='/'/>
                         <Product path='/products/all'/>
                         <AllCarts path='/carts/all'/>
-                        <AddProductToCart path='/products/one' />
+                        <AddProductToCart path='/products/one'/>
                         <DeliveryAddress path='/deliveryAddress/all'/>
                         <AddDeliveryAddress path='/deliveryAddress/add'/>
                         <ActiveCart path='/carts/one'/>
@@ -127,7 +127,12 @@ class App extends Component {
 export {App};
 
 // todo przekierowanie po logowaniu, logout, po dodaj adres na wszystkie adresy
-// todo dodanie produktu do koszyka po naciśnięciu (przekierowanie na inną stronę po naciśnięciu produktu)
+
+// todo do kontenerów i na produkcję
+
+// todo localstorage: currentcart, allProducts,product to buy id, moje adresy
+
 // todo wyświetlanie błedów jeżeli backend nie działa
 // todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource.
-// todo wersja mobilna
+
+// todo wersja mobilna - na samym końcu

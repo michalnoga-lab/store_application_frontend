@@ -38,6 +38,7 @@ class AddProductToCart extends Component {
 
         this.clearFields();
         event.preventDefault();
+        // todo => przekierowanie do wszyskich produktów i może wyświetlenie znikającego pop-up (produkt dodany)
     }
 
     render() {
@@ -85,7 +86,5 @@ class AddProductToCart extends Component {
         </div>)
     }
 }
-
-// todo dalej cała reszta w tablelce
 
 export {AddProductToCart}

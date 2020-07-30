@@ -127,9 +127,11 @@ class App extends Component {
 export {App};
 
 // todo przekierowanie po logowaniu, logout, po dodaj adres na wszystkie adresy
+// todo usuń produkt z koszyka
+// todo wyczyść koszyk
 
 // todo do kontenerów i na produkcję
-
+// todo data do kiedy ważne są produkty przetargowe, po tym blokujemy logowanie/czyścimy local storage
 // todo localstorage: currentcart, allProducts,product to buy id, moje adresy
 
 // todo wyświetlanie błedów jeżeli backend nie działa

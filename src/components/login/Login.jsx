@@ -38,6 +38,10 @@ class Login extends Component {
         sessionStorage.setItem('token', await body.token)
         sessionStorage.setItem('role', await body.role)
 
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
         console.log('++++++++++++++++++++++++++++==') //todo remove in production
         console.log(await sessionStorage.getItem('token'))
         console.log(await sessionStorage.getItem('role'))

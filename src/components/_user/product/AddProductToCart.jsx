@@ -7,6 +7,8 @@ class AddProductToCart extends Component {
         super(props);
 
         this.state = {
+            product: '',
+            quantity: '',
             isQuantityValid: true,
             quantityErrorMessage: ''
         }
@@ -17,41 +19,79 @@ class AddProductToCart extends Component {
         let value = target.value;
         let name = target.name;
 
-        const regex = /^[0-9]{0,5}$/g;
+        console.log('target')
+        console.log(target)
 
-        if (regex.test(value)) {
+
+        console.log('name')
+        console.log(name)
+
+        const regex = /^[0-9]{0,5}$/g;
+        const zeroRegex = /^0+$/g;
+
+        if (zeroRegex.test(value)) {
+            this.setState({isQuantityValid: false, quantityErrorMessage: 'Wartość musi być większa od zera'})
+        } else if (regex.test(value)) {
             this.setState({isQuantityValid: true, quantityErrorMessage: ''})
+        } else if (value.length > 5) {
+            this.setState({isQuantityValid: false, quantityErrorMessage: 'Przekroczono maksymalną ilość znaków'})
         } else {
             this.setState({isQuantityValid: false, quantityErrorMessage: 'Dozwolone są tylko cyfry'})
         }
 
-        this.setState({[name]: value});
+        //this.setState({quantity: value});
+        this.setState({[name]: value}); //todo remove
     }
 
     clearFields = () => {
-        this.setState({isQuantityValid: true, quantityErrorMessage: ''})
+        this.setState({isQuantityValid: true, quantityErrorMessage: '', product: '', quantity: ''})
     }
 
+    // todo - kumulowanie produktów jeżeli już taki jest w koszyku to tylko podbijamy ilość  ???
     handleSubmit = event => {
 
         console.log(`SUBMIT ${this.state.isQuantityValid}`); //todo
+
+        let cart = JSON.parse(localStorage.getItem('cart'));
+
+        console.log(`local storage: ${localStorage.getItem('cart')}`);
+        console.log(`cart : ${cart}`);
+        console.log(this.state.product);
+        cart['quantity'] =
+
+            cart.push(this.state.product) //todo set quantity
+
+        console.log('cart')
+        console.log(cart)
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log('storage')
+        console.log(localStorage.getItem('cart'));
 
         this.clearFields();
         event.preventDefault();
         // todo => przekierowanie do wszyskich produktów i może wyświetlenie znikającego pop-up (produkt dodany)
     }
 
-    render() {
+    static getDerivedStateFromProps(props, state) {
         const allProducts = JSON.parse(localStorage.getItem('allProducts'));
-        const productToBuy = {};
+        const productToCart = {};
 
         for (let product of allProducts) {
             if (product.id == localStorage.getItem('productId')) {
-                Object.assign(productToBuy, product);
+                Object.assign(productToCart, product);
             }
         }
+        return {
+            product: productToCart
+        }
+    }
 
-        console.log(productToBuy); //todo
+    render() {
+
+        console.log('in render');
+        console.log(this.state.product)
+        console.log(this.state.quantity)
 
         return (<div className='table-page'>
             <Table bordered hover>
@@ -63,8 +103,8 @@ class AddProductToCart extends Component {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{productToBuy.name}</td>
-                    <td>{productToBuy.nettPrice} PLN</td>
+                    <td>{this.state.product.name}</td>
+                    <td>{this.state.product.nettPrice} PLN</td>
                 </tr>
                 </tbody>
             </Table>
@@ -72,8 +112,8 @@ class AddProductToCart extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <input type='text' className='btn-block' placeholder='PODAJ ILOŚĆ'
-                               onChange={this.handleChange}/>
+                        <input type='text' className='btn-block' placeholder='PODAJ ILOŚĆ' value={this.state.quantity}
+                               onChange={this.handleChange} name='quantity'/>
                         <div className='alert alert-danger' hidden={this.state.isQuantityValid}>
                             {this.state.quantityErrorMessage}
                         </div>

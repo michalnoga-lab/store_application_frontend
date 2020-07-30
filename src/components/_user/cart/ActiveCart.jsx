@@ -12,7 +12,7 @@ class ActiveCart extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() {  // todo pobieranie z LS + update wszystkich koszyków z DB po wysłaniu
         const url = URLs.backend + 'api/carts/active';
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');

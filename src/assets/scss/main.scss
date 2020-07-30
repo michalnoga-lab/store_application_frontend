@@ -8,6 +8,7 @@
     margin: 3rem;
     border-bottom-color: gray;
     border-bottom-style: groove;
+    text-align: center;
   }
 
   .top-page-text-details {
@@ -32,11 +33,10 @@
     background: white;
     margin-top: 0;
   }
-}
 
-@media screen and (max-width: 639px) {
-
-  .main-page {
-    max-width: 300px;
+  @media only screen and(max-width: 768px) {
+    .top-page-text {
+      margin: 1rem;
+    }
   }
 }

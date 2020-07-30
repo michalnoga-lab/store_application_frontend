@@ -5,12 +5,14 @@
   padding: 50px 100px;
 }
 
-@media screen and (max-width: 639px) { // todo
+
+@media screen and (max-width: 768px) {
   .table-page {
-    margin-left: 60px;
-    max-width: 250px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
+    margin-left: 0;
+    padding: 50px 10px 0 70px;
+  }
+
+  .overflow-mobile {
+    overflow-x: auto;
   }
 }

@@ -36,14 +36,16 @@ class AllCarts extends Component {
         } else {
             return (
                 <div className='table-page'>
-                    <Table bordered hover>
-                        <thead>
-                        <TableHeadItem/>
-                        </thead>
-                        <tbody>
-                        {carts.map(cart => <CartItem key={cart.id} cart={cart} rowNumer={rowNumber += 1}/>)}
-                        </tbody>
-                    </Table>
+                    <div className='overflow-mobile'>
+                        <Table bordered hover>
+                            <thead>
+                            <TableHeadItem/>
+                            </thead>
+                            <tbody>
+                            {carts.map(cart => <CartItem key={cart.id} cart={cart} rowNumer={rowNumber += 1}/>)}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
             )
         }

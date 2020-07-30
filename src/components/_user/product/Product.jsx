@@ -40,20 +40,22 @@ class Product extends Component {
         }
 
         return (<div className="table-page">
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <td>Lp</td>
-                        <td><input type='text' onChange={this.filterProducts} className='btn-block'
-                                   placeholder='WYSZUKAJ PO NAZWIE'/></td>
-                        <td>Cena</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
-                                                          product={product}/>)}
-                    </tbody>
-                </Table>
+                <div className='overflow-mobile'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <td>Lp</td>
+                            <td><input type='text' onChange={this.filterProducts} className='btn-block'
+                                       placeholder='WYSZUKAJ PO NAZWIE'/></td>
+                            <td>Cena</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {products.map(product => <ProductItem key={product.id} rowNumber={rowNumber += 1}
+                                                              product={product}/>)}
+                        </tbody>
+                    </Table>
+                </div>
             </div>
         )
     }

@@ -29,10 +29,10 @@ class App extends Component {
                 {text: 'START', path: "/", icon: 'fa fa-home'},
                 {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
                 {text: "PRODUKT DELLL !!!", path: '/products/one'}, //todo
-                {text: 'MOJE KOSZYKI', path: '/carts/all', icon: 'fa fa-cart-arrow-down'},
+                {text: 'MOJE ZAKUPY', path: '/carts/all', icon: 'fa fa-shopping-cart'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
-                {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-shopping-cart'},
+                {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-cart-arrow-down'},
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}
             ],

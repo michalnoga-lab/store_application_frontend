@@ -8,26 +8,40 @@ class ActiveCart extends Component {
         super(props);
 
         this.state = {
-            productsInActiveCart: []
+            productsInCart: []
         }
     }
 
     componentDidMount() {  // todo pobieranie z LS + update wszystkich koszyków z DB po wysłaniu
-        const url = URLs.backend + 'api/carts/active';
-        const headers = new Headers();
-        headers.set('Content-Type', 'application/json;charset=UTF-8');
-        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+        // const url = URLs.backend + 'api/carts/active';
+        // const headers = new Headers();
+        // headers.set('Content-Type', 'application/json;charset=UTF-8');
+        // headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+        //
+        // fetch(url, {
+        //     method: 'GET',
+        //     headers: headers
+        // })
+        //     .then(response => response.json())
+        //     .then(cart => this.setState({productsInActiveCart: cart}));
 
-        fetch(url, {
-            method: 'GET',
-            headers: headers
-        })
-            .then(response => response.json())
-            .then(cart => this.setState({productsInActiveCart: cart}));
+        this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
+    }
+
+    handleRemove = () => {
+        console.log('removed!'); //todo remove
+    }
+
+    handleAddress = () => {
+
+    }
+
+    handleSubmit = () => {
+
     }
 
     render() {
-        const productsInActiveCart = this.state.productsInActiveCart;
+        const productsInActiveCart = this.state.productsInCart;
         let rowNumber = 0;
 
         if (Object.entries(productsInActiveCart).length === 0) {
@@ -41,10 +55,18 @@ class ActiveCart extends Component {
                         <thead>
                         <TableHeadItem/>
                         </thead>
+
+                        {/*todo handle remove*/}
+
                         <tbody>
-                        {productsInActiveCart.map(product => <CartItem key={product.id} product={product}
+                        {productsInActiveCart.map(product => <CartItem key={product.id}
+                                                                       product={product}
                                                                        rowNumber={rowNumber += 1}/>)}
                         </tbody>
+
+                        {/* todo adres dostawy*/}
+                        {/* todo wyślij zamówienie*/}
+
                     </Table>
                 </div>
             )
@@ -55,10 +77,10 @@ class ActiveCart extends Component {
 const EmptyList = () =>
     <div className='main-page'>
         <section className="container">
-            <h5 className="top-page-text">MOJE KOSZYKI</h5>
+            <h5 className="top-page-text">MÓJ KOSZYK</h5>
             <div className="top-page-text-details">
                 <p className="top-page-text-details-at">@ status</p>
-                <p className="top-page-text-details-text">nie masz jeszcze żadnych koszyków</p>
+                <p className="top-page-text-details-text">nie masz produktów w koszyku</p>
             </div>
         </section>
     </div>
@@ -66,23 +88,20 @@ const EmptyList = () =>
 const TableHeadItem = () =>
     <tr>
         <td>Lp</td>
-        <td>Dostawa</td>
+        <td>Nazwa</td>
+        <td>Cena</td>
+        <td>Ilość</td>
         <td>Wartość</td>
-        <td>Data zamówienia</td>
+        <td>Akcja</td>
     </tr>
 
 const CartItem = props =>
     <tr>
         <td>{props.rowNumber}</td>
         <td>{props.product.name}</td>
-        <td></td>
-        <td></td>
-        {/*// todo enable*/}
-
-        {/*<td>{cartToDisplay.deliveryAddressDTO.street} </td>*/}
-        {/*<td>{cartToDisplay.totalNetValue} PLN</td>*/}
-        {/*<td>{cartToDisplay.purchaseTime}</td>*/}
-        {/*/!*todo formatowanie wartości po przecinku + netto/brutto *!/*/}
+        <td>{props.product.nettPrice}</td>
+        <td>{props.product.quantity}</td>
+        <td>{props.product.nettPrice * props.product.quantity} PLN</td>
     </tr>
 
 export {ActiveCart}

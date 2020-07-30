@@ -57,9 +57,8 @@ class AddProductToCart extends Component {
         console.log(`local storage: ${localStorage.getItem('cart')}`);
         console.log(`cart : ${cart}`);
         console.log(this.state.product);
-        cart['quantity'] =
 
-            cart.push(this.state.product) //todo set quantity
+        cart.push(this.state.product) //todo set quantity
 
         console.log('cart')
         console.log(cart)

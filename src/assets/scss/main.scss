@@ -2,13 +2,12 @@
 
   margin-left: 70px;
   padding: 15px;
-  text-align: left;
 
   .top-page-text {
     margin: 3rem;
     border-bottom-color: gray;
     border-bottom-style: groove;
-    text-align: center;
+    text-align: left;
   }
 
   .top-page-text-details {
@@ -37,6 +36,7 @@
   @media only screen and(max-width: 768px) {
     .top-page-text {
       margin: 1rem;
+      text-align: center;
     }
   }
 }

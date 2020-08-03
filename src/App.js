@@ -126,7 +126,20 @@ class App extends Component {
 
 export {App};
 
-// todo przekierowanie po logowaniu, logout, po dodaj adres na wszystkie adresy
+// todo przekierowanie po logowaniu
+// todo przekierowanie po wylogowaniu
+// todo przekierowanie po dodaj adres
+// todo naciśnięcie produktu z przekazaniem ID produktu
+// todo naciśnięcie pozycji w koszyku z przekazaniem ID produktu
+
+
+
+
+
+
+
+// todo ------------------------------------------------------------------------------------------
+
 // todo usuń produkt z koszyka
 // todo wyczyść koszyk
 

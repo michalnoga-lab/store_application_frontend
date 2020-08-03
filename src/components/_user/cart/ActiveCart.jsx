@@ -8,7 +8,8 @@ class ActiveCart extends Component {
         super(props);
 
         this.state = {
-            productsInCart: []
+            productsInCart: [],
+            address: ''
         }
     }
 
@@ -28,6 +29,26 @@ class ActiveCart extends Component {
         this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
     }
 
+    getAllDeliveryAddresses = async () => {
+        const url = URLs.backend + 'api/deliveryAddress/all';
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8');
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+
+        const response = fetch(url, {
+            method: 'GET',
+            headers: headers
+        }).then(response => response.json());
+        // }).then(response => response.json())
+        //     .then(deliveryAddresses => this.setState({deliveryAddresses: deliveryAddresses}));
+
+        return await response;
+    }
+
+    handleChange = () => {
+        console.log(`change!!!`);
+    }
+
     handleRemove = () => {
         console.log('removed!'); //todo remove
     }
@@ -42,6 +63,7 @@ class ActiveCart extends Component {
 
     render() {
         const productsInActiveCart = this.state.productsInCart;
+        const addresses = this.getAllDeliveryAddresses();
         let rowNumber = 0;
 
         if (Object.entries(productsInActiveCart).length === 0) {
@@ -68,6 +90,14 @@ class ActiveCart extends Component {
                         {/* todo wyślij zamówienie*/}
 
                     </Table>
+                    <div className='form-group'>
+                        <label>ADRES DOSTAWY:</label>
+                        {/*<select name='addr' value={addresses} onChange={this.handleChange}>*/}
+                        {/*    {*/}
+                        {/*        addresses.map(address => <option key={address} value={address}>{address}</option>)*/}
+                        {/*    }*/}
+                        {/*</select>*/}
+                    </div>
                 </div>
             )
         }
@@ -92,14 +122,13 @@ const TableHeadItem = () =>
         <td>Cena</td>
         <td>Ilość</td>
         <td>Wartość</td>
-        <td>Akcja</td>
     </tr>
 
 const CartItem = props =>
     <tr>
         <td>{props.rowNumber}</td>
         <td>{props.product.name}</td>
-        <td>{props.product.nettPrice}</td>
+        <td>{props.product.nettPrice} PLN</td>
         <td>{props.product.quantity}</td>
         <td>{props.product.nettPrice * props.product.quantity} PLN</td>
     </tr>

@@ -14,7 +14,7 @@ class DeliveryAddress extends Component {
 
     filterStreet = e => this.setState({filterStreet: e.target.value});
 
-    componentDidMount() {
+    getAllDeliveryAddresses = () => {
         const url = URLs.backend + 'api/deliveryAddress/all';
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
@@ -25,6 +25,10 @@ class DeliveryAddress extends Component {
             headers: headers
         }).then(response => response.json())
             .then(deliveryAddresses => this.setState({deliveryAddresses: deliveryAddresses}));
+    }
+
+    componentDidMount() {
+        this.getAllDeliveryAddresses(); //todo do poprawy => docelowo jedna funkcja fetch
     }
 
     render() {
@@ -64,6 +68,8 @@ class DeliveryAddress extends Component {
         }
     }
 }
+
+
 
 const EmptyList = () => (
     <div className='main-page'>

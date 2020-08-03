@@ -70,7 +70,6 @@ const TableHeadItem = () =>
         <td>Dostawa</td>
         <td>Wartość</td>
         <td>Data zamówienia</td>
-        <td>Status</td>
     </tr>
 
 const CartItem = props =>
@@ -79,7 +78,6 @@ const CartItem = props =>
         <td>{props.cart.deliveryAddressDTO.street}</td>
         <td> {props.cart.totalNetValue} PLN</td>
         <td>{props.cart.purchaseTime.toString().replace('T', " ")}</td>
-        <td>{props.cart.cartClosed === true ? 'ZAMKNIĘTY' : 'OTWARTY'}</td>
     </tr>
 
 export {AllCarts}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Router} from '@reach/router'
+// import {Router} from '@reach/router'
 
 import './App.css';
 import {Navigation} from "./components/navigation/Navigation";
@@ -13,8 +13,13 @@ import {AllCarts} from "./components/_user/cart/AllCarts";
 import {ActiveCart} from "./components/_user/cart/ActiveCart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
 import {AddProductToCart} from "./components/_user/product/AddProductToCart";
+import {Route, BrowserRouter as Router} from "react-router-dom";
+import {Switch} from "react-router";
+import Context from './components/context/context'
+
 
 class App extends Component {
+    static contextType = Context
 
     constructor(props) {
         super(props);
@@ -60,30 +65,40 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        console.log(this.context)
+    }
+
     render() {
-        if (sessionStorage.getItem('role') === 'ROLE_USER')
+        console.log(this.context)
+        if (this.context.userLogged && this.context.userRole === 'ROLE_USER')
             return (
                 <div className='nav-bar-items'>
-                    <Navigation
-                        navLinks={this.state.user}
-                        background='#fff'
-                        hoverBackground='#ddd'
-                        linkColor='#777'
-                    />
                     <Router>
-                        <Home path='/'/>
-                        <Product path='/products/all'/>
-                        <AllCarts path='/carts/all'/>
-                        <AddProductToCart path='/products/one'/>
-                        <DeliveryAddress path='/deliveryAddress/all'/>
-                        <AddDeliveryAddress path='/deliveryAddress/add'/>
-                        <ActiveCart path='/carts/one'/>
-                        <Contact path='/contact'/>
-                        <Logout path='/logout'/>
+                        <Navigation
+                            navLinks={this.state.user}
+                            background='#fff'
+                            hoverBackground='#ddd'
+                            linkColor='#777'
+                        />
+                        <main style={{marginTop: "60px"}}>
+                            <Switch>
+                                <Route exact path='/' component={Home}/>
+                                <Route path='/products/all' component={Product}/>
+                                <Route path='/carts/all' component={AllCarts}/>
+                                <Route path='/products/one' component={AddProductToCart}/>
+                                <Route path='/deliveryAddress/all' component={DeliveryAddress}/>
+                                <Route path='/deliveryAddress/add' component={AddDeliveryAddress}/>
+                                <Route path='/carts/one' component={ActiveCart}/>
+                                <Route path='/contact' component={Contact}/>
+                                <Route path='/logout' component={Logout}/>
+                            </Switch>
+                        </main>
                     </Router>
                 </div>
             )
-        else if (sessionStorage.getItem('role') === 'ROLE_ADMIN') {
+        // else if (sessionStorage.getItem('role') === 'ROLE_ADMIN') {
+        else if (this.context.userLogged && this.context.userRole === 'ROLE_ADMIN') {
             return (
 
                 <div className='nav-bar-items'>
@@ -93,13 +108,11 @@ class App extends Component {
                         hoverBackground='#ddd'
                         linkColor='#777'
                     />
-                    <Router>
+                  {/*  <Router>
                         <Home path='/'/>
-
-
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
-                    </Router>
+                    </Router>*/}
                 </div>
             )
         } else if (sessionStorage.getItem('role') === 'ROLE_SUPER') {
@@ -107,16 +120,20 @@ class App extends Component {
         } else {
             return (
                 <div className='nav-bar-items'>
-                    <Navigation
-                        navLinks={this.state.unauthorized}
-                        background="#fff"
-                        hoverBackground="#ddd"
-                        linkColor="#777"
-                    />
                     <Router>
-                        <Home path='/'/>
-                        <Login path='/login'/>
-                        <Contact path='/contact'/>
+                        <Navigation
+                            navLinks={this.state.unauthorized}
+                            background="#fff"
+                            hoverBackground="#ddd"
+                            linkColor="#777"
+                        />
+                        <main style={{marginTop: "60px"}}>
+                            <Switch>
+                                <Route exact path={'/'} component={Home}/>
+                                <Route path={'/login'} component={Login}/>
+                                <Route path={'/contact'} component={Contact}/>
+                            </Switch>
+                        </main>
                     </Router>
                 </div>
             )
@@ -131,11 +148,6 @@ export {App};
 // todo przekierowanie po dodaj adres
 // todo naciśnięcie produktu z przekazaniem ID produktu
 // todo naciśnięcie pozycji w koszyku z przekazaniem ID produktu
-
-
-
-
-
 
 
 // todo ------------------------------------------------------------------------------------------

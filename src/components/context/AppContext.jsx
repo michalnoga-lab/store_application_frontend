@@ -1,20 +1,20 @@
 import React, {Component} from 'react'
 import Context from './context'
 
-class AppContext extends Component{
-    constructor() {
-        super();
+class AppContext extends Component {
+    constructor(props) {
+        super(props);
 
         this.state = {
             userLogged: false,
-            userRole:""
+            userRole: ""
         }
     }
 
     componentDidMount() {
         const token = sessionStorage.getItem('token')
-        console.log(token)
-        if(!token) return
+        console.log(token) // todo
+        if (!token) return
 
         const role = sessionStorage.getItem('role')
         this.setState({
@@ -27,25 +27,25 @@ class AppContext extends Component{
     render() {
         const store = {
             userLogged: this.state.userLogged,
-            setUserUnLogged: () =>{
+            setUserUnLogged: () => {
                 this.setState({
                     userLogged: false
                 })
             },
-            setUserLogged:() =>{
+            setUserLogged: () => {
                 this.setState({
                     userLogged: true
                 })
             },
             userRole: this.state.userRole,
-            setUserRole: role =>{
+            setUserRole: role => {
                 this.setState(({
                     userRole: role
                 }))
             }
         }
 
-        return(
+        return (
             <Context.Provider value={store}>
                 {this.props.children}
             </Context.Provider>

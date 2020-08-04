@@ -70,7 +70,6 @@ class DeliveryAddress extends Component {
 }
 
 
-
 const EmptyList = () => (
     <div className='main-page'>
         <section className="container">

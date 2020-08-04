@@ -13,7 +13,9 @@ class AddDeliveryAddress extends Component {
             isStreetIncorrect: false,
             streetErrorMessage: '',
             isPhoneIncorrect: false,
-            phoneErrorMessage: ''
+            phoneErrorMessage: '',
+            isAddressAdded: false,
+            addressAddedMessage: ''
         }
     }
 
@@ -28,17 +30,24 @@ class AddDeliveryAddress extends Component {
             if (regex.test(value)) {
                 this.setState({isStreetIncorrect: false})
             } else {
-                this.setState({isStreetIncorrect: true, streetErrorMessage: errorMessage});
+                this.setState({isStreetIncorrect: true, streetErrorMessage: errorMessage, isAddressAdded: false});
             }
         }
         if (name === 'phone') {
             if (regex.test(value)) {
                 this.setState({isPhoneIncorrect: false})
             } else {
-                this.setState({isPhoneIncorrect: true, phoneErrorMessage: errorMessage})
+                this.setState({isPhoneIncorrect: true, phoneErrorMessage: errorMessage, isAddressAdded: false})
             }
         }
         this.setState({[name]: value});
+    }
+
+    showAddressAddedMessage = () => {
+        this.setState({
+            isAddressAdded: true,
+            addressAddedMessage: 'Poprawnie dodano nowy adres'
+        })
     }
 
     clearFields = () => {
@@ -65,7 +74,8 @@ class AddDeliveryAddress extends Component {
                 headers: headers,
                 body: JSON.stringify(new Address(this.state.street, this.state.phone))
             })
-                .then(this.clearFields);
+                .then(this.clearFields)
+                .then(this.showAddressAddedMessage);
         }
         event.preventDefault();
     }
@@ -100,6 +110,9 @@ class AddDeliveryAddress extends Component {
                     <div className='alert alert-danger' hidden={!this.state.isPhoneIncorrect}>
                         {this.state.phoneErrorMessage}
                     </div>
+                    <div className='alert alert-success' hidden={!this.state.isAddressAdded}>
+                        {this.state.addressAddedMessage}
+                    </div>
                     <div>
                         <button type='submit' className='btn btn-block btn-outline-dark'>DODAJ</button>
                     </div>
@@ -108,7 +121,5 @@ class AddDeliveryAddress extends Component {
         )
     }
 }
-
-//todo redirect -> do wszystkie adresy
 
 export {AddDeliveryAddress}

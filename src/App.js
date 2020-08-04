@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-// import {Router} from '@reach/router'
-
 import './App.css';
 import {Navigation} from "./components/navigation/Navigation";
 import {Home} from "./components/home/Home";
@@ -16,7 +14,6 @@ import {AddProductToCart} from "./components/_user/product/AddProductToCart";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import {Switch} from "react-router";
 import Context from './components/context/context'
-
 
 class App extends Component {
     static contextType = Context
@@ -108,7 +105,7 @@ class App extends Component {
                         hoverBackground='#ddd'
                         linkColor='#777'
                     />
-                  {/*  <Router>
+                    {/*  <Router>
                         <Home path='/'/>
                         <Contact path='/contact'/>
                         <Logout path='/logout'/>
@@ -152,6 +149,8 @@ export {App};
 
 // todo ------------------------------------------------------------------------------------------
 
+// todo DOM purify
+
 // todo usuń produkt z koszyka
 // todo wyczyść koszyk
 
@@ -160,6 +159,6 @@ export {App};
 // todo localstorage: currentcart, allProducts,product to buy id, moje adresy
 
 // todo wyświetlanie błedów jeżeli backend nie działa
-// todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource.
+// todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource
 
 // todo wersja mobilna - na samym końcu

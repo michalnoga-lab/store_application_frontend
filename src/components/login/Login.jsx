@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import User from "./model/User";
 import * as URLs from "../URLs"
 import Button from "react-bootstrap/Button";
-import  {Redirect} from "react-router-dom"
 import Context from '../context/context'
 
 class Login extends Component {
@@ -53,34 +52,35 @@ class Login extends Component {
         console.log('++++++++++++++++++++++++++++==') //todo remove in production
         console.log(await sessionStorage.getItem('token'))
         console.log(await sessionStorage.getItem('role'))
+        console.log('context!!!')
         console.log(this.context)
 
         this.context.setUserLogged()
         this.context.setUserRole(body.role)
 
-        this.props.history.push("/")
+        this.props.history.push("/") // todo poprawić - wszystko do primise
     }
 
     render() {
-            return (
-                <div className="input-page">
+        return (
+            <div className="input-page">
 
-                    <div>
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Control type="email" placeholder="EMAIL" onChange={this.updateLogin}/>
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control type="password" placeholder="HASŁO" onChange={this.updatePassword}/>
-                            </Form.Group>
-                            <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
-                                    variant="outline-secondary btn-block" type="button">
-                                ZALOGUJ
-                            </Button>
-                        </Form>
-                    </div>
+                <div>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Control type="email" placeholder="EMAIL" onChange={this.updateLogin}/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Control type="password" placeholder="HASŁO" onChange={this.updatePassword}/>
+                        </Form.Group>
+                        <Button onClick={() => this.loginClick(this.state.login, this.state.password)}
+                                variant="outline-secondary btn-block" type="button">
+                            ZALOGUJ
+                        </Button>
+                    </Form>
                 </div>
-            )
+            </div>
+        )
     }
 }
 

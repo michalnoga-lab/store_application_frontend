@@ -1,14 +1,17 @@
 import React, {Component} from "react";
 import * as URLs from '../../URLs'
 import Table from "react-bootstrap/Table";
+import Context from "../../context/context";
 
 class Product extends Component {
+    static contextType = Context
 
     constructor(props) {
         super(props);
 
         this.state = {
-            products: []
+            products: [],
+            redirect: false
         }
     }
 
@@ -71,6 +74,12 @@ const ProductItem = props =>
 const selectProductRow = (productId) => {
     localStorage.setItem('productId', productId); //todo redirect => add product to cart
     console.log(productId); //todo
+
+    {
+        (function () {
+            this.props.history.push("/")
+        })();
+    }
 }
 
 export {Product}

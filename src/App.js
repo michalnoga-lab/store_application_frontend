@@ -62,12 +62,8 @@ class App extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log(this.context)
-    }
-
     render() {
-        console.log(this.context)
+        console.log(this.context) // todo remove
         if (this.context.userLogged && this.context.userRole === 'ROLE_USER')
             return (
                 <div className='nav-bar-items'>
@@ -78,7 +74,7 @@ class App extends Component {
                             hoverBackground='#ddd'
                             linkColor='#777'
                         />
-                        <main style={{marginTop: "60px"}}>
+                        <div>
                             <Switch>
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/products/all' component={Product}/>
@@ -89,8 +85,9 @@ class App extends Component {
                                 <Route path='/carts/one' component={ActiveCart}/>
                                 <Route path='/contact' component={Contact}/>
                                 <Route path='/logout' component={Logout}/>
+                                {/*<Route path='/loggedOut' component={LoggedOut}/>*/}
                             </Switch>
-                        </main>
+                        </div>
                     </Router>
                 </div>
             )
@@ -124,13 +121,13 @@ class App extends Component {
                             hoverBackground="#ddd"
                             linkColor="#777"
                         />
-                        <main style={{marginTop: "60px"}}>
+                        <div>
                             <Switch>
                                 <Route exact path={'/'} component={Home}/>
                                 <Route path={'/login'} component={Login}/>
                                 <Route path={'/contact'} component={Contact}/>
                             </Switch>
-                        </main>
+                        </div>
                     </Router>
                 </div>
             )

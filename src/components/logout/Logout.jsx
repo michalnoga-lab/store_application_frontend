@@ -1,10 +1,16 @@
 import React, {Component} from "react";
 import * as URLs from "../URLs"
+import Context from "../context/context";
 
 class Logout extends Component {
+    static contextType = Context
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            redirect: false
+        }
     }
 
     componentDidMount() {
@@ -16,7 +22,10 @@ class Logout extends Component {
             method: 'POST',
             headers: headers
         })
-            .then(() => sessionStorage.clear());
+            .then(() => sessionStorage.clear())
+            .then(() => this.context.setUserUnLogged())
+            .then(() => this.context.setUserRole(''))
+            .then(() => this.props.history.push("/login"));
     }
 
     render() {
@@ -33,7 +42,5 @@ class Logout extends Component {
         );
     }
 }
-
-// todo redirect -> login page
 
 export {Logout}

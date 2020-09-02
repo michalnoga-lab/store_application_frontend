@@ -21,7 +21,8 @@ class AllCarts extends Component {
         fetch(url, {
             method: 'GET',
             headers: headers
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
             .then(carts => this.setState({carts: carts}))
             .catch(err => console.log(err))
 

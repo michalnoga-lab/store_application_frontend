@@ -15,9 +15,7 @@ class ActiveCart extends Component {
     }
 
     componentDidMount() {
-        // todo
-        //const url = URLs.backend + 'api/carts/active';
-        const url = 'localhost:8080/api/carts/active'
+        const url = URLs.backend + 'api/carts/active';
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
@@ -27,9 +25,26 @@ class ActiveCart extends Component {
             headers: headers
         })
             .then(response => response.json())
-            .then(cart => this.setState({productsInActiveCart: cart}));
+            .then(products => this.setState({productsInCart: products}))
+            .catch(err => console.log(err))
+
+
+        // .then(()=>console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$"))
+        // .then(response=>console.log(response))
+        // .then(response => response.json())
+        // .then(response=>response.productsInCartDTO)
+        // .then(()=>console.log('%%%%%%%%%%%%%%%%%%%%'))
+        // .then(response=>console.log(response))
+        // .then(products => this.setState({productsInCart: products}));
         // todo
         // this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
+
+        // console.log('gggggggggggggggggggggg')
+        // console.log(response2)
+        //
+        // response2
+        //     .then(re=>console.log(re))
+
     }
 
     getAllDeliveryAddresses = () => {
@@ -43,7 +58,7 @@ class ActiveCart extends Component {
             headers: headers
         }).then(response => response.json())
             .then(response => this.setState({addresses: response}))
-            .catch(err => console.log(err)); // todo change to popup ???
+            .catch(err => console.log(err)); // todo popup ???
     }
 
     handleChange = () => {

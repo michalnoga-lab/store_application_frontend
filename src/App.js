@@ -10,7 +10,6 @@ import {DeliveryAddress} from "./components/_user/deliveryAddress/DeliveryAddres
 import {AllCarts} from "./components/_user/cart/AllCarts";
 import {ActiveCart} from "./components/_user/cart/ActiveCart";
 import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDeliveryAddress";
-import {AddProductToCart} from "./components/_user/product/AddProductToCart";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import {Switch} from "react-router";
 import Context from './components/context/context'
@@ -30,7 +29,7 @@ class App extends Component {
             user: [
                 {text: 'START', path: "/", icon: 'fa fa-home'},
                 {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
-                {text: 'MOJE ZAKUPY', path: '/carts/all', icon: 'fa fa-shopping-cart'},
+                {text: 'HISTORIA ZAKUPÓW', path: '/carts/all', icon: 'fa fa-shopping-cart'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},
                 {text: "MÓJ KOKSZYK", path: '/carts/one', icon: 'fa fa-cart-arrow-down'},
@@ -78,7 +77,6 @@ class App extends Component {
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/products/all' component={Product}/>
                                 <Route path='/carts/all' component={AllCarts}/>
-                                <Route path='/products/one' component={AddProductToCart}/>
                                 <Route path='/deliveryAddress/all' component={DeliveryAddress}/>
                                 <Route path='/deliveryAddress/add' component={AddDeliveryAddress}/>
                                 <Route path='/carts/one' component={ActiveCart}/>

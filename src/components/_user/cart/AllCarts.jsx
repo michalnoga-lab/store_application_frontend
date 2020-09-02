@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import * as URLs from '../../URLs';
-// import {Table} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 
 class AllCarts extends Component {
@@ -72,16 +71,17 @@ const TableHeadItem = () =>
     <tr>
         <td>Lp</td>
         <td>Dostawa</td>
-        <td>Wartość</td>
+        <td>Wartość brutto</td>
         <td>Data zamówienia</td>
     </tr>
 
 const CartItem = props =>
     <tr>
         <td>{props.rowNumer}</td>
-        <td>{props.cart.deliveryAddressDTO.street}</td>
-        <td> {props.cart.totalNetValue} PLN</td>
-        <td>{props.cart.purchaseTime.toString().replace('T', " ")}</td>
+        <td>{props.cart.deliveryAddressDTO == null ? 'nie ustawiona' : props.cart.deliveryAddressDTO.street}</td>
+        <td> {props.cart.totalGrossValue} PLN</td>
+        <td>{props.cart.purchaseTime == null ? 'koszyk otwarty' :
+            props.cart.purchaseTime.toString().replace('T', " ")}</td>
     </tr>
 
 export {AllCarts}

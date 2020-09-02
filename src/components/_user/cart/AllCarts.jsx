@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import * as URLs from '../../URLs';
+// import {Table} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 
 class AllCarts extends Component {
@@ -22,7 +23,10 @@ class AllCarts extends Component {
             method: 'GET',
             headers: headers
         }).then(response => response.json())
-            .then(carts => this.setState({carts: carts}));
+            .then(carts => this.setState({carts: carts}))
+            .catch(err => console.log(err))
+
+        console.log(this.state.carts)
     }
 
     render() {

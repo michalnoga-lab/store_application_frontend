@@ -9,44 +9,45 @@ class ActiveCart extends Component {
 
         this.state = {
             productsInCart: [],
+            addresses: [],
             address: ''
         }
     }
 
-    componentDidMount() {  // todo pobieranie z LS + update wszystkich koszyków z DB po wysłaniu
-        // const url = URLs.backend + 'api/carts/active';
-        // const headers = new Headers();
-        // headers.set('Content-Type', 'application/json;charset=UTF-8');
-        // headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
-        //
-        // fetch(url, {
-        //     method: 'GET',
-        //     headers: headers
-        // })
-        //     .then(response => response.json())
-        //     .then(cart => this.setState({productsInActiveCart: cart}));
+    componentDidMount() {
+        // todo
+        //const url = URLs.backend + 'api/carts/active';
+        const url = 'localhost:8080/api/carts/active'
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8');
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
-        this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
+        fetch(url, {
+            method: 'GET',
+            headers: headers
+        })
+            .then(response => response.json())
+            .then(cart => this.setState({productsInActiveCart: cart}));
+        // todo
+        // this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
     }
 
-    getAllDeliveryAddresses = async () => {
+    getAllDeliveryAddresses = () => {
         const url = URLs.backend + 'api/deliveryAddress/all';
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
-        const response = fetch(url, {
+        fetch(url, {
             method: 'GET',
             headers: headers
-        }).then(response => response.json());
-        // }).then(response => response.json())
-        //     .then(deliveryAddresses => this.setState({deliveryAddresses: deliveryAddresses}));
-
-        return await response;
+        }).then(response => response.json())
+            .then(response => this.setState({addresses: response}))
+            .catch(err => console.log(err)); // todo change to popup ???
     }
 
     handleChange = () => {
-        console.log(`change!!!`);
+        console.log(`handle change`);
     }
 
     handleRemove = () => {
@@ -63,7 +64,14 @@ class ActiveCart extends Component {
 
     render() {
         const productsInActiveCart = this.state.productsInCart;
-        const addresses = this.getAllDeliveryAddresses();
+        const addresses = this.state.addresses;
+
+        console.log('products in cart') // todo remove
+        console.log(productsInActiveCart)
+
+        console.log('addresses')
+        console.log(addresses)
+
         let rowNumber = 0;
 
         if (Object.entries(productsInActiveCart).length === 0) {
@@ -91,12 +99,12 @@ class ActiveCart extends Component {
 
                     </Table>
                     <div className='form-group'>
-                        <label>ADRES DOSTAWY:</label>
-                        {/*<select name='addr' value={addresses} onChange={this.handleChange}>*/}
-                        {/*    {*/}
-                        {/*        addresses.map(address => <option key={address} value={address}>{address}</option>)*/}
-                        {/*    }*/}
-                        {/*</select>*/}
+                        <label>DOSTAWA: </label>
+                        <select name='address' value={this.state.address} onChange={this.handleAddress}>
+                            {/*  {
+                                addresses.map(address => <option key={address} value={address}>{address}</option>)
+                            }*/}
+                        </select>
                     </div>
                 </div>
             )

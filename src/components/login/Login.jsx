@@ -52,8 +52,6 @@ class Login extends Component {
         console.log('++++++++++++++++++++++++++++==') //todo remove in production
         console.log(await sessionStorage.getItem('token'))
         console.log(await sessionStorage.getItem('role'))
-        console.log('context!!!')
-        console.log(this.context)
 
         this.context.setUserLogged()
         this.context.setUserRole(body.role)

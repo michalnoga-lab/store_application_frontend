@@ -30,7 +30,6 @@ class App extends Component {
             user: [
                 {text: 'START', path: "/", icon: 'fa fa-home'},
                 {text: 'MOJE PRODUKTY', path: '/products/all', icon: 'fa fa-tasks'},
-                {text: "PRODUKT DELLL !!!", path: '/products/one'}, //todo
                 {text: 'MOJE ZAKUPY', path: '/carts/all', icon: 'fa fa-shopping-cart'},
                 {text: 'MOJE ADRESY', path: '/deliveryAddress/all', icon: 'fa fa-truck'},
                 {text: 'DODAJ ADRES', path: '/deliveryAddress/add', icon: 'fa fa-plus-square'},

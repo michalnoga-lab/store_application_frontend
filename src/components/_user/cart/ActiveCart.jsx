@@ -1,159 +1,105 @@
-import React, {Component} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import * as URLs from '../../URLs';
-import {Table} from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 
-class ActiveCart extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            productsInCart: [],
-            addresses: [],
-            address: ''
-        }
-    }
-
-    componentDidMount() {
-        const url = URLs.backend + 'api/carts/active';
-        const headers = new Headers();
-        headers.set('Content-Type', 'application/json;charset=UTF-8');
-        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
-
-        fetch(url, {
-            method: 'GET',
-            headers: headers
-        })
-            .then(response => response.json())
-            .then(products => this.setState({productsInCart: products}))
-            .catch(err => console.log(err))
-
-
-        // .then(()=>console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$"))
-        // .then(response=>console.log(response))
-        // .then(response => response.json())
-        // .then(response=>response.productsInCartDTO)
-        // .then(()=>console.log('%%%%%%%%%%%%%%%%%%%%'))
-        // .then(response=>console.log(response))
-        // .then(products => this.setState({productsInCart: products}));
-        // todo
-        // this.setState({productsInCart: JSON.parse(localStorage.getItem('cart'))});
-
-        // console.log('gggggggggggggggggggggg')
-        // console.log(response2)
-        //
-        // response2
-        //     .then(re=>console.log(re))
-
-    }
-
-    getAllDeliveryAddresses = () => {
-        const url = URLs.backend + 'api/deliveryAddress/all';
-        const headers = new Headers();
-        headers.set('Content-Type', 'application/json;charset=UTF-8');
-        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
-
-        fetch(url, {
-            method: 'GET',
-            headers: headers
-        }).then(response => response.json())
-            .then(response => this.setState({addresses: response}))
-            .catch(err => console.log(err)); // todo popup ???
-    }
-
-    handleChange = () => {
-        console.log(`handle change`);
-    }
-
-    handleRemove = () => {
-        console.log('removed!'); //todo remove
-    }
-
-    handleAddress = () => {
-
-    }
-
-    handleSubmit = () => {
-
-    }
-
-    render() {
-        const productsInActiveCart = this.state.productsInCart;
-        const addresses = this.state.addresses;
-
-        console.log('products in cart') // todo remove
-        console.log(productsInActiveCart)
-
-        console.log('addresses')
-        console.log(addresses)
-
-        let rowNumber = 0;
-
-        if (Object.entries(productsInActiveCart).length === 0) {
-            return (
-                <EmptyList/>
-            )
-        } else {
-            return (
-                <div className='table-page'>
-                    <Table bordered hover>
-                        <thead>
-                        <TableHeadItem/>
-                        </thead>
-
-                        {/*todo handle remove*/}
-
-                        <tbody>
-                        {productsInActiveCart.map(product => <CartItem key={product.id}
-                                                                       product={product}
-                                                                       rowNumber={rowNumber += 1}/>)}
-                        </tbody>
-
-                        {/* todo adres dostawy*/}
-                        {/* todo wyślij zamówienie*/}
-
-                    </Table>
-                    <div className='form-group'>
-                        <label>DOSTAWA: </label>
-                        <select name='address' value={this.state.address} onChange={this.handleAddress}>
-                            {/*  {
-                                addresses.map(address => <option key={address} value={address}>{address}</option>)
-                            }*/}
-                        </select>
-                    </div>
-                </div>
-            )
-        }
-    }
-}
-
-const EmptyList = () =>
+const EmptyList = () => (
     <div className='main-page'>
         <section className="container">
             <h5 className="top-page-text">MÓJ KOSZYK</h5>
             <div className="top-page-text-details">
                 <p className="top-page-text-details-at">@ status</p>
-                <p className="top-page-text-details-text">nie masz produktów w koszyku</p>
+                <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów w koszyku</p>
             </div>
         </section>
     </div>
+)
 
-const TableHeadItem = () =>
-    <tr>
-        <td>Lp</td>
-        <td>Nazwa</td>
-        <td>Cena</td>
-        <td>Ilość</td>
-        <td>Wartość</td>
-    </tr>
-
-const CartItem = props =>
+const Product = props =>
     <tr>
         <td>{props.rowNumber}</td>
-        <td>{props.product.name}</td>
-        <td>{props.product.nettPrice} PLN</td>
-        <td>{props.product.quantity}</td>
-        <td>{props.product.nettPrice * props.product.quantity} PLN</td>
+        <td>zwrócić najpierw nazwę</td>
+        <td>{props.quantity}</td>
+        <td>{props.nettPrice}</td>
+        <td>{props.vat} %</td>
+        <td>{props.value}</td>
     </tr>
+
+const ActiveCart = () => {
+
+    const [products, setProducts] = useState([])
+    const [rowNumber, setRowNumber] = useState(0)
+    const [change, setChange] = useState(true)
+
+    useEffect(() => {
+        async function getData() {
+            await getProductsFromActiveCart()
+        }
+
+        getData().catch(err => console.log(err))
+        setChange(false)
+    }, [change])
+
+
+    const getProductsFromActiveCart = async () => {
+        const url = URLs.backend + 'api/products/activeCart'
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8')
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
+
+        const response = fetch(url, {
+            method: 'GET',
+            headers: headers
+        })
+
+        //todo remove
+
+        console.log('----------------- 1')
+        console.log(await response)
+
+        const products = JSON.parse(await (await response).text())
+
+        console.log('--------------------- 2')
+        console.log(await products)
+
+        setProducts(await products)
+    }
+
+
+    if (Object.entries(products).length === 0) {
+        return (
+            <EmptyList/>
+        )
+    } else {
+        return (
+            <div className='table-page'>
+                <Table bordered hover>
+                    <thead>
+                    <tr>
+                        <td>Lp</td>
+                        <td>Nazwa</td>
+                        <td>Ilość</td>
+                        <td>Netto</td>
+                        <td>VAT</td>
+                        <td>Wartość netto</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {products.map(product => <Product
+                        key={product.id}
+                        // todo numery prodktów
+                        rowNumber={rowNumber}
+                        quantity={product.quantity}
+                        nettPrice={product.nettPrice}
+                        vat={product.vat}
+                        value={product.nettPrice * product.quantity}
+                    />)}
+                    </tbody>
+                </Table>
+            </div>
+        )
+    }
+
+
+}
 
 export {ActiveCart}

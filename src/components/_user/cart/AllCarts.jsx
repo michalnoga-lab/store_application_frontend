@@ -79,9 +79,9 @@ const TableHeadItem = () =>
 const CartItem = props =>
     <tr>
         <td>{props.rowNumer}</td>
-        <td>{props.cart.deliveryAddressDTO == null ? 'nie ustawiona' : props.cart.deliveryAddressDTO.street}</td>
+        <td>{props.cart.deliveryAddressDTO == null ? '----------' : props.cart.deliveryAddressDTO.street}</td>
         <td> {props.cart.totalGrossValue} PLN</td>
-        <td>{props.cart.purchaseTime == null ? 'koszyk otwarty' :
+        <td>{props.cart.purchaseTime == null ? '----------' :
             props.cart.purchaseTime.toString().replace('T', " ")}</td>
     </tr>
 

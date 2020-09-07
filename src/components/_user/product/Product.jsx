@@ -118,7 +118,7 @@ class Product extends Component {
                                             className='form-control'
                                             onChange={this.handleChange}
                                         />
-                                        <button type="submit" className=' btn btn-outline-secondary btn-block'>DODAJ
+                                        <button type="submit" className='btn btn-outline-secondary btn-block'>DODAJ
                                         </button>
                                     </form>
                                 </td>

@@ -71,8 +71,8 @@ const EmptyList = () => (
 const TableHeadItem = () =>
     <tr>
         <td>Lp</td>
-        <td>Dostawa</td>
-        <td>Wartość brutto</td>
+        <td>Dostawa do</td>
+        <td>Wartość koszyka</td>
         <td>Data zamówienia</td>
     </tr>
 

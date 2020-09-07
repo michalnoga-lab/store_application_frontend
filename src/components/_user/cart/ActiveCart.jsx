@@ -17,22 +17,31 @@ const EmptyList = () => (
 const Product = props =>
     <tr>
         <td>{props.rowNumber}</td>
-        <td>zwrócić najpierw nazwę</td>
+        <td>{props.name}</td>
         <td>{props.quantity}</td>
-        <td>{props.nettPrice}</td>
+        <td>{props.nettPrice} PLN</td>
         <td>{props.vat} %</td>
-        <td>{props.value}</td>
+        <td>{props.value} PLN</td>
+    </tr>
+
+const Address = props =>
+    <tr>
+        <td>{props.street}</td>
+        <td>{props.phone}</td>
     </tr>
 
 const ActiveCart = () => {
 
     const [products, setProducts] = useState([])
+    const [addresses, setAddresses] = useState([])
+    const [address, setAddress] = useState('')
     const [rowNumber, setRowNumber] = useState(0)
     const [change, setChange] = useState(true)
 
     useEffect(() => {
         async function getData() {
             await getProductsFromActiveCart()
+            await getAddresses()
         }
 
         getData().catch(err => console.log(err))
@@ -51,19 +60,24 @@ const ActiveCart = () => {
             headers: headers
         })
 
-        //todo remove
-
-        console.log('----------------- 1')
-        console.log(await response)
-
         const products = JSON.parse(await (await response).text())
-
-        console.log('--------------------- 2')
-        console.log(await products)
-
         setProducts(await products)
     }
 
+    const getAddresses = async () => {
+        const url = URLs.backend + 'api/deliveryAddress/all'
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8')
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
+
+        const response = fetch(url, {
+            method: 'GET',
+            headers: headers
+        })
+
+        const addresses = JSON.parse(await (await response).text())
+        setAddresses(await addresses)
+    }
 
     if (Object.entries(products).length === 0) {
         return (
@@ -71,35 +85,52 @@ const ActiveCart = () => {
         )
     } else {
         return (
-            <div className='table-page'>
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <td>Lp</td>
-                        <td>Nazwa</td>
-                        <td>Ilość</td>
-                        <td>Netto</td>
-                        <td>VAT</td>
-                        <td>Wartość netto</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {products.map(product => <Product
-                        key={product.id}
-                        // todo numery prodktów
-                        rowNumber={rowNumber}
-                        quantity={product.quantity}
-                        nettPrice={product.nettPrice}
-                        vat={product.vat}
-                        value={product.nettPrice * product.quantity}
-                    />)}
-                    </tbody>
-                </Table>
+            <div>
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <td>Lp</td>
+                            <td>Nazwa</td>
+                            <td>Ilość</td>
+                            <td>Netto</td>
+                            <td>VAT</td>
+                            <td>Wartość netto</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {products.map(product => <Product
+                            key={product.id}
+                            // todo numery produktów
+                            rowNumber={rowNumber}
+                            name={product.name}
+                            quantity={product.quantity}
+                            nettPrice={product.nettPrice}
+                            vat={product.vat}
+                            value={product.nettPrice * product.quantity}
+                        />)}
+                        </tbody>
+                    </Table>
+                </div>
+
+                <div className='table-page'>
+                    <label>DOSTAWA:</label>
+                    <select name='address' value={address}>
+                        {/*// todo setAddress*/}
+                        {
+                            addresses.map(address => <option key={address.id}
+                                                             value={address.street}>{address.street}</option>)
+                        }
+                    </select>
+                </div>
+
+                <div className='table-page'>
+                    <button type='submit' className='btn btn-block btn-outline-secondary'>PRZEŚLIJ DO REALIZACJI
+                    </button>
+                </div>
             </div>
         )
     }
-
-
 }
 
 export {ActiveCart}

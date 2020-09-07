@@ -28,7 +28,7 @@ class DeliveryAddress extends Component {
     }
 
     componentDidMount() {
-        this.getAllDeliveryAddresses(); //todo do poprawy => docelowo jedna funkcja fetch
+        this.getAllDeliveryAddresses();
     }
 
     render() {

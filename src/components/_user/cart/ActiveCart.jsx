@@ -24,17 +24,11 @@ const Product = props =>
         <td>{props.value} PLN</td>
     </tr>
 
-const Address = props =>
-    <tr>
-        <td>{props.street}</td>
-        <td>{props.phone}</td>
-    </tr>
-
 const ActiveCart = () => {
 
     const [products, setProducts] = useState([])
     const [addresses, setAddresses] = useState([])
-    const [address, setAddress] = useState('')
+    const [address, setAddress] = useState({})
     const [rowNumber, setRowNumber] = useState(0)
     const [change, setChange] = useState(true)
 
@@ -48,6 +42,27 @@ const ActiveCart = () => {
         setChange(false)
     }, [change])
 
+    const handleAddressChange = event => {
+        let target = event.target
+        let value = target.value
+
+        let addressToStore = addresses.filter(function (address, index, array) {
+            if (address.id.toString() === value) {
+                return address
+            }
+        })
+
+        setAddress(addressToStore[0])
+    }
+
+    const handleSubmit = event => {
+        // todo od tego zaczac - zrobić wysyłanie do backendu
+        console.log('------------------------------')
+        console.log(event)
+        console.log(address)
+        console.log(addresses)
+        event.preventDefault()
+    }
 
     const getProductsFromActiveCart = async () => {
         const url = URLs.backend + 'api/products/activeCart'
@@ -76,7 +91,9 @@ const ActiveCart = () => {
         })
 
         const addresses = JSON.parse(await (await response).text())
+        const firstAddress = await addresses[0]
         setAddresses(await addresses)
+        setAddress(await firstAddress)
     }
 
     if (Object.entries(products).length === 0) {
@@ -112,22 +129,22 @@ const ActiveCart = () => {
                         </tbody>
                     </Table>
                 </div>
+                <form onSubmit={handleSubmit}>
+                    <div className='table-page'>
+                        <label>DOSTAWA:</label>
+                        <select name='address' value={address} onChange={handleAddressChange}>
+                            {
+                                addresses.map(address => <option key={address.id}
+                                                                 value={address.id}>{address.street}</option>)
+                            }
+                        </select>
+                        <div className='table-page'>
 
-                <div className='table-page'>
-                    <label>DOSTAWA:</label>
-                    <select name='address' value={address}>
-                        {/*// todo setAddress*/}
-                        {
-                            addresses.map(address => <option key={address.id}
-                                                             value={address.street}>{address.street}</option>)
-                        }
-                    </select>
-                </div>
-
-                <div className='table-page'>
-                    <button type='submit' className='btn btn-block btn-outline-secondary'>PRZEŚLIJ DO REALIZACJI
-                    </button>
-                </div>
+                            <button type='submit' className='btn btn-block btn-outline-secondary'>PRZEŚLIJ DO REALIZACJI
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         )
     }

@@ -104,11 +104,6 @@ const ActiveCart = () => {
         setAddress(await firstAddress)
     }
 
-    const clearProps = () => {
-        setProducts([])
-        setAddresses([])
-    }
-
     if (Object.entries(products).length === 0) {
         return (
             <EmptyList/>

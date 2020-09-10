@@ -13,7 +13,6 @@ class AppContext extends Component {
 
     componentDidMount() {
         const token = sessionStorage.getItem('token')
-        console.log(token) // todo
         if (!token) return
 
         const role = sessionStorage.getItem('role')

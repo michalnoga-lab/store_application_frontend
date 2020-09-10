@@ -41,18 +41,12 @@ class Login extends Component {
                 body: JSON.stringify(new User(login, password))
             });
         const body = await response.json();
-        console.log(body);
         sessionStorage.setItem('token', body.token)
         sessionStorage.setItem('role', body.role)
 
         if (!localStorage.getItem('cart')) {
             localStorage.setItem('cart', JSON.stringify([]));
         }
-
-        console.log('++++++++++++++++++++++++++++==') //todo remove in production
-        console.log(await sessionStorage.getItem('token'))
-        console.log(await sessionStorage.getItem('role'))
-
         this.context.setUserLogged()
         this.context.setUserRole(body.role)
 

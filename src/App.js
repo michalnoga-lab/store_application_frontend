@@ -61,7 +61,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.context) // todo remove
         if (this.context.userLogged && this.context.userRole === 'ROLE_USER')
             return (
                 <div className='nav-bar-items'>
@@ -134,13 +133,6 @@ class App extends Component {
 
 export {App};
 
-// todo przekierowanie po logowaniu
-// todo przekierowanie po wylogowaniu
-// todo przekierowanie po dodaj adres
-// todo naciśnięcie produktu z przekazaniem ID produktu
-// todo naciśnięcie pozycji w koszyku z przekazaniem ID produktu
-
-
 // todo ------------------------------------------------------------------------------------------
 
 // todo DOM purify
@@ -149,8 +141,6 @@ export {App};
 // todo wyczyść koszyk
 
 // todo do kontenerów i na produkcję
-// todo data do kiedy ważne są produkty przetargowe, po tym blokujemy logowanie/czyścimy local storage
-// todo localstorage: currentcart, allProducts,product to buy id, moje adresy
 
 // todo wyświetlanie błedów jeżeli backend nie działa
 // todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource

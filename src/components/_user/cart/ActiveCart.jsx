@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
+import Address from "./model/Address";
 
 const EmptyList = () => (
     <div className='main-page'>
@@ -51,17 +52,25 @@ const ActiveCart = () => {
                 return address
             }
         })
-
         setAddress(addressToStore[0])
     }
 
-    const handleSubmit = event => {
-        // todo od tego zaczac - zrobić wysyłanie do backendu
-        console.log('------------------------------')
-        console.log(event)
-        console.log(address)
-        console.log(addresses)
-        event.preventDefault()
+    const handleSubmit = async () => {
+        const url = URLs.backend + 'api/carts/close'
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8');
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+
+        const response = fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(new Address(address.id))
+        })
+
+        await setChange(false)
+        await response.catch(err => console.log(err))
+
+        // todo przekierowanie na nowy adres: produkty wyslane do realizacji
     }
 
     const getProductsFromActiveCart = async () => {
@@ -74,7 +83,6 @@ const ActiveCart = () => {
             method: 'GET',
             headers: headers
         })
-
         const products = JSON.parse(await (await response).text())
         setProducts(await products)
     }
@@ -94,6 +102,11 @@ const ActiveCart = () => {
         const firstAddress = await addresses[0]
         setAddresses(await addresses)
         setAddress(await firstAddress)
+    }
+
+    const clearProps = () => {
+        setProducts([])
+        setAddresses([])
     }
 
     if (Object.entries(products).length === 0) {

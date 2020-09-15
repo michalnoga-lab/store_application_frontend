@@ -1,60 +1,6 @@
-import React, {Component} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import * as URLs from '../../URLs';
 import {Table} from "react-bootstrap";
-
-class AllCarts extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            carts: []
-        }
-    }
-
-    componentDidMount() {
-        const url = URLs.backend + 'api/carts/all';
-        const headers = new Headers();
-        headers.set('Content-Type', 'application/json;charset=UTF-8');
-        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
-
-        fetch(url, {
-            method: 'GET',
-            headers: headers
-        })
-            .then(response => response.json())
-            .then(carts => this.setState({carts: carts}))
-            .catch(err => console.log(err))
-
-        console.log(this.state.carts)
-    }
-
-    render() {
-        const carts = this.state.carts;
-        let rowNumber = 0;
-
-        if (this.state.carts.length === 0) {
-            return (
-                <EmptyList/>
-            )
-        } else {
-            return (
-                <div className='table-page'>
-                    <div className='overflow-mobile'>
-                        <Table bordered hover>
-                            <thead>
-                            <TableHeadItem/>
-                            </thead>
-                            <tbody>
-                            {carts.map(cart => <CartItem key={cart.id} cart={cart} rowNumer={rowNumber += 1}/>)}
-                            </tbody>
-                        </Table>
-                    </div>
-                </div>
-            )
-        }
-    }
-}
 
 const EmptyList = () => (
     <div className='main-page'>
@@ -84,5 +30,56 @@ const CartItem = props =>
         <td>{props.cart.purchaseTime == null ? '----------' :
             props.cart.purchaseTime.toString().replace('T', " ")}</td>
     </tr>
+
+const AllCarts = () => {
+
+    const [carts, setCarts] = useState([])
+    const [change, setChange] = useState(true)
+
+    useEffect(() => {
+        async function getData() {
+            await getAllClosedCarts()
+        }
+
+        getData().catch(err => console.log(err))
+        setChange(false)
+    }, [change])
+
+    const getAllClosedCarts = async () => {
+        const url = URLs.backend + 'api/carts/all';
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8');
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+
+        fetch(url, {
+            method: 'GET',
+            headers: headers
+        })
+            .then(response => response.json())
+            .then(carts => setCarts(carts))
+            .catch(err => console.log(err))
+    }
+
+    if (carts.length === 0) {
+        return (
+            <EmptyList/>
+        )
+    } else {
+        return (
+            <div className='table-page'>
+                <div className='overflow-mobile'>
+                    <Table bordered hover>
+                        <thead>
+                        <TableHeadItem/>
+                        </thead>
+                        <tbody>
+                        {carts.map((cart, i) => <CartItem key={cart.id} cart={cart} rowNumer={i + 1}/>)}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
+        )
+    }
+}
 
 export {AllCarts}

@@ -1,21 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
-import {
-    BrowserRouter as Router, Route, Link, Redirect, withRouter, Switch
-} from 'react-router-dom'
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
-
-const EmptyList = () => (
-    <div className='main-page'>
-        <section className="container">
-            <h5 className="top-page-text">MÓJ KOSZYK</h5>
-            <div className="top-page-text-details">
-                <p className="top-page-text-details-at">@ status</p>
-                <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów w koszyku</p>
-            </div>
-        </section>
-    </div>
-)
 
 const Product = props =>
     <tr>
@@ -32,7 +17,7 @@ const ActiveCart = () => {
     const [products, setProducts] = useState([])
     const [addresses, setAddresses] = useState([])
     const [address, setAddress] = useState({})
-    const [rowNumber, setRowNumber] = useState(0)
+    const [cartClosed, setCartClosed] = useState(false)
     const [change, setChange] = useState(true)
 
     useEffect(() => {
@@ -69,8 +54,14 @@ const ActiveCart = () => {
             body: JSON.stringify({id: address.id})
         })
 
-        await setChange(true)
-        await response.catch(err => console.log(err))
+        await response
+            .then(() => setChange(true))
+            .then(() => setCartClosed(true))
+            .then(() => setProducts([]))
+            .catch(err => console.log(err))
+
+        const body = (await response).json();
+        console.log(await body)
 
         // todo przekierowanie na nowy adres: produkty wyslane do realizacji
     }
@@ -108,7 +99,20 @@ const ActiveCart = () => {
 
     if (Object.entries(products).length === 0) {
         return (
-            <EmptyList/>
+            <div className='main-page'>
+                <div hidden={cartClosed}>
+                    <section className="container">
+                        <h5 className="top-page-text">MÓJ KOSZYK</h5>
+                        <div className="top-page-text-details">
+                            <p className="top-page-text-details-at">@ status</p>
+                            <p className="top-page-text-details-text">nie masz jeszcze żadnych produktów w koszyku</p>
+                        </div>
+                    </section>
+                </div>
+                <div className='alert alert-success m-4' hidden={!cartClosed}> {/*todo napis się nie pokazuje*/}
+                    <p>Produkty dodane do koszyka</p>
+                </div>
+            </div>
         )
     } else {
         return (
@@ -126,10 +130,9 @@ const ActiveCart = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {products.map(product => <Product
+                        {products.map((product, i) => <Product
                             key={product.id}
-                            // todo numery produktów
-                            rowNumber={rowNumber}
+                            rowNumber={i + 1}
                             name={product.name}
                             quantity={product.quantity}
                             nettPrice={product.nettPrice}

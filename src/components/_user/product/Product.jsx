@@ -114,6 +114,7 @@ class Product extends Component {
                                         <input
                                             type='number'
                                             name='quantity'
+                                            placeholder='PODAJ ILOŚĆ'
                                             id={product.id}
                                             className='form-control'
                                             onChange={this.handleChange}

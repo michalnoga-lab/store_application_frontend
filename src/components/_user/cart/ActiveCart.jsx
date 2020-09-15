@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useRef} from "react";
+import {
+    BrowserRouter as Router, Route, Link, Redirect, withRouter, Switch
+} from 'react-router-dom'
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
-import Address from "./model/Address";
 
 const EmptyList = () => (
     <div className='main-page'>
@@ -64,10 +66,10 @@ const ActiveCart = () => {
         const response = fetch(url, {
             method: 'POST',
             headers: headers,
-            body: JSON.stringify(new Address(address.id))
+            body: JSON.stringify({id: address.id})
         })
 
-        await setChange(false)
+        await setChange(true)
         await response.catch(err => console.log(err))
 
         // todo przekierowanie na nowy adres: produkty wyslane do realizacji

@@ -50,7 +50,7 @@ class Login extends Component {
         this.context.setUserLogged()
         this.context.setUserRole(body.role)
 
-        this.props.history.push("/") // todo poprawić - wszystko do primise
+        this.props.history.push("/") // todo poprawić - wszystko do promise
     }
 
     render() {

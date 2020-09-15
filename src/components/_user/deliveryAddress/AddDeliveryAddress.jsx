@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import * as URLs from '../../URLs'
-import Address from "./model/Address";
 
 class AddDeliveryAddress extends Component {
 
@@ -72,7 +71,7 @@ class AddDeliveryAddress extends Component {
             fetch(url, {
                 method: 'POST',
                 headers: headers,
-                body: JSON.stringify(new Address(this.state.street, this.state.phone))
+                body: JSON.stringify({street: this.state.street, phone: this.state.phone})
             })
                 .then(this.clearFields)
                 .then(this.showAddressAddedMessage);

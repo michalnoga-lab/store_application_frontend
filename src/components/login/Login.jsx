@@ -38,7 +38,7 @@ class Login extends Component {
             {
                 method: 'POST',
                 headers: headers,
-                body: JSON.stringify(new User(login, password))
+                body: JSON.stringify({login: login, password: password})
             });
         const body = await response.json();
         sessionStorage.setItem('token', body.token)

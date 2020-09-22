@@ -42,6 +42,8 @@ const Product = () => {
         console.log(target)
         console.log(value)
         console.log(name)
+
+        // todo product ID do sessionStorage
     }
 
     return (<div className="table-page">
@@ -71,6 +73,10 @@ const Product = () => {
 
 export {Product}
 
+
+// todo remove
+
+//
 // import React, {Component} from "react";
 // import * as URLs from '../../URLs'
 // import Table from "react-bootstrap/Table";

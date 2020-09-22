@@ -11,8 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="709ca4e2-038a-462e-82df-7a246661b6e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/contact/Contact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contact/Contact.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/_user/product/AddProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/product/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/product/Product.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,18 +53,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/scss" />
-      <recent name="$PROJECT_DIR$/src/components/main/logout" />
-      <recent name="$PROJECT_DIR$/src/components/main/navigation/static" />
-      <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\components\main" />
       <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\components\login" />
       <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\components\home" />
       <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\components\contact" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/_user/product" />
+      <recent name="$PROJECT_DIR$/src/assets/scss" />
+      <recent name="$PROJECT_DIR$/src/components/main/logout" />
+      <recent name="$PROJECT_DIR$/src/components/main/navigation/static" />
+      <recent name="J:\workspace-java-script\zadania\prima_platforma_frontend\src\pages" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -227,7 +230,7 @@
       <workItem from="1600365848144" duration="216000" />
       <workItem from="1600411755853" duration="7127000" />
       <workItem from="1600680833100" duration="32000" />
-      <workItem from="1600680882092" duration="1453000" />
+      <workItem from="1600680882092" duration="3434000" />
     </task>
     <servers />
   </component>

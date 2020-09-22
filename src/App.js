@@ -56,7 +56,6 @@ class App extends Component {
                 {text: 'KONTAKT', path: '/contact', icon: 'fa fa-envelope'},
                 {text: 'WYLOGUJ', path: '/logout', icon: 'fa fa-sign-out'}],
             root: []
-            // todo root menu
         }
     }
 
@@ -81,7 +80,7 @@ class App extends Component {
                                 <Route path='/carts/one' component={ActiveCart}/>
                                 <Route path='/contact' component={Contact}/>
                                 <Route path='/logout' component={Logout}/>
-                                {/*<Route path='/loggedOut' component={LoggedOut}/>*/}
+                                {/*<Route path='/loggedOut' component={LoggedOut}/>*/} //todo
                             </Switch>
                         </div>
                     </Router>
@@ -135,6 +134,8 @@ export {App};
 
 // todo ------------------------------------------------------------------------------------------
 
+// todo - połączyć metody będące w różnych ale dotyczące tego samego
+
 // todo DOM purify
 
 // todo usuń produkt z koszyka
@@ -143,6 +144,5 @@ export {App};
 // todo do kontenerów i na produkcję
 
 // todo wyświetlanie błedów jeżeli backend nie działa
-// todo przykładowo: Uncaught (in promise) TypeError: NetworkError when attempting to fetch resource
 
 // todo wersja mobilna - na samym końcu

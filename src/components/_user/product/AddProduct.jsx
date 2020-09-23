@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
+import {useHistory} from "react-router-dom";
 import * as URLs from '../../URLs'
 import Table from "react-bootstrap/Table";
 
@@ -11,6 +12,7 @@ const AddProduct = () => {
     let [isProductAdded, setIsProductAdded] = useState(false)
     let [productAddedMessage, setProductAddedMessage] = useState('Produkt został dodany do koszyka')
     let [change, setChange] = useState(true)
+    let history = useHistory()
 
     useEffect(() => {
         async function getData() {
@@ -68,6 +70,7 @@ const AddProduct = () => {
             .catch(err => console.log(err))
 
         event.preventDefault()
+        setTimeout(() => history.push('/products/all'), 1000)
     }
 
     const clearFields = () => {

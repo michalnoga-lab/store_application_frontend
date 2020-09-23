@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
+import {useHistory} from 'react-router-dom'
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
 
@@ -14,11 +15,15 @@ const Product = props =>
 
 const ActiveCart = () => {
 
-    const [products, setProducts] = useState([])
-    const [addresses, setAddresses] = useState([])
-    const [address, setAddress] = useState({})
-    const [cartClosed, setCartClosed] = useState(false)
-    const [change, setChange] = useState(true)
+    let [products, setProducts] = useState([])
+    let [addresses, setAddresses] = useState([])
+    let [address, setAddress] = useState({})
+    let [cartClosed, setCartClosed] = useState(false)
+    let [userHasAddresses, setUserHasAddresses] = useState(false)
+    let [isAddAddAddressButtonActive, setIsAddAddressButtonActive] = useState(false)
+    let [isSubmitButtonActive, setIsSubmitButtonActive] = useState(false)
+    let [change, setChange] = useState(true)
+    let history = useHistory()
 
     useEffect(() => {
         async function getData() {
@@ -42,28 +47,24 @@ const ActiveCart = () => {
         setAddress(addressToStore[0])
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async event => {
+
         const url = URLs.backend + 'api/carts/close'
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
-        const response = fetch(url, {
+        fetch(url, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({id: address.id})
         })
-
-        await response
             .then(() => setChange(true))
             .then(() => setCartClosed(true))
             .then(() => setProducts([]))
             .catch(err => console.log(err))
 
-        const body = (await response).json();
-        console.log(await body)
-
-        // todo przekierowanie na nowy adres: produkty wyslane do realizacji
+        event.preventDefault()
     }
 
     const getProductsFromActiveCart = async () => {
@@ -93,8 +94,22 @@ const ActiveCart = () => {
 
         const addresses = JSON.parse(await (await response).text())
         const firstAddress = await addresses[0]
-        setAddresses(await addresses)
-        setAddress(await firstAddress)
+
+        if (Object.keys(addresses).length === 0) {
+            setUserHasAddresses(false)
+            setIsAddAddressButtonActive(true)
+            setIsSubmitButtonActive(false)
+        } else {
+            setUserHasAddresses(true)
+            setIsAddAddressButtonActive(false)
+            setIsSubmitButtonActive(true)
+            setAddresses(await addresses)
+            setAddress(await firstAddress)
+        }
+    }
+
+    const handleAddAddress = () => {
+        history.push('/deliveryAddress/add')
     }
 
     if (Object.entries(products).length === 0) {
@@ -109,8 +124,8 @@ const ActiveCart = () => {
                         </div>
                     </section>
                 </div>
-                <div className='alert alert-success m-4' hidden={!cartClosed}> {/*todo napis się nie pokazuje*/}
-                    <p>Produkty dodane do koszyka</p>
+                <div className='alert alert-success m-4' hidden={!cartClosed}>
+                    <p>Zamówienie przesłane do realizacji</p>
                 </div>
             </div>
         )
@@ -144,15 +159,20 @@ const ActiveCart = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className='table-page'>
-                        <label>DOSTAWA:</label>
-                        <select name='address' value={address} onChange={handleAddressChange}>
+                        <label hidden={!userHasAddresses}>DOSTAWA DO:</label>
+                        <select name='address' value={address} onChange={handleAddressChange}
+                                hidden={!userHasAddresses}>
                             {
                                 addresses.map(address => <option key={address.id}
                                                                  value={address.id}>{address.street}</option>)
                             }
                         </select>
-                        <div className='table-page'>
-
+                        <div hidden={!isAddAddAddressButtonActive}>
+                            <button className='btn btn-outline-dark btn-block' onClick={handleAddAddress}>DODAJ ADRES
+                                DOSTAWY
+                            </button>
+                        </div>
+                        <div className='table-page' hidden={!isSubmitButtonActive}>
                             <button type='submit' className='btn btn-block btn-outline-secondary'>PRZEŚLIJ DO REALIZACJI
                             </button>
                         </div>

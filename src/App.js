@@ -13,6 +13,7 @@ import {AddDeliveryAddress} from "./components/_user/deliveryAddress/AddDelivery
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import {Switch} from "react-router";
 import Context from './components/context/context'
+import {AddProduct} from "./components/_user/product/AddProduct";
 
 class App extends Component {
     static contextType = Context
@@ -74,6 +75,7 @@ class App extends Component {
                             <Switch>
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/products/all' component={Product}/>
+                                <Route path='/products/one' component={AddProduct}/>
                                 <Route path='/carts/all' component={AllCarts}/>
                                 <Route path='/deliveryAddress/all' component={DeliveryAddress}/>
                                 <Route path='/deliveryAddress/add' component={AddDeliveryAddress}/>

@@ -36,8 +36,7 @@ const AddProduct = () => {
         const response = fetch(url, {
             method: 'POST',
             headers: headers,
-            //body: JSON.stringify({id: sessionStorage.getItem('productId')}) // todo czy to dobra praktyka ???
-            body: JSON.stringify({id: 3}) // todo zmienić ze stałego ustawienia
+            body: JSON.stringify({id: sessionStorage.getItem('productId')})
         })
 
         const body = await (await response).json()

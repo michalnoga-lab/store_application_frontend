@@ -11,7 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="709ca4e2-038a-462e-82df-7a246661b6e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/_user/product/AddProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/product/AddProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/product/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/product/Product.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last.edited.regexp" value="1111111111aaaa" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../react/react-09-routing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -229,7 +230,10 @@
       <workItem from="1600680833100" duration="32000" />
       <workItem from="1600680882092" duration="3434000" />
       <workItem from="1600852360801" duration="4249000" />
-      <workItem from="1600857223925" duration="2253000" />
+      <workItem from="1600857223925" duration="2719000" />
+      <workItem from="1600880446836" duration="3268000" />
+      <workItem from="1600931987284" duration="2000" />
+      <workItem from="1600934021590" duration="608000" />
     </task>
     <servers />
   </component>
@@ -258,12 +262,12 @@
     </state>
     <state x="624" y="233" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1592908196331" />
     <state x="624" y="235" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.29.1920.1051@0.29.1920.1051" timestamp="1599042485209" />
-    <state x="678" y="242" width="424" height="491" key="FileChooserDialogImpl" timestamp="1600027399448">
+    <state x="678" y="242" width="424" height="491" key="FileChooserDialogImpl" timestamp="1600886505691">
       <screen x="0" y="29" width="1920" height="1051" />
     </state>
     <state x="678" y="240" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1596043217830" />
     <state x="678" y="240" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1597249847501" />
-    <state x="678" y="242" width="424" height="491" key="FileChooserDialogImpl/0.29.1920.1051@0.29.1920.1051" timestamp="1600027399448" />
+    <state x="678" y="242" width="424" height="491" key="FileChooserDialogImpl/0.29.1920.1051@0.29.1920.1051" timestamp="1600886505691" />
     <state width="1874" height="274" key="GridCell.Tab.0.bottom" timestamp="1600254724253">
       <screen x="0" y="29" width="1920" height="1051" />
     </state>

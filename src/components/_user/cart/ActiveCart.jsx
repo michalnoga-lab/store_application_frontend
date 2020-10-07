@@ -173,7 +173,8 @@ const ActiveCart = () => {
                             </button>
                         </div>
                         <div className='table-page' hidden={!isSubmitButtonActive}>
-                            <button type='submit' className='btn btn-block btn-outline-secondary'>PRZEŚLIJ DO REALIZACJI
+                            <button type='submit' className='btn btn-block btn-outline-secondary'
+                                    hidden={cartClosed}>PRZEŚLIJ DO REALIZACJI
                             </button>
                         </div>
                     </div>

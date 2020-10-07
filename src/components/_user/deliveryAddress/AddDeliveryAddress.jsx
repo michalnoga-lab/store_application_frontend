@@ -88,7 +88,6 @@ const AddDeliveryAddress = () => {
                         placeholder='TELEFON'
                         name='phone'
                         value={phone}
-                        required={true}
                         onChange={handlePhoneChange}
                     />
                 </div>

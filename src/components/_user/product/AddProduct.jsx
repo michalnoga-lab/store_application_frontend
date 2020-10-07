@@ -102,7 +102,6 @@ const AddProduct = () => {
                             className='btn-block form-control'
                             type='text'
                             placeholder='PODAJ ILOŚĆ'
-                            defaultValue={1}
                             name='quantity'
                             value={quantity}
                             onChange={handleChange}

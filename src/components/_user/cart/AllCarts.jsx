@@ -16,19 +16,11 @@ const EmptyList = () => (
 
 const TableHeadItem = () =>
     <tr>
-        <td>Lp</td>
-        <td>Dostawa do</td>
-        <td>Wartość koszyka</td>
-        <td>Data zamówienia</td>
-    </tr>
-
-const CartItem = props =>
-    <tr>
-        <td>{props.rowNumer}</td>
-        <td>{props.cart.deliveryAddressDTO == null ? '----------' : props.cart.deliveryAddressDTO.street}</td>
-        <td> {props.cart.totalGrossValue} PLN</td>
-        <td>{props.cart.purchaseTime == null ? '----------' :
-            props.cart.purchaseTime.toString().replace('T', " ")}</td>
+        <td className='col-1'>Lp</td>
+        <td className='col-5'>Dostawa do</td>
+        <td className='col-2'>Wartość koszyka</td>
+        <td className='col-2'>Data zamówienia</td>
+        <td className='col-2'> </td>
     </tr>
 
 const AllCarts = () => {
@@ -73,7 +65,19 @@ const AllCarts = () => {
                         <TableHeadItem/>
                         </thead>
                         <tbody>
-                        {carts.map((cart, i) => <CartItem key={cart.id} cart={cart} rowNumer={i + 1}/>)}
+                        {/*{carts.map((cart, i) => <CartItem key={cart.id} cart={cart} rowNumer={i + 1}/>)}*/}
+                        {carts.map((cart, i) =>
+                            <tr key={cart.id} id={cart.id}>
+                                <td>{i + 1}</td>
+                                <td>{cart.deliveryAddressDTO == null ? '----------' : cart.deliveryAddressDTO.street}</td>
+                                <td> {cart.totalGrossValue} PLN</td>
+                                <td>{cart.purchaseTime == null ? '----------' :
+                                    cart.purchaseTime.toString().replace('T', " ")}</td>
+                                <td>
+                                    <button className='btn btn-block '>SZCZEGÓŁY</button> {/*todo tutaj zacząć*/}
+                                </td>
+                            </tr>
+                        )}
                         </tbody>
                     </Table>
                 </div>

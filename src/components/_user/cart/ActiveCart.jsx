@@ -3,17 +3,7 @@ import {useHistory} from 'react-router-dom'
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
 
-const Product = props =>
-    <tr>
-        <td>{props.rowNumber}</td>
-        <td>{props.name}</td>
-        <td>{props.quantity}</td>
-        <td>{props.nettPrice} PLN</td>
-        <td>{props.vat} %</td>
-        <td>{props.value} PLN</td>
-    </tr>
-
-const ActiveCart = () => { // TODO usuwanie produktów z koszyka
+const ActiveCart = () => {
 
     let [products, setProducts] = useState([])
     let [addresses, setAddresses] = useState([])
@@ -108,9 +98,11 @@ const ActiveCart = () => { // TODO usuwanie produktów z koszyka
         }
     }
 
-    const handleAddAddress = () => {
+    const handleAddAddressButton = () => {
         history.push('/deliveryAddress/add')
     }
+
+    // TODO usuwanie produktów z koszyka
 
     if (Object.entries(products).length === 0) {
         return (
@@ -145,15 +137,16 @@ const ActiveCart = () => { // TODO usuwanie produktów z koszyka
                         </tr>
                         </thead>
                         <tbody>
-                        {products.map((product, i) => <Product
-                            key={product.id}
-                            rowNumber={i + 1}
-                            name={product.name}
-                            quantity={product.quantity}
-                            nettPrice={product.nettPrice}
-                            vat={product.vat}
-                            value={product.nettPrice * product.quantity}
-                        />)}
+                        {products.map((product, i) =>
+                            <tr key={product.id} id={product.id}>
+                                <td className='col-1'>{i + 1}</td>
+                                <td className='col-5'>{product.name}</td>
+                                <td className='col-1'>{product.quantity} SZT</td>
+                                <td className='col-2'>{product.nettPrice} PLN</td>
+                                <td className='col-1'>{product.vat} %</td>
+                                <td className='col-2'>{product.nettPrice * product.quantity} PLN</td>
+                            </tr>
+                        )}
                         </tbody>
                     </Table>
                 </div>
@@ -168,7 +161,8 @@ const ActiveCart = () => { // TODO usuwanie produktów z koszyka
                             }
                         </select>
                         <div hidden={!isAddAddAddressButtonActive}>
-                            <button className='btn btn-outline-dark btn-block' onClick={handleAddAddress}>DODAJ ADRES
+                            <button className='btn btn-outline-dark btn-block' onClick={handleAddAddressButton}>DODAJ
+                                ADRES
                                 DOSTAWY
                             </button>
                         </div>

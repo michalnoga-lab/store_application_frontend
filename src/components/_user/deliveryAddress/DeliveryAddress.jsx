@@ -83,9 +83,12 @@ const DeliveryAddress = () => {
                     <tbody>
                     {deliveryAddresses.map((deliveryAddress, i) =>
                         <tr key={deliveryAddress.id} id={deliveryAddress.id} onClick={handleAddressClick}>
-                            <td>{i + 1}</td>
-                            <td>{deliveryAddress.street}</td>
-                            <td>{deliveryAddress.phone}</td>
+                            <td className='col-1'>{i + 1}</td>
+                            <td className='col-6'>{deliveryAddress.street}</td>
+                            <td className='col-3'>{deliveryAddress.phone}</td>
+                            <td className='col-2'>
+                                <button className='btn btn-danger btn-block'>SKASUJ</button>
+                            </td>
                         </tr>
                     )}
                     </tbody>

@@ -52,9 +52,12 @@ const Product = () => { // TODO filtrowanie produktów po nazwie
                     <tbody>
                     {products.map((product, i) =>
                         <tr key={product.id} id={product.id} onClick={handleProductClick}>
-                            <td>{i + 1}</td>
-                            <td>{product.name}</td>
-                            <td>{product.nettPrice} PLN</td>
+                            <td className='col-1'>{i + 1}</td>
+                            <td className='col-7'>{product.name}</td>
+                            <td className='col-2'>{product.nettPrice} PLN</td>
+                            <td className='col-2'>
+                                <button type="button" className="btn btn-success btn-block">DO KOSZYKA</button>
+                            </td>
                         </tr>
                     )}
                     </tbody>

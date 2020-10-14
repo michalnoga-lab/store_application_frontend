@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
+import {useHistory} from "react-router-dom";
 import * as URLs from '../../URLs'
 
 const AddDeliveryAddress = () => { // TODO walidacja adresu
@@ -11,6 +12,7 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
     const [phoneErrorMessage, setPhoneErrorMessage] = useState('Dozwolone są tylko litery i cyfry')
     const [isAddressAdded, setIsAddressAdded] = useState(false)
     const [addressAddedMessage, setAddressAddedMessage] = useState('Poprawnie dodano nowy adres')
+    let history = useHistory()
 
     useEffect(() => {
         if (Object.keys(street).length === 0) {
@@ -61,6 +63,7 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
             })
                 .then(clearFields)
             setIsAddressAdded(true)
+            setTimeout(() => history.push("/deliveryAddress/all"), 1000)
         }
         event.preventDefault();
     }

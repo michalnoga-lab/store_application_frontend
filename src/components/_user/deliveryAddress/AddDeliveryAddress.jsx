@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import * as URLs from '../../URLs'
 
-const AddDeliveryAddress = () => { // TODO walidacja adresu
+const AddDeliveryAddress = () => {
 
     const [street, setStreet] = useState('')
     const [phone, setPhone] = useState('')
@@ -12,23 +12,28 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
     const [phoneErrorMessage, setPhoneErrorMessage] = useState('Dozwolone są tylko litery i cyfry')
     const [isAddressAdded, setIsAddressAdded] = useState(false)
     const [addressAddedMessage, setAddressAddedMessage] = useState('Poprawnie dodano nowy adres')
+    const [isAddButtonVisible, setIsAddButtonVisible] = useState(false)
     let history = useHistory()
 
     useEffect(() => {
         if (Object.keys(street).length === 0) {
             setIsStreetCorrect(true)
+            setIsAddButtonVisible(false)
         }
         if (Object.keys(phone).length === 0) {
             setIsPhoneCorrect(true)
+            setIsAddButtonVisible(false)
         }
     })
 
     const handleStreetChange = event => {
         let target = event.target
         let value = target.value
+
         const regex = /^[a-z0-9\s]{0,100}$/g;
 
         regex.test(value) ? setIsStreetCorrect(true) : setIsStreetCorrect(false)
+        checkIsInputCorrect()
         setStreet(value)
     }
 
@@ -38,6 +43,7 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
         const regex = /^[a-z0-9\s]{0,100}$/g;
 
         regex.test(value) ? setIsPhoneCorrect(true) : setIsPhoneCorrect(false)
+        checkIsInputCorrect()
         setPhone(value)
     }
 
@@ -46,6 +52,14 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
         setPhone('')
         setIsStreetCorrect(false)
         setIsPhoneCorrect(false)
+    }
+
+    const checkIsInputCorrect = () => {
+        if (isStreetCorrect && isPhoneCorrect && Object.keys(street).length > 0 && Object.keys(phone).length > 0) {
+            setIsAddButtonVisible(true)
+        } else {
+            setIsAddButtonVisible(false)
+        }
     }
 
     const handleSubmit = event => {
@@ -100,7 +114,7 @@ const AddDeliveryAddress = () => { // TODO walidacja adresu
                 <div className='alert alert-success' hidden={!isAddressAdded}>
                     {addressAddedMessage}
                 </div>
-                <div>
+                <div hidden={!isAddButtonVisible}>
                     <button type='submit' className='btn btn-block btn-outline-dark'>DODAJ</button>
                 </div>
             </form>

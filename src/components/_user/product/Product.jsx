@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom";
 import * as URLs from '../../URLs'
 import Table from "react-bootstrap/Table";
 
-const Product = () => {
+const Product = () => { // TODO filtrowanie produktów po nazwie
 
     let [products, setProducts] = useState([])
     let [change, setChange] = useState(true)

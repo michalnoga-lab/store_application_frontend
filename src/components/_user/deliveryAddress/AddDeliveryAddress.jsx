@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import * as URLs from '../../URLs'
 
-const AddDeliveryAddress = () => {
+const AddDeliveryAddress = () => { // TODO walidacja adresu
 
     const [street, setStreet] = useState('')
     const [phone, setPhone] = useState('')

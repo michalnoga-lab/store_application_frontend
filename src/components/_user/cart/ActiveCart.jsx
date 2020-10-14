@@ -13,7 +13,7 @@ const Product = props =>
         <td>{props.value} PLN</td>
     </tr>
 
-const ActiveCart = () => {
+const ActiveCart = () => { // TODO usuwanie produktów z koszyka
 
     let [products, setProducts] = useState([])
     let [addresses, setAddresses] = useState([])

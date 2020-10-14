@@ -14,13 +14,6 @@ const EmptyList = () => (
     </div>
 )
 
-const AddressItem = props =>
-    <tr>
-        <td>{props.rowNumber}</td>
-        <td>{props.address.street}</td>
-        <td>{props.address.phone}</td>
-    </tr>
-
 const DeliveryAddress = () => {
 
     const [deliveryAddresses, setDeliveryAddresses] = useState([])
@@ -50,6 +43,28 @@ const DeliveryAddress = () => {
         setDeliveryAddresses(await body)
     }
 
+    const removeAddress = async id => {
+        const url = URLs.backend + 'api/deliveryAddress/remove/' + id;
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json;charset=UTF-8');
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+
+        await fetch(url, {
+            method: 'POST',
+            headers: headers
+        })
+    }
+
+    const handleAddressClick = event => {
+        let target = event.target
+        let id = target.parentElement.getAttribute('id')
+
+        removeAddress(id)
+            .then(() => getAddresses())
+            .catch(err => console.log(err))
+
+    }
+
     if (Object.entries(deliveryAddresses).length === 0) {
         return (
             <EmptyList/>
@@ -66,9 +81,13 @@ const DeliveryAddress = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {deliveryAddresses.map((deliveryAddress, i) => <AddressItem key={deliveryAddress.id}
-                                                                                address={deliveryAddress}
-                                                                                rowNumber={i + 1}/>)}
+                    {deliveryAddresses.map((deliveryAddress, i) =>
+                        <tr key={deliveryAddress.id} id={deliveryAddress.id} onClick={handleAddressClick}>
+                            <td>{i + 1}</td>
+                            <td>{deliveryAddress.street}</td>
+                            <td>{deliveryAddress.phone}</td>
+                        </tr>
+                    )}
                     </tbody>
                 </Table>
             </div>

@@ -20,7 +20,7 @@ const TableHeadItem = () =>
         <td className='col-5'>Dostawa do</td>
         <td className='col-2'>Wartość koszyka</td>
         <td className='col-2'>Data zamówienia</td>
-        <td className='col-2'> </td>
+        <td className='col-2'></td>
     </tr>
 
 const AllCarts = () => {
@@ -52,6 +52,13 @@ const AllCarts = () => {
             .catch(err => console.log(err))
     }
 
+    const handleCartClick = async event => {
+        let target = event.target
+
+        sessionStorage.setItem('cartId', target.parentElement.getAttribute('id'));
+        history.push('/carts/oneClosed')
+    }
+
     if (carts.length === 0) {
         return (
             <EmptyList/>
@@ -67,14 +74,15 @@ const AllCarts = () => {
                         <tbody>
                         {/*{carts.map((cart, i) => <CartItem key={cart.id} cart={cart} rowNumer={i + 1}/>)}*/}
                         {carts.map((cart, i) =>
-                            <tr key={cart.id} id={cart.id}>
+                            <tr key={cart.id} id={cart.id} onClick={handleCartClick}>
                                 <td>{i + 1}</td>
                                 <td>{cart.deliveryAddressDTO == null ? '----------' : cart.deliveryAddressDTO.street}</td>
                                 <td> {cart.totalGrossValue} PLN</td>
                                 <td>{cart.purchaseTime == null ? '----------' :
                                     cart.purchaseTime.toString().replace('T', " ")}</td>
                                 <td>
-                                    <button className='btn btn-block '>SZCZEGÓŁY</button> {/*todo tutaj zacząć*/}
+                                    <button className='btn btn-block btn-secondary'>SZCZEGÓŁY</button>
+                                    {/*todo tutaj zacząć*/}
                                 </td>
                             </tr>
                         )}

@@ -76,10 +76,11 @@ class App extends Component {
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/products/all' component={Product}/>
                                 <Route path='/products/one' component={AddProduct}/>
-                                <Route path='/carts/all' component={AllCarts}/>
                                 <Route path='/deliveryAddress/all' component={DeliveryAddress}/>
                                 <Route path='/deliveryAddress/add' component={AddDeliveryAddress}/>
+                                <Route path='/carts/all' component={AllCarts}/>
                                 <Route path='/carts/one' component={ActiveCart}/>
+                                <Route path='/carts/oneClosed' component={ClosedCart}/>
                                 <Route path='/contact' component={Contact}/>
                                 <Route path='/logout' component={Logout}/>
                                 {/*<Route path='/loggedOut' component={LoggedOut}/>*/} //todo

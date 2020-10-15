@@ -77,7 +77,7 @@ const AddDeliveryAddress = () => {
             })
                 .then(clearFields)
             setIsAddressAdded(true)
-            setTimeout(() => history.push("/deliveryAddress/all"), 1000)
+            setTimeout(() => history.push("/deliveryAddress/all"), 500)
         }
         event.preventDefault();
     }

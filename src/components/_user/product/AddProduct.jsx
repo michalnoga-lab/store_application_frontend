@@ -69,7 +69,7 @@ const AddProduct = () => {
             .catch(err => console.log(err))
 
         event.preventDefault()
-        setTimeout(() => history.push('/products/all'), 1000)
+        setTimeout(() => history.push('/products/all'), 500)
     }
 
     const clearFields = () => {
@@ -90,9 +90,9 @@ const AddProduct = () => {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{product.name}</td>
-                        <td>{product.nettPrice}</td>
-                        <td>{product.description}</td>
+                        <td className='col-3'>{product.name}</td>
+                        <td className='col-1'>{product.nettPrice}</td>
+                        <td className='col-8'>{product.description}</td>
                     </tr>
                     </tbody>
                 </Table>

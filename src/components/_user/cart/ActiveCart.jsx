@@ -98,6 +98,23 @@ const ActiveCart = () => {
         }
     }
 
+    const handleProductClick = async event => {
+        let target = event.target
+        let id = target.parentElement.getAttribute('id')
+
+        const url = URLs.backend + 'api/products/remove/' + id;
+        const headers = new Headers()
+        headers.set('Content-Type', 'application/json;charset=UTF-8')
+        headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
+
+        await fetch(url, {
+            method: "DELETE",
+            headers: headers,
+            body: JSON.stringify({id: id})
+        })
+            .then(() => setChange(true))
+    }
+
     const handleAddAddressButton = () => {
         history.push('/deliveryAddress/add')
     }
@@ -138,13 +155,16 @@ const ActiveCart = () => {
                         </thead>
                         <tbody>
                         {products.map((product, i) =>
-                            <tr key={product.id} id={product.id}>
+                            <tr key={product.id} id={product.id} onClick={handleProductClick}>
                                 <td className='col-1'>{i + 1}</td>
                                 <td className='col-5'>{product.name}</td>
                                 <td className='col-1'>{product.quantity} SZT</td>
-                                <td className='col-2'>{product.nettPrice} PLN</td>
+                                <td className='col-1'>{product.nettPrice} PLN</td>
                                 <td className='col-1'>{product.vat} %</td>
-                                <td className='col-2'>{product.nettPrice * product.quantity} PLN</td>
+                                <td className='col-1'>{product.nettPrice * product.quantity} PLN</td>
+                                <td className='col-2'>
+                                    <button className='btn btn-block btn-danger'>USUŃ</button>
+                                </td>
                             </tr>
                         )}
                         </tbody>

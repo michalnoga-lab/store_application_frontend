@@ -14,6 +14,7 @@ import {Route, BrowserRouter as Router} from "react-router-dom";
 import {Switch} from "react-router";
 import Context from './components/context/context'
 import {AddProduct} from "./components/_user/product/AddProduct";
+import {ClosedCart} from "./components/_user/cart/ClosedCart";
 
 class App extends Component {
     static contextType = Context

@@ -12,7 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="709ca4e2-038a-462e-82df-7a246661b6e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/_user/cart/AllCarts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/cart/AllCarts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/cart/ClosedCart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/cart/ClosedCart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/deliveryAddress/AddDeliveryAddress.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/deliveryAddress/AddDeliveryAddress.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_user/deliveryAddress/DeliveryAddress.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +257,12 @@
       <workItem from="1602694175028" duration="600000" />
       <workItem from="1602705164931" duration="70000" />
       <workItem from="1602705245722" duration="3994000" />
-      <workItem from="1602754889193" duration="4660000" />
+      <workItem from="1602754889193" duration="5542000" />
+      <workItem from="1602785216864" duration="1252000" />
+      <workItem from="1602837338162" duration="3084000" />
+      <workItem from="1602963480297" duration="1138000" />
+      <workItem from="1603095049873" duration="1591000" />
+      <workItem from="1603096806685" duration="2477000" />
     </task>
     <servers />
   </component>

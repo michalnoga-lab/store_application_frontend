@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import * as URLs from '../../URLs'
 
-const AddDeliveryAddress = () => {
+const AddDeliveryAddress = () => { // TODO dodać metody focus do formularzy
 
     const [street, setStreet] = useState('')
     const [phone, setPhone] = useState('')

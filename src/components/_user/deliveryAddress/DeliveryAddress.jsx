@@ -43,26 +43,25 @@ const DeliveryAddress = () => {
         setDeliveryAddresses(await body)
     }
 
-    const removeAddress = async id => {
+    const handleAddressClick = async event => {
+        let target = event.target
+        let id = target.parentElement.getAttribute('id')
+
         const url = URLs.backend + 'api/deliveryAddress/remove/' + id;
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
-        await fetch(url, {
+        const response = await fetch(url, {
             method: 'POST',
             headers: headers
         })
-    }
 
-    const handleAddressClick = event => {
-        let target = event.target
-        let id = target.parentElement.getAttribute('id')
-
-        removeAddress(id)
-            .then(() => getAddresses())
+        const body = await response.json()
+            .then(() => setChange(true))
             .catch(err => console.log(err))
 
+        event.preventDefault()
     }
 
     if (Object.entries(deliveryAddresses).length === 0) {
@@ -87,7 +86,7 @@ const DeliveryAddress = () => {
                             <td className='col-6'>{deliveryAddress.street}</td>
                             <td className='col-3'>{deliveryAddress.phone}</td>
                             <td className='col-2'>
-                                <button className='btn btn-danger btn-block'>SKASUJ</button>
+                                <button className='btn btn-block btn-danger'>USUŃ</button>
                             </td>
                         </tr>
                     )}

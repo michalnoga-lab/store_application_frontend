@@ -1,6 +1,7 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useRef, useCallback} from "react";
 import * as URLs from '../../URLs';
 import {Table} from "react-bootstrap";
+import {Redirect} from "react-router";
 
 const EmptyList = () => (
     <div className='main-page'>
@@ -56,7 +57,7 @@ const AllCarts = () => {
         let target = event.target
 
         sessionStorage.setItem('cartId', target.parentElement.getAttribute('id'));
-        history.push('/carts/oneClosed')
+        return <Redirect push to={'/carts/oneClosed'}/>
     }
 
     if (carts.length === 0) {
@@ -72,7 +73,6 @@ const AllCarts = () => {
                         <TableHeadItem/>
                         </thead>
                         <tbody>
-                        {/*{carts.map((cart, i) => <CartItem key={cart.id} cart={cart} rowNumer={i + 1}/>)}*/}
                         {carts.map((cart, i) =>
                             <tr key={cart.id} id={cart.id} onClick={handleCartClick}>
                                 <td>{i + 1}</td>

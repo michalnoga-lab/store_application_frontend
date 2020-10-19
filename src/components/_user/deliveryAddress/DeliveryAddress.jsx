@@ -77,6 +77,7 @@ const DeliveryAddress = () => {
                         <td>Lp</td>
                         <td>Adres</td>
                         <td>Telefon</td>
+                        <td>Usuń</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -85,9 +86,7 @@ const DeliveryAddress = () => {
                             <td className='col-1'>{i + 1}</td>
                             <td className='col-6'>{deliveryAddress.street}</td>
                             <td className='col-3'>{deliveryAddress.phone}</td>
-                            <td className='col-2'>
-                                <button className='btn btn-block btn-danger'>USUŃ</button>
-                            </td>
+                            <td className='col-2 fa fa-trash fa-2x icon-red'/>
                         </tr>
                     )}
                     </tbody>

@@ -98,9 +98,9 @@ const ActiveCart = () => {
         }
     }
 
-    const handleProductClick = async event => {
+    const handleRemoveFromCart = async event => {
         let target = event.target
-        let id = target.parentElement.getAttribute('id')
+        let id = target.parentElement.parentElement.getAttribute('id')
 
         const url = URLs.backend + 'api/products/remove/' + id;
         const headers = new Headers()
@@ -118,8 +118,6 @@ const ActiveCart = () => {
     const handleAddAddressButton = () => {
         history.push('/deliveryAddress/add')
     }
-
-    // TODO usuwanie produktów z koszyka
 
     if (Object.entries(products).length === 0) {
         return (
@@ -151,11 +149,12 @@ const ActiveCart = () => {
                             <td>Netto</td>
                             <td>VAT</td>
                             <td>Wartość netto</td>
+                            <td>Akcja</td>
                         </tr>
                         </thead>
                         <tbody>
                         {products.map((product, i) =>
-                            <tr key={product.id} id={product.id} onClick={handleProductClick}>
+                            <tr key={product.id} id={product.id}>
                                 <td className='col-1'>{i + 1}</td>
                                 <td className='col-5'>{product.name}</td>
                                 <td className='col-1'>{product.quantity} SZT</td>
@@ -163,7 +162,7 @@ const ActiveCart = () => {
                                 <td className='col-1'>{product.vat} %</td>
                                 <td className='col-1'>{product.nettPrice * product.quantity} PLN</td>
                                 <td className='col-2'>
-                                    <button className='btn btn-block btn-danger'>USUŃ</button>
+                                    <p className='fa fa-trash fa-2x icon-red' onClick={handleRemoveFromCart}/>
                                 </td>
                             </tr>
                         )}

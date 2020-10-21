@@ -43,9 +43,9 @@ const DeliveryAddress = () => {
         setDeliveryAddresses(await body)
     }
 
-    const handleAddressClick = async event => {
+    const removeAddress = async event => {
         let target = event.target
-        let id = target.parentElement.getAttribute('id')
+        let id = target.parentElement.parentElement.getAttribute('id')
 
         const url = URLs.backend + 'api/deliveryAddress/remove/' + id;
         const headers = new Headers();
@@ -60,8 +60,6 @@ const DeliveryAddress = () => {
         const body = await response.json()
             .then(() => setChange(true))
             .catch(err => console.log(err))
-
-        event.preventDefault()
     }
 
     if (Object.entries(deliveryAddresses).length === 0) {
@@ -82,11 +80,13 @@ const DeliveryAddress = () => {
                     </thead>
                     <tbody>
                     {deliveryAddresses.map((deliveryAddress, i) =>
-                        <tr key={deliveryAddress.id} id={deliveryAddress.id} onClick={handleAddressClick}>
+                        <tr key={deliveryAddress.id} id={deliveryAddress.id}>
                             <td className='col-1'>{i + 1}</td>
                             <td className='col-6'>{deliveryAddress.street}</td>
                             <td className='col-3'>{deliveryAddress.phone}</td>
-                            <td className='col-2 fa fa-trash fa-2x icon-red'/>
+                            <td className='col-2'>
+                                <p className='col-12 fa fa-trash fa-2x icon-red' onClick={removeAddress}/>
+                            </td>
                         </tr>
                     )}
                     </tbody>

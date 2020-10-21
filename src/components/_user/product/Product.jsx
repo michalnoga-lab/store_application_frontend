@@ -35,7 +35,7 @@ const Product = () => { // TODO filtrowanie produktów po nazwie
 
     const handleProductClick = event => {
         let target = event.target
-        sessionStorage.setItem('productId', target.parentElement.getAttribute('id'))
+        sessionStorage.setItem('productId', target.parentElement.parentElement.getAttribute('id'))
         history.push('/products/one')
     }
 
@@ -47,16 +47,17 @@ const Product = () => { // TODO filtrowanie produktów po nazwie
                         <td>Lp</td>
                         <td>Nazwa</td>
                         <td>Cena</td>
+                        <td>Akcja</td>
                     </tr>
                     </thead>
                     <tbody>
                     {products.map((product, i) =>
-                        <tr key={product.id} id={product.id} onClick={handleProductClick}>
+                        <tr key={product.id} id={product.id}>
                             <td className='col-1'>{i + 1}</td>
                             <td className='col-7'>{product.name}</td>
                             <td className='col-2'>{product.nettPrice} PLN</td>
                             <td className='col-2'>
-                                <button type="button" className="btn btn-success btn-block">DO KOSZYKA</button>
+                                <p className="fas fa-shopping-cart fa-2x icon-green" onClick={handleProductClick}/>
                             </td>
                         </tr>
                     )}

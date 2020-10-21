@@ -75,7 +75,7 @@ const DeliveryAddress = () => {
                         <td>Lp</td>
                         <td>Adres</td>
                         <td>Telefon</td>
-                        <td>Usuń</td>
+                        <td>Akcja</td>
                     </tr>
                     </thead>
                     <tbody>

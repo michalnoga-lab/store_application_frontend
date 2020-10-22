@@ -15,6 +15,8 @@ import {Switch} from "react-router";
 import Context from './components/context/context'
 import {AddProduct} from "./components/_user/product/AddProduct";
 import {ClosedCart} from "./components/_user/cart/ClosedCart";
+import {Rodo} from "./components/information/Rodo";
+import {Cookies} from "./components/information/Cookies";
 
 class App extends Component {
     static contextType = Context
@@ -84,13 +86,13 @@ class App extends Component {
                                 <Route path='/carts/oneClosed' component={ClosedCart}/>
                                 <Route path='/contact' component={Contact}/>
                                 <Route path='/logout' component={Logout}/>
-                                {/*<Route path='/loggedOut' component={LoggedOut}/>*/} //todo
+                                <Route path='/rodo' component={Rodo}/>
+                                <Route path='/cookies' component={Cookies}/>
                             </Switch>
                         </div>
                     </Router>
                 </div>
             )
-        // else if (sessionStorage.getItem('role') === 'ROLE_ADMIN') {
         else if (this.context.userLogged && this.context.userRole === 'ROLE_ADMIN') {
             return (
 

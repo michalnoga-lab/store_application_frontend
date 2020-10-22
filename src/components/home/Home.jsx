@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 const Home = () => {
 
@@ -39,6 +39,18 @@ const Home = () => {
                         platformie,
                         potrzebujesz nowej funkcjonalności - napisz do nas - biuro@primakrakow.pl</p>
                 </div>
+                <div className='top-page-text-details'>
+                    <p className='top-page-text-details-at'>@ Informacja RODO</p>
+                    <p className='top-page-text-details-text'>Informacja:
+                        <a href='/rodo'> sprawdź</a>
+                    </p>
+                </div>  <div className='top-page-text-details'>
+                <p className='top-page-text-details-at'>@ Informacja o ciasteczkach</p>
+                <p className='top-page-text-details-text'>Informacja:
+                    <a href='/cookies'> sprawdź</a>
+                </p>
+            </div>
+
             </section>
         </div>
     )

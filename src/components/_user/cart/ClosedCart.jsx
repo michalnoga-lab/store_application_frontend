@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Table from "react-bootstrap/Table";
 import * as URLs from '../../URLs'
 
@@ -12,7 +12,7 @@ const ClosedCart = () => {
             await getAllProductsFromCart()
         }
 
-        getData().catch(err => console.log(err))
+        getData().then().catch(err => console.log(err))
         setChange(false)
     }, [change])
 
@@ -27,46 +27,40 @@ const ClosedCart = () => {
             headers: headers
         })
 
-
-        console.log('---------------------') //todo
-        console.log(products)
-
-        const body = await response.json()
-        setProducts(body)
+        const body = await (await response.json()).productsInCartDTO
+        setProducts(await body)
     }
 
     return (
-        <div>
-            <div className='table-page'>
-                <Table bordered hover>
-                    <thead>
-                    <tr>
-                        <td>Lp</td>
-                        <td>Nazwa</td>
-                        <td>Ilość</td>
-                        <td>Netto</td>
-                        <td>VAT</td>
-                        <td>Wartość netto</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {products.map((product, i) =>
-                        <tr key={product.id} id={product.id}>
-                            <td className='col-1'>{i + 1}</td>
-                            <td className='col-5'>{product.name}</td>
-                            <td className='col-1'>{product.quantity} SZT</td>
-                            <td className='col-1'>{product.nettPrice} PLN</td>
-                            <td className='col-1'>{product.vat} %</td>
-                            <td className='col-1'>{product.nettPrice * product.quantity} PLN</td>
-                            <td className='col-2'>
-                                <button className='btn btn-block btn-danger'>USUŃ</button>
-                            </td>
+        products ?
+            <div>
+                <div className='table-page'>
+                    <Table bordered hover>
+                        <thead>
+                        <tr>
+                            <td>Lp</td>
+                            <td>Nazwa</td>
+                            <td>Ilość</td>
+                            <td>Netto</td>
+                            <td>VAT</td>
+                            <td>Wartość netto</td>
                         </tr>
-                    )}
-                    </tbody>
-                </Table>
-            </div>
-        </div>
+                        </thead>
+                        <tbody>
+                        {products.map((product, i) =>
+                            <tr key={product.id} id={product.id}>
+                                <td className='col-1'>{i + 1}</td>
+                                <td className='col-5'>{product.name}</td>
+                                <td className='col-1'>{product.quantity} SZT</td>
+                                <td className='col-1'>{product.nettPrice} PLN</td>
+                                <td className='col-1'>{product.vat} %</td>
+                                <td className='col-1'>{product.nettPrice * product.quantity} PLN</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </Table>
+                </div>
+            </div> : <div/>
     )
 }
 

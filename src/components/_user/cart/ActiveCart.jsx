@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import * as URLs from '../../URLs';
 import Table from "react-bootstrap/Table";
 
-const ActiveCart = () => {
+const ActiveCart = () => { //todo jeżeli dodany adres stądo to powrót tutaj
 
     let [products, setProducts] = useState([])
     let [addresses, setAddresses] = useState([])

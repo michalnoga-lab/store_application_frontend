@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, useCallback} from "react";
 import * as URLs from '../../URLs';
+import {useHistory} from "react-router";
 import {Table} from "react-bootstrap";
-import {Redirect} from "react-router";
 
 const EmptyList = () => (
     <div className='main-page'>
@@ -21,13 +21,14 @@ const TableHeadItem = () =>
         <td className='col-5'>Dostawa do</td>
         <td className='col-2'>Wartość koszyka</td>
         <td className='col-2'>Data zamówienia</td>
-        <td className='col-2'></td>
+        <td className='col-2'>Akcja</td>
     </tr>
 
 const AllCarts = () => {
 
     const [carts, setCarts] = useState([])
     const [change, setChange] = useState(true)
+    let history = useHistory();
 
     useEffect(() => {
         async function getData() {
@@ -44,6 +45,7 @@ const AllCarts = () => {
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
 
+
         fetch(url, {
             method: 'GET',
             headers: headers
@@ -56,8 +58,8 @@ const AllCarts = () => {
     const handleCartClick = async event => {
         let target = event.target
 
-        sessionStorage.setItem('cartId', target.parentElement.getAttribute('id'));
-        return <Redirect push to={'/carts/oneClosed'}/>
+        sessionStorage.setItem('cartId', target.parentElement.parentElement.getAttribute('id'));
+        history.push('/carts/oneClosed')
     }
 
     if (carts.length === 0) {
@@ -74,15 +76,14 @@ const AllCarts = () => {
                         </thead>
                         <tbody>
                         {carts.map((cart, i) =>
-                            <tr key={cart.id} id={cart.id} onClick={handleCartClick}>
+                            <tr key={cart.id} id={cart.id}>
                                 <td>{i + 1}</td>
                                 <td>{cart.deliveryAddressDTO == null ? '----------' : cart.deliveryAddressDTO.street}</td>
                                 <td> {cart.totalGrossValue} PLN</td>
                                 <td>{cart.purchaseTime == null ? '----------' :
                                     cart.purchaseTime.toString().replace('T', " ")}</td>
                                 <td>
-                                    <button className='btn btn-block btn-secondary'>SZCZEGÓŁY</button>
-                                    {/*todo tutaj zacząć*/}
+                                    <p className='fa fa-check fa-2x icon-grey' onClick={handleCartClick}/>
                                 </td>
                             </tr>
                         )}

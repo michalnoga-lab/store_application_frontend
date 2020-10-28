@@ -11,17 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="709ca4e2-038a-462e-82df-7a246661b6e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/_admin/products/AdminAddProduct.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_admin/products/AdminProduct.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/login/LoggedIn.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/RouteAdmin.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/RouteUser.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/logout/Logout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/logout/Logout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +269,7 @@
       <workItem from="1603394333055" duration="2510000" />
       <workItem from="1603573050965" duration="407000" />
       <workItem from="1603820613541" duration="111000" />
-      <workItem from="1603873743179" duration="12203000" />
+      <workItem from="1603873743179" duration="15296000" />
     </task>
     <servers />
   </component>

@@ -17,7 +17,7 @@ import {LoggedIn} from "./components/login/LoggedIn";
 import {RouteUser} from "./routes/RouteUser";
 
 
-const App = () => {
+const App = () => { // todo przeładować stronę
 
     return (
         <Router>
@@ -26,17 +26,35 @@ const App = () => {
                     <form className='form-inline'>
                         <Link to='/' className="btn btn-outline-secondary btn-lg m-3" type="button">START</Link>
 
-                        <Link to='/user/products/all' className='btn btn-outline-secondary btn-lg m-3'>MOJE
-                            PRODUKTY</Link>
-                        <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-3' type='button'>MOJE
-                            ZAKUPY</Link>
-                        <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-3'
-                              type='button'>MOJE ADRESY + DODAJ</Link>
-                        <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ KOSZYK</Link>
-                        <Link to='contact' className='btn btn-outline-secondary btn-lg m-3'>KONTAKT</Link>
+                        <div>
+                            {sessionStorage.getItem('role') === null ? <div/> : <div className='ml-5 mr-5'>
+                                <Link to='/user/products/all' className='btn btn-outline-secondary btn-lg m-3'>MOJE
+                                    PRODUKTY</Link>
+                                <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-3'
+                                      type='button'>MOJE
+                                    ZAKUPY</Link>
+                                <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-3'
+                                      type='button'>MOJE ADRESY</Link>
+                                <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-3'>DODAJ
+                                    ADRES</Link>
+                                <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ
+                                    KOSZYK</Link></div>}
+                        </div>
 
-                        <Link to='/login' className='btn btn-outline-success btn-lg m-3' type='button'>LOGOWANIE</Link>
-                        <Link to='/logout' className='btn btn-outline-danger btn-lg m-3' type='button'>ZAKOŃCZ</Link>
+                        <div className='mr-5'>
+                            <Link to='contact' className='btn btn-outline-secondary btn-lg m-3'>KONTAKT</Link>
+                        </div>
+                        <div>
+                            {sessionStorage.getItem('token') === null ?
+                                <Link to='/login' className='btn btn-outline-success btn-lg m-3'
+                                      type='button'>LOGOWANIE</Link> :
+                                <div/>}
+                        </div>
+                        <div>
+                            {sessionStorage.getItem('token') !== null ?
+                                <Link to='/logout' className='btn btn-outline-danger btn-lg m-3'
+                                      type='button'>ZAKOŃCZ</Link> : <div/>}
+                        </div>
                     </form>
                 </nav>
             </div>

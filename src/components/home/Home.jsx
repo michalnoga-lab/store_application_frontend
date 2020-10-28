@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Home = () => {
-
     return (
         <div className='main-page'>
             <section className="container">
@@ -44,12 +43,13 @@ const Home = () => {
                     <p className='top-page-text-details-text'>Informacja:
                         <a href='/rodo'> sprawdź</a>
                     </p>
-                </div>  <div className='top-page-text-details'>
-                <p className='top-page-text-details-at'>@ Informacja o ciasteczkach</p>
-                <p className='top-page-text-details-text'>Informacja:
-                    <a href='/cookies'> sprawdź</a>
-                </p>
-            </div>
+                </div>
+                <div className='top-page-text-details'>
+                    <p className='top-page-text-details-at'>@ Informacja o ciasteczkach</p>
+                    <p className='top-page-text-details-text'>Informacja:
+                        <a href='/cookies'> sprawdź</a>
+                    </p>
+                </div>
 
             </section>
         </div>

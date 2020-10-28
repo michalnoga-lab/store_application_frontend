@@ -3,7 +3,6 @@ import * as URLs from "../URLs"
 import Context from "../context/context";
 
 class Logout extends Component {
-    static contextType = Context
 
     constructor(props) {
         super(props);
@@ -23,8 +22,6 @@ class Logout extends Component {
             headers: headers
         })
             .then(() => sessionStorage.clear())
-            .then(() => this.context.setUserUnLogged())
-            .then(() => this.context.setUserRole(''))
             .then(() => this.props.history.push("/login"));
     }
 

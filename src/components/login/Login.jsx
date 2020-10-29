@@ -1,6 +1,7 @@
 import React, {Component, useState, useRef, useEffect} from 'react'
 import {useHistory} from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import Context from "../context/context";
 
 import * as URLs from "../URLs"
 import Button from "react-bootstrap/Button";
@@ -11,6 +12,7 @@ const Login = () => {
     let [login, setLogin] = useState('')
     let [password, setPassword] = useState('')
     let history = useHistory()
+    let context = Context
 
     const updateLogin = event => {
         setLogin(event.target.value)
@@ -35,6 +37,7 @@ const Login = () => {
         sessionStorage.setItem('token', body.token)
         sessionStorage.setItem('role', body.role.split('_')[1])
         sessionStorage.setItem('userMenuHidden', 'false')
+        context
 
         if (!localStorage.getItem('cart')) {
             localStorage.setItem('cart', JSON.stringify([]));

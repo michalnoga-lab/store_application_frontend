@@ -2,7 +2,12 @@ import React from "react";
 
 const AdminProductAdd = () => {
 
-    return(<div></div>)
+    return(<div>
+
+
+
+        adddddddd from admin
+    </div>)
 }
 
 export {AdminProductAdd}

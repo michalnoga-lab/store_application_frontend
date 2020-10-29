@@ -38,7 +38,9 @@ const App = () => { // todo przeładować stronę
                                 <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-3'>DODAJ
                                     ADRES</Link>
                                 <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ
-                                    KOSZYK</Link></div>}
+                                    KOSZYK</Link>
+                            </div>
+                            }
                         </div>
 
                         <div className='mr-5'>

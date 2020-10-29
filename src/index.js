@@ -5,9 +5,12 @@ import './assets/scss/base.scss'
 import {App} from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
+import AppContext from "./context/AppContext";
 
 ReactDOM.render(
-    <App/>,
+    <AppContext>
+        <App/>
+    </AppContext>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

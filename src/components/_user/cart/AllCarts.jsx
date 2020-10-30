@@ -59,7 +59,7 @@ const AllCarts = () => {
         let target = event.target
 
         sessionStorage.setItem('cartId', target.parentElement.parentElement.getAttribute('id'));
-        history.push('/carts/oneClosed')
+        history.push('/user/carts/oneClosed')
     }
 
     if (carts.length === 0) {

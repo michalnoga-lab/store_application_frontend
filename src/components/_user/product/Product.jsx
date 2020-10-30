@@ -36,7 +36,7 @@ const Product = () => { // TODO filtrowanie produktów po nazwie
     const handleProductClick = event => {
         let target = event.target
         sessionStorage.setItem('productId', target.parentElement.parentElement.getAttribute('id'))
-        history.push('/products/one')
+        history.push('/user/products/one')
     }
 
     return (<div className="table-page">

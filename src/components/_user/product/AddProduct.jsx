@@ -69,7 +69,7 @@ const AddProduct = () => {
             .catch(err => console.log(err))
 
         event.preventDefault()
-        setTimeout(() => history.push('/products/all'), 500)
+        setTimeout(() => history.push('/user/products/all'), 500)
     }
 
     const clearFields = () => {

@@ -17,7 +17,7 @@ import {LoggedIn} from "./components/login/LoggedIn";
 import {RouteUser} from "./routes/RouteUser";
 
 
-const App = () => { // todo przeładować stronę
+const App = () => {
 
     return (
         <Router>
@@ -26,21 +26,18 @@ const App = () => { // todo przeładować stronę
                     <form className='form-inline'>
                         <Link to='/' className="btn btn-outline-secondary btn-lg m-3" type="button">START</Link>
 
-                        <div>
-                            {sessionStorage.getItem('role') === null ? <div/> : <div className='ml-5 mr-5'>
-                                <Link to='/user/products/all' className='btn btn-outline-secondary btn-lg m-3'>MOJE
-                                    PRODUKTY</Link>
-                                <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-3'
-                                      type='button'>MOJE
-                                    ZAKUPY</Link>
-                                <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-3'
-                                      type='button'>MOJE ADRESY</Link>
-                                <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-3'>DODAJ
-                                    ADRES</Link>
-                                <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ
-                                    KOSZYK</Link>
-                            </div>
-                            }
+                        <div className='ml-5 mr-5'>
+                            <Link to='/user/products/all' className='btn btn-outline-secondary btn-lg m-3'>MOJE
+                                PRODUKTY</Link>
+                            <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-3'
+                                  type='button'>MOJE
+                                ZAKUPY</Link>
+                            <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-3'
+                                  type='button'>MOJE ADRESY</Link>
+                            <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-3'>DODAJ
+                                ADRES</Link>
+                            <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ
+                                KOSZYK</Link>
                         </div>
 
                         <div className='mr-5'>

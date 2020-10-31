@@ -15,6 +15,10 @@ import {Cookies} from "./components/information/Cookies";
 import {Login} from "./components/login/Login";
 import {LoggedIn} from "./components/login/LoggedIn";
 import {RouteUser} from "./routes/RouteUser";
+import {RouteAdmin} from "./routes/RouteAdmin";
+import {AdminPanel} from "./components/_admin/Panel";
+import {AdminProduct} from "./components/_admin/products/AdminProduct";
+import {AdminProductAdd} from "./components/_admin/products/AdminAddProduct";
 
 
 const App = () => {
@@ -71,6 +75,10 @@ const App = () => {
                 <RouteUser path='/user/carts/all' component={AllCarts}/>
                 <RouteUser path='/user/carts/one' component={ActiveCart}/>
                 <RouteUser path='/user/carts/oneClosed' component={ClosedCart}/>
+
+                <RouteAdmin path='/admin/panel' component={AdminPanel}/>
+                <RouteAdmin path='/admin/products/all' component={AdminProduct}/>
+                <RouteAdmin path='/admin/products/add' component={AdminProductAdd}/>
 
                 <Route path='/contact' component={Contact}/>
                 <Route path='/rodo' component={Rodo}/>

@@ -77,7 +77,8 @@ const AddProduct = () => {
         setIsProductAdded(true)
     }
 
-    return (<div className="table-page">
+    return (
+        <div className="table-page">
             <div className='overflow-mobile'>
 
                 <Table bordered hover>

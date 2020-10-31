@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, useCallback} from "react";
-import * as URLs from '../../URLs';
 import {useHistory} from "react-router";
 import {Table} from "react-bootstrap";
+import * as URLs from '../../URLs';
 
 const EmptyList = () => (
     <div className='main-page'>

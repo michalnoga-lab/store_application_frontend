@@ -9,5 +9,8 @@
     <orderEntry type="library" name="react-bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap-theme" level="application" />
     <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="bootstrap-theme" level="application" />
   </component>
 </module>

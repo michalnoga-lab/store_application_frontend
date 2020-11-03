@@ -7,11 +7,11 @@ const AdminPanel = () => {
 
     return (<div className='main-page col-10 ml-6 mr-6'>
             <div className='col-12 btn-group mt-4'>
-                <Link to='#' className='btn btn-outline-secondary btn-lg m-5 col-3' type='button'>PRODUKTY</Link>
-                <Link to='/admin/products/all' className='btn btn-outline-info btn-lg m-5 col-3'>POKAŻ</Link>
-                <Link to='/admin/products/add' className='btn btn-outline-success btn-lg m-5 col-3'
+                <Link to='#' className='btn btn-outline-secondary btn-lg m-5 col-3' type='button'>KODY</Link>
+                <Link to='/admin/codes/all' className='btn btn-outline-info btn-lg m-5 col-3'>POKAŻ</Link>
+                <Link to='/admin/codes/add' className='btn btn-outline-success btn-lg m-5 col-3'
                       type='button'>DODAJ</Link>
-                <Link to='/admin/products/del' className='btn btn-outline-danger btn-lg m-5 col-3'
+                <Link to='/admin/codes/del' className='btn btn-outline-danger btn-lg m-5 col-3'
                       type='button'>USUŃ</Link>
             </div>
             <div className='col-12 btn-group mt-0'>
@@ -21,6 +21,22 @@ const AdminPanel = () => {
                 <Link to='/admin/products/add' className='btn btn-outline-success btn-lg m-5 col-3'
                       type='button'>DODAJ</Link>
                 <Link to='/admin/products/del' className='btn btn-outline-danger btn-lg m-5 col-3'
+                      type='button'>USUŃ</Link>
+            </div>
+            <div className='col-12 btn-group mt-0'>
+                <Link to='#' className='btn btn-outline-secondary btn-lg m-5 col-3' type='button'>PRODUKTY</Link>
+                <Link to='/admin/products/all' className='btn btn-outline-info btn-lg m-5 col-3'>POKAŻ</Link>
+                <Link to='/admin/products/add' className='btn btn-outline-success btn-lg m-5 col-3'
+                      type='button'>DODAJ</Link>
+                <Link to='/admin/products/del' className='btn btn-outline-danger btn-lg m-5 col-3'
+                      type='button'>USUŃ</Link>
+            </div>
+            <div className='col-12 btn-group mt-0'>
+                <Link to='#' className='btn btn-outline-secondary btn-lg m-5 col-3'>UŻYTKOWNICY</Link>
+                <Link to='/admin/users/all' className='btn btn-outline-info btn-lg m-5 col-3'>POKAŻ</Link>
+                <Link to='/admin/users/add' className='btn btn-outline-success btn-lg m-5 col-3'
+                      type='button'>DODAJ</Link>
+                <Link to='/admin/users/del' className='btn btn-outline-danger btn-lg m-5 col-3'
                       type='button'>USUŃ</Link>
             </div>
         </div>

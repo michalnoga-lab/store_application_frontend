@@ -27,38 +27,32 @@ const App = () => {
         <Router>
             <div className='nav-bar-items'>
                 <nav className='nav navbar-light bg-light'>
-                    <form className='form-inline'>
-                        <Link to='/' className="btn btn-outline-secondary btn-lg m-3" type="button">START</Link>
-
-                        <div className='ml-5 mr-5'>
-                            <Link to='/user/products/all' className='btn btn-outline-secondary btn-lg m-3'>MOJE
-                                PRODUKTY</Link>
-                            <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-3'
-                                  type='button'>MOJE
-                                ZAKUPY</Link>
-                            <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-3'
-                                  type='button'>MOJE ADRESY</Link>
-                            <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-3'>DODAJ
+                    <div className='form-inline col-12'>
+                        <div className='col-1'>
+                            <Link to='/' className="btn btn-outline-info btn-lg" type="button">START</Link>
+                        </div>
+                        <div className='col-10'>
+                            <Link to='/user/products/all'
+                                  className='btn btn-outline-secondary btn-lg m-1'> PRODUKTY</Link>
+                            <Link to='/user/carts/all' className='btn btn-outline-secondary btn-lg m-2'
+                                  type='button'>ZAKUPY</Link>
+                            <Link to='/user/deliveryAddress/all' className='btn btn-outline-secondary btn-lg m-2'
+                                  type='button'>ADRESY</Link>
+                            <Link to='/user/deliveryAddress/add' className='btn btn-outline-secondary btn-lg m-2'>DODAJ
                                 ADRES</Link>
-                            <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-3'>MÓJ
-                                KOSZYK</Link>
+                            <Link to='/user/carts/one' className='btn btn-outline-secondary btn-lg m-2'>KOSZYK</Link>
+
+                            <Link to='/login' className='btn btn-outline-success btn-lg m-2'
+                                  type='button'>LOGOWANIE</Link>
+                            <Link to='/logout' className='btn btn-outline-danger btn-lg m-2'
+                                  type='button'>ZAKOŃCZ</Link>
                         </div>
 
-                        <div className='mr-5'>
-                            <Link to='contact' className='btn btn-outline-secondary btn-lg m-3'>KONTAKT</Link>
+                        <div className='col-1'>
+                            <Link to='/admin/panel' className='btn btn-outline-info btn-lg'
+                                  type='button'>ADMINISTRACJA</Link>
                         </div>
-                        <div>
-                            {sessionStorage.getItem('token') === null ?
-                                <Link to='/login' className='btn btn-outline-success btn-lg m-3'
-                                      type='button'>LOGOWANIE</Link> :
-                                <div/>}
-                        </div>
-                        <div>
-                            {sessionStorage.getItem('token') !== null ?
-                                <Link to='/logout' className='btn btn-outline-danger btn-lg m-3'
-                                      type='button'>ZAKOŃCZ</Link> : <div/>}
-                        </div>
-                    </form>
+                    </div>
                 </nav>
             </div>
             <Switch>

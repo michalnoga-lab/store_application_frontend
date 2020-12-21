@@ -27,13 +27,27 @@ const AdminProductAdd = () => {
     let [isVatCorrect, setIsVatCorrect] = useState(false)
     let [vatErrorMessage, setVatErrorMessage] = useState('VAT nie jest prawidłowy')
 
+    let [productCodes, setProductCodes] = useState([])
+    let [currentProductCode, setCurrentProductCode] = useState({})
+
+    let [companies, setCompanies] = useState({})
+
     let [isAddButtonVisible, setIsAddButtonVisible] = useState(false)
     let [change, setChange] = useState(true)
     const textInputRegex = new RegExp('^[a-zA-Z0-9\\s]{0,100}$')
     const numberInputRegex = new RegExp('^[0-9]{0,10}$')
 
+    useEffect(() => {
+        async function getData() {
+            await getAllProductCodes()
+        }
+
+        getData().catch(err => console.log(err))
+        setChange(false)
+    }, [change])
+
     const addProduct = async () => {
-        const url = URLs.backend + 'api/admin/products/addOne';
+        const url = URLs.backend + 'api/admin/products/addOne'
         const headers = new Headers();
         headers.set('Content-Type', 'application/json;charset=UTF-8')
         headers.set('Authorization', sessionStorage.getItem('token'))
@@ -43,6 +57,21 @@ const AdminProductAdd = () => {
             headers: headers,
             body: JSON.stringify({name: name, numberInAuction: numberInAuction})
         })
+            .catch(err => console.log(err))
+    }
+
+    const getAllProductCodes = async () => {
+        const url = URLs.backend + 'api/admin/productCodes/all'
+        const header = new Headers()
+        header.set('Content-Type', 'application/json;charset=UTF-8')
+        header.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
+
+        fetch(url, {
+            method: 'GET',
+            headers: header
+        })
+            .then(response => response.json())
+            .then(body => setProductCodes(body))
             .catch(err => console.log(err))
     }
 
@@ -93,6 +122,49 @@ const AdminProductAdd = () => {
 
         numberInputRegex.test(vat) ? setIsVatCorrect(true) : setIsVatCorrect(false)
         checkIsInputCorrect()
+    }
+
+    const handleProductCodeChange = event => {
+        let target = event.target
+        let value = target.value
+        let selectedId = +target.selectedOptions[0].id
+
+        console.log(selectedId)
+
+        const selectedProduct = productCodes.filter(code=>code.id===selectedId)
+        console.log('--------------------------------------------------------------------');
+        console.log(selectedProduct[0])
+        console.log('--------------------------------------------------------------------');
+
+
+        // productCodes.filter(function (code, number, array) {
+        //     if (array[number].id == selectedId) {
+        //
+        //         console.log('-------- f ---------')
+        //         console.log(code)
+        //        setCurrentProductCode(code)
+        //     }
+
+        // console.log('types')
+        // console.log(typeof array[number].id)
+        // console.log(typeof selectedId)
+
+
+        //  console.log('-----------')
+        //  console.log('---------------')
+        //     console.log(target.selectedOptions[0].id)
+        //  console.log(value)
+        // //console.log(code.id)
+        //  //console.log(number)
+        //   console.log(array[number].id)
+
+
+        // })
+//        setCurrentProductCode(productCode[0])
+
+        console.log(value)
+
+
     }
 
     const checkIsInputCorrect = () => {
@@ -159,8 +231,19 @@ const AdminProductAdd = () => {
                     onChange={handleVatChange}
                 />
                 <div className='alert alert-danger' hidden={isVatCorrect}>{vatErrorMessage}</div>
+                <input
+                    className='btn-block form-control'
+                    type='number'
+                    placeholder='BRUTTO'
+                    readOnly={true}
+                    value={nettPrice * (1 + vat) / 100}
+                />
+                <select className='btn-block' name='productCode' onChange={handleProductCodeChange}>
+                    {productCodes.map(code =>
+                        <option key={code.id} id={code.id}>{code.codeFromOptima}</option>
+                    )}
+                </select>
                 {/*
-                gross
                 product code
                 company
                 */}

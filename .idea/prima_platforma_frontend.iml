@@ -6,7 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="react.production" level="application" />
     <orderEntry type="library" name="react-dom.production" level="application" />
-    <orderEntry type="library" name="react-bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap-theme" level="application" />
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />

@@ -2,7 +2,7 @@
 
 Project of shop application. It's designed for companies which want their clients to make orders online.
 
-Backend is written in Java, using Spring framework with Spring security and MYSQL database. Frontend in React library. Everytihng is over 10000 lines of code.
+Backend is written in Java, using Spring framework with Spring security and MYSQL database. Frontend in React library. Everytihng is over 2000 lines of code.
 
 How to run project:
 

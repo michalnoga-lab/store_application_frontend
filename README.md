@@ -9,7 +9,7 @@ How to run project:
 1. RUN ONLY WITH STORE APPLICATION BACKEND. Make sure you have MySQL installed on computer. The sample data will be loaded automatically.
 2. Run backend part first
 3. Run frontend:
->> npm init
+>> npm init <br>
 >> npm start
 5. Your browser will start automatically and open application (on localhost:3000)
 6. To login use credentials:
